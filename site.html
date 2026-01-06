@@ -3,403 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paralegal Portal</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-900 min-h-screen flex items-center justify-center p-4">
-    
-    <!-- Create Organization Form -->
-    <div id="createForm" class="w-full max-w-md">
-        <div class="bg-gray-800 rounded-lg shadow-xl p-8 border border-gray-700">
-            <h1 class="text-2xl font-bold text-white mb-6">Paralegal Services</h1>
-            
-            <form onsubmit="handleCreate(event)" class="space-y-4">
-                <div>
-                    <label class="block text-gray-300 mb-2">Organization Name</label>
-                    <input 
-                        type="text" 
-                        id="orgName" 
-                        required 
-                        placeholder="Enter organization name"
-                        class="w-full bg-gray-700 text-white rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 border border-gray-600">
-                </div>
-                
-                <button 
-                    type="submit" 
-                    id="createBtn"
-                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition">
-                    Create API Key
-                </button>
-            </form>
-        </div>
-    </div>
+    <title>Paralegal</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 60px 80px;
+            font-family: Menlo, Monaco, 'Courier New', monospace;
+            font-size: 11pt;
+            line-height: 1.8;
+            background-color: #ffffff;
+            color: #000000;
+        }
 
-    <!-- API Key Display -->
-    <div id="keyDisplay" class="hidden w-full max-w-2xl">
-        <div class="bg-gray-800 rounded-lg shadow-xl p-8 border border-gray-700">
-            <div class="flex justify-between items-center mb-6">
-                <h1 class="text-2xl font-bold text-white">Your API Key</h1>
-                <button onclick="createNew()" class="text-gray-400 hover:text-white text-sm">
-                    + New Key
-                </button>
-            </div>
-            
-            <!-- Organization Info -->
-            <div class="mb-6 pb-6 border-b border-gray-700">
-                <p class="text-gray-400 text-sm">Organization</p>
-                <p id="displayOrgName" class="text-white font-semibold text-lg"></p>
-            </div>
+        h1 {
+            font-size: 11pt;
+            font-weight: normal;
+            font-style: italic;
+            margin: 0 0 40px 0;
+        }
 
-            <!-- API Key -->
-            <div class="mb-6">
-                <div class="flex justify-between items-center mb-2">
-                    <label class="text-gray-300 font-medium">API Key</label>
-                    <span class="text-green-400 text-xs">● Active</span>
-                </div>
-                <div class="flex gap-2">
-                    <input 
-                        type="text" 
-                        id="apiKeyField" 
-                        readonly 
-                        class="flex-1 bg-gray-900 text-green-400 font-mono rounded px-4 py-3 border border-gray-600 text-sm">
-                    <button 
-                        onclick="copyKey()" 
-                        class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-3 rounded transition">
-                        Copy
-                    </button>
-                </div>
-                <p class="text-yellow-400 text-xs mt-2">⚠️ Save this key securely - it won't be shown again</p>
-            </div>
+        h2 {
+            font-size: 11pt;
+            font-weight: normal;
+            font-style: italic;
+            margin: 40px 0 30px 0;
+        }
 
-            <!-- Tenant ID -->
-            <div class="mb-6">
-                <label class="text-gray-300 text-sm mb-2 block">Tenant ID</label>
-                <div class="flex gap-2">
-                    <input 
-                        type="text" 
-                        id="tenantIdField" 
-                        readonly 
-                        class="flex-1 bg-gray-900 text-gray-400 font-mono rounded px-4 py-2 border border-gray-600 text-sm">
-                    <button 
-                        onclick="copyTenantId()" 
-                        class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded transition text-sm">
-                        Copy
-                    </button>
-                </div>
-            </div>
+        p {
+            margin: 0 0 30px 0;
+            white-space: pre-wrap;
+        }
 
-            <!-- Usage Instructions -->
-            <div class="bg-gray-900 rounded-lg p-4 border border-gray-700">
-                <p class="text-gray-400 text-sm mb-3 font-semibold">Quick Setup:</p>
-                <div class="space-y-3">
-                    <div>
-                        <p class="text-gray-500 text-xs mb-1">1. Install package</p>
-                        <div class="bg-black rounded px-3 py-2 flex justify-between items-center">
-                            <code class="text-green-400 text-sm">pip install paralegal</code>
-                            <button onclick="copy('pip install paralegal')" class="text-gray-500 hover:text-gray-300 text-xs">
-                                copy
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <p class="text-gray-500 text-xs mb-1">2. Set environment variable</p>
-                        <div class="bg-black rounded px-3 py-2 flex justify-between items-center">
-                            <code id="envCmd" class="text-yellow-400 text-sm">export PARALEGAL_API_KEY="..."</code>
-                            <button onclick="copyEnv()" class="text-gray-500 hover:text-gray-300 text-xs">
-                                copy
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <p class="text-gray-500 text-xs mb-1">3. Initialize in code</p>
-                        <div class="bg-black rounded px-3 py-2">
-                            <code class="text-blue-400 text-sm">import paralegal<br>paralegal.init()</code>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Stats -->
-            <div class="mt-6">
-                <div class="flex justify-between items-center mb-3">
-                    <h4 class="text-white font-semibold">Real-time Stats</h4>
-                    <div class="flex items-center gap-2">
-                        <span class="ws-status text-xs text-gray-500">○ Connecting...</span>
-                        <span id="liveIndicator" class="opacity-0 transition-opacity text-xs text-green-400">📊 Updated</span>
-                    </div>
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-gray-900 rounded-lg p-4 border border-gray-700">
-                        <p class="text-gray-500 text-xs">Traces This Month</p>
-                        <p id="traceCount" class="text-white text-2xl font-bold mt-1">0</p>
-                    </div>
-                    <div class="bg-gray-900 rounded-lg p-4 border border-gray-700">
-                        <p class="text-gray-500 text-xs">Total Requests</p>
-                        <p id="totalRequests" class="text-white text-2xl font-bold mt-1">0</p>
-                    </div>
-                    <div class="bg-gray-900 rounded-lg p-4 border border-gray-700 col-span-2">
-                        <p class="text-gray-500 text-xs">Last Active</p>
-                        <p id="lastActive" class="text-white text-lg font-bold mt-1">-</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Toast Notification -->
-    <div id="toast" class="hidden fixed bottom-4 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg">
-        Copied!
-    </div>
-
-    <script>
-        const API_ENDPOINT = 'https://infra-1-gl4c.onrender.com';
-        const WS_ENDPOINT = 'wss://infra-1-gl4c.onrender.com';
+        .contact {
+            margin: 40px 0 30px 0;
+        }
         
-        let currentData = null;
-        let websocket = null;
-        let reconnectInterval = null;
-
-        // Check backend connection on load
-        async function checkConnection() {
-            try {
-                const response = await fetch(`${API_ENDPOINT}/health`);
-                if (!response.ok) {
-                    showConnectionError();
-                }
-            } catch (error) {
-                showConnectionError();
-            }
+        .contact a {
+            text-decoration: underline;
+            color: #000000;
+        }
+        
+        .contact a:hover {
+            opacity: 0.7;
         }
 
-        function showConnectionError() {
-            const form = document.getElementById('createForm');
-            const errorDiv = document.createElement('div');
-            errorDiv.className = 'mt-4 bg-red-900/50 border border-red-700 text-red-300 px-4 py-3 rounded';
-            errorDiv.innerHTML = `
-                <p class="font-semibold">⚠️ Connection Error</p>
-                <p class="text-sm mt-1">Cannot connect to API server. Please check your connection or contact support.</p>
-                <p class="text-xs mt-2 text-red-400">Endpoint: ${API_ENDPOINT}</p>
-            `;
-            form.querySelector('.bg-gray-800').appendChild(errorDiv);
+        .company-info {
+            font-style: italic;
+            margin: 0;
         }
 
-        // WebSocket connection for real-time updates
-        function connectWebSocket(tenantId) {
-            if (websocket) {
-                websocket.close();
-            }
-
-            const wsUrl = `${WS_ENDPOINT}/ws/${tenantId}`;
-            console.log('Connecting to WebSocket:', wsUrl);
-            
-            websocket = new WebSocket(wsUrl);
-            
-            websocket.onopen = () => {
-                console.log('✅ WebSocket connected');
-                showConnectionStatus(true);
-                
-                // Send ping every 30 seconds to keep alive
-                if (reconnectInterval) clearInterval(reconnectInterval);
-                reconnectInterval = setInterval(() => {
-                    if (websocket.readyState === WebSocket.OPEN) {
-                        websocket.send('ping');
-                    }
-                }, 30000);
-            };
-            
-            websocket.onmessage = (event) => {
-                const message = JSON.parse(event.data);
-                console.log('📨 WebSocket message:', message);
-                
-                if (message.type === 'connected') {
-                    console.log('Connected to tenant:', message.data.tenant_id);
-                    updateStats(message.data);
-                } else if (message.type === 'usage_update') {
-                    updateStats(message.data);
-                    showLiveUpdateIndicator();
-                } else if (message.type === 'pong') {
-                    console.log('Pong received');
-                }
-            };
-            
-            websocket.onerror = (error) => {
-                console.error('❌ WebSocket error:', error);
-                showConnectionStatus(false);
-            };
-            
-            websocket.onclose = () => {
-                console.log('🔌 WebSocket closed');
-                showConnectionStatus(false);
-                
-                // Auto-reconnect after 5 seconds
-                setTimeout(() => {
-                    if (currentData && currentData.tenant_id) {
-                        console.log('Attempting to reconnect...');
-                        connectWebSocket(currentData.tenant_id);
-                    }
-                }, 5000);
-            };
+        .address {
+            font-style: italic;
+            margin: 0;
         }
-
-        function showConnectionStatus(connected) {
-            const statusElements = document.querySelectorAll('.ws-status');
-            statusElements.forEach(el => {
-                el.textContent = connected ? '● Live' : '○ Offline';
-                el.className = `ws-status text-xs ${connected ? 'text-green-400' : 'text-gray-500'}`;
-            });
-        }
-
-        function showLiveUpdateIndicator() {
-            const indicator = document.getElementById('liveIndicator');
-            if (indicator) {
-                indicator.classList.remove('opacity-0');
-                indicator.classList.add('opacity-100');
-                setTimeout(() => {
-                    indicator.classList.remove('opacity-100');
-                    indicator.classList.add('opacity-0');
-                }, 2000);
-            }
-        }
-
-        function updateStats(data) {
-            if (data.monthly_traces !== undefined) {
-                document.getElementById('traceCount').textContent = data.monthly_traces.toLocaleString();
-            }
-            if (data.total_requests !== undefined) {
-                const reqEl = document.getElementById('totalRequests');
-                if (reqEl) {
-                    reqEl.textContent = data.total_requests.toLocaleString();
-                }
-            }
-            if (data.last_seen) {
-                document.getElementById('lastActive').textContent = 
-                    new Date(data.last_seen).toLocaleString();
-            }
-        }
-
-        // Check connection on page load
-        window.addEventListener('load', checkConnection);
-
-        async function handleCreate(event) {
-            event.preventDefault();
-            
-            const btn = document.getElementById('createBtn');
-            const orgName = document.getElementById('orgName').value;
-            
-            btn.disabled = true;
-            btn.innerHTML = '<span class="animate-pulse">Creating...</span>';
-            
-            try {
-                console.log('Creating tenant:', orgName);
-                console.log('Endpoint:', `${API_ENDPOINT}/tenants`);
-                
-                const response = await fetch(`${API_ENDPOINT}/tenants`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name: orgName })
-                });
-                
-                console.log('Response status:', response.status);
-                
-                const data = await response.json();
-                console.log('Response data:', data);
-                
-                if (response.ok) {
-                    currentData = data;
-                    showKeyDisplay(data);
-                } else {
-                    const errorMsg = data.detail || JSON.stringify(data) || 'Failed to create API key';
-                    alert('Error: ' + errorMsg);
-                    btn.disabled = false;
-                    btn.textContent = 'Create API Key';
-                }
-            } catch (error) {
-                console.error('Fetch error:', error);
-                alert('Connection error: ' + error.message + '\n\nPlease check:\n1. Backend is running\n2. CORS is enabled\n3. Network connection');
-                btn.disabled = false;
-                btn.textContent = 'Create API Key';
-            }
-        }
-
-        function showKeyDisplay(data) {
-            document.getElementById('createForm').classList.add('hidden');
-            document.getElementById('keyDisplay').classList.remove('hidden');
-            
-            document.getElementById('displayOrgName').textContent = data.name;
-            document.getElementById('apiKeyField').value = data.api_key;
-            document.getElementById('tenantIdField').value = data.tenant_id;
-            document.getElementById('envCmd').textContent = `export PARALEGAL_API_KEY="${data.api_key}"`;
-            
-            // Fetch initial usage
-            fetchUsage(data.tenant_id);
-            
-            // Connect WebSocket for real-time updates
-            connectWebSocket(data.tenant_id);
-        }
-
-        async function fetchUsage(tenantId) {
-            try {
-                const response = await fetch(`${API_ENDPOINT}/tenants/${tenantId}/usage`);
-                const data = await response.json();
-                
-                updateStats({
-                    monthly_traces: data.monthly_traces || 0,
-                    total_requests: data.total_requests || 0,
-                    last_seen: data.last_seen
-                });
-            } catch (error) {
-                console.error('Error fetching usage:', error);
-            }
-        }
-
-        function copyKey() {
-            const key = document.getElementById('apiKeyField').value;
-            navigator.clipboard.writeText(key);
-            showToast();
-        }
-
-        function copyTenantId() {
-            const id = document.getElementById('tenantIdField').value;
-            navigator.clipboard.writeText(id);
-            showToast();
-        }
-
-        function copyEnv() {
-            const cmd = document.getElementById('envCmd').textContent;
-            navigator.clipboard.writeText(cmd);
-            showToast();
-        }
-
-        function copy(text) {
-            navigator.clipboard.writeText(text);
-            showToast();
-        }
-
-        function showToast() {
-            const toast = document.getElementById('toast');
-            toast.classList.remove('hidden');
-            setTimeout(() => toast.classList.add('hidden'), 2000);
-        }
-
-        function createNew() {
-            // Close WebSocket connection
-            if (websocket) {
-                websocket.close();
-                websocket = null;
-            }
-            if (reconnectInterval) {
-                clearInterval(reconnectInterval);
-                reconnectInterval = null;
-            }
-            
-            document.getElementById('createForm').classList.remove('hidden');
-            document.getElementById('keyDisplay').classList.add('hidden');
-            document.getElementById('orgName').value = '';
-            document.getElementById('createBtn').disabled = false;
-            document.getElementById('createBtn').textContent = 'Create API Key';
-        }
-    </script>
+    </style>
+</head>
+<body>
+    <h1><strong>Paralegal</strong></h1>
+    
+    <h2>Saving teams from AI failures</h2>
+    
+    <p>AI is today writing email, generating decisions,
+and touching sensitive data — making everyone liable for policy
+violations,</p>
+    
+    <p>We at paralegal partner with teams and businesses to help 
+them indemnify against such scenarios.</p>
+    
+    <p>It takes less than two minutes to setup and you can get started
+with paralegal services instantly.</p>
+    
+    <p class="contact"><a href="mailto:paralegalapp@proton.me">Contact Us.</a></p>
+    
+    <p class="company-info">Paralegal Inc.</p>
+    <p class="address">Market Street, San Francisco, CA.</p>
 </body>
 </html>
