@@ -2236,10 +2236,8 @@ const C2C = {
   WALLET:    '0x658F01F168A1bF820865E429D67eF869c58E782B',  // Greptiles USDC (Polygon) payout wallet
   AMOUNT:    '49.00',
   CURRENCY:  'USD',
-  // Callback URL — update to your live server endpoint
-  // The C2C bot will GET this URL with ?value_coin=XX appended after payment
-  // FREE callback: go to https://webhook.site → copy your unique URL → paste below
-  // Card2Crypto will GET this URL with ?value_coin=XX after each payment
+  // Payment callback — Card2Crypto GETs this after every successful payment
+  // View incoming payments at: https://webhook.site/21617248-2013-4bee-9330-711ed7342d47
   CALLBACK_BASE: 'https://webhook.site/21617248-2013-4bee-9330-711ed7342d47',
 };
 
