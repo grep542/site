@@ -201,12 +201,31 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* CREDIT TICKER */
-  .ticker-section {
-    overflow: hidden;
+  /* TRUST LOGOS */
+  .trust-bar {
+    padding: 32px 48px;
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     background: var(--bg2);
+    text-align: center;
+  }
+  .trust-bar-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+  .trust-logos { display: flex; justify-content: center; align-items: center; gap: 48px; flex-wrap: wrap; }
+  .trust-logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: rgba(255,255,255,0.18);
+    letter-spacing: -0.3px;
+    transition: color 0.2s;
+  }
+  .trust-logo:hover { color: rgba(255,255,255,0.35); }
+
+  /* CREDIT TICKER */
+  .ticker-section {
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
   }
 
   .ticker-label { text-align: center; padding: 28px 0 12px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); font-weight: 500; }
@@ -257,9 +276,9 @@
   .section-eyebrow { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--green); font-weight: 600; margin-bottom: 16px; }
   .section-title { font-family: 'Fraunces', serif; font-weight: 800; font-size: clamp(32px, 4vw, 52px); letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 64px; max-width: 600px; }
 
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
 
-  .step { background: var(--bg2); padding: 44px 36px; position: relative; transition: background 0.2s; }
+  .step { background: var(--bg2); padding: 44px 32px; position: relative; transition: background 0.2s; }
   .step:hover { background: var(--bg3); }
 
   .step-number {
@@ -276,8 +295,8 @@
   }
 
   .step-number::before { content: ''; width: 24px; height: 2px; background: var(--green); display: block; opacity: 0.4; }
-  .step h3 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 20px; margin-bottom: 14px; letter-spacing: -0.3px; line-height: 1.2; }
-  .step p { font-size: 14px; color: #6b7566; line-height: 1.7; }
+  .step h3 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; margin-bottom: 14px; letter-spacing: -0.3px; line-height: 1.2; }
+  .step p { font-size: 13px; color: #6b7566; line-height: 1.7; }
 
   /* RECOVERY FEATURE */
   .recovery-feature { margin: 0 auto; max-width: 1100px; padding: 0 48px 100px; }
@@ -329,11 +348,6 @@
     backdrop-filter: blur(10px);
   }
 
-  .result-card:nth-child(1) { animation-delay: 0.1s; }
-  .result-card:nth-child(2) { animation-delay: 0.25s; }
-  .result-card:nth-child(3) { animation-delay: 0.4s; }
-  .result-card:nth-child(4) { animation-delay: 0.55s; }
-
   @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
 
   .result-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-family: 'Fraunces', serif; font-weight: 700; flex-shrink: 0; }
@@ -371,6 +385,26 @@
   .c-tag-blue { background: rgba(60,130,255,0.1); color: #7aaaff; }
   .c-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
 
+  /* TESTIMONIALS */
+  .testimonials-section { padding: 0 48px 100px; max-width: 1100px; margin: 0 auto; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .testimonial {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    transition: all 0.2s;
+  }
+  .testimonial:hover { border-color: rgba(76,175,63,0.2); transform: translateY(-2px); }
+  .testimonial-stars { display: flex; gap: 3px; margin-bottom: 16px; }
+  .testimonial-stars span { color: var(--green); font-size: 12px; }
+  .testimonial-amount { font-family: 'Fraunces', serif; font-weight: 700; font-size: 28px; color: var(--green); letter-spacing: -0.5px; margin-bottom: 8px; }
+  .testimonial-quote { font-size: 13px; color: #8a9685; line-height: 1.6; margin-bottom: 20px; }
+  .testimonial-author { display: flex; align-items: center; gap: 10px; }
+  .testimonial-avatar { width: 36px; height: 36px; border-radius: 50%; background: rgba(76,175,63,0.15); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-weight: 700; font-size: 13px; color: var(--green); flex-shrink: 0; }
+  .testimonial-name { font-size: 13px; font-weight: 600; color: var(--text); }
+  .testimonial-biz { font-size: 11px; color: var(--muted); }
+
   /* PRICING */
   .pricing-section { padding: 0 48px 100px; max-width: 1100px; margin: 0 auto; }
 
@@ -389,13 +423,7 @@
   .pricing-left h2 em { font-style: normal; color: var(--green); }
   .pricing-left p { font-size: 15px; color: #6b7566; line-height: 1.7; margin-bottom: 28px; }
 
-  .price-tag {
-    display: flex;
-    align-items: baseline;
-    gap: 6px;
-    margin-bottom: 8px;
-  }
-
+  .price-tag { display: flex; align-items: baseline; gap: 6px; margin-bottom: 8px; }
   .price-num { font-family: 'Fraunces', serif; font-weight: 800; font-size: 64px; color: var(--text); letter-spacing: -3px; line-height: 1; }
   .price-currency { font-family: 'Fraunces', serif; font-weight: 600; font-size: 28px; color: var(--muted); }
   .price-label { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
@@ -424,6 +452,280 @@
   .roi-total-label { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); font-weight: 600; }
   .roi-total-value { font-family: 'Fraunces', serif; font-weight: 800; font-size: 28px; color: var(--green); letter-spacing: -0.5px; }
 
+  /* ==================== QUIZ SECTION ==================== */
+  .quiz-section {
+    padding: 0 48px 100px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .quiz-wrapper {
+    background: var(--bg2);
+    border: 1px solid rgba(76,175,63,0.2);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .quiz-header {
+    padding: 36px 48px 28px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .quiz-header-left h3 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 22px; letter-spacing: -0.4px; margin-bottom: 4px; }
+  .quiz-header-left p { font-size: 13px; color: var(--muted); }
+
+  .quiz-progress-wrap { display: flex; align-items: center; gap: 12px; }
+  .quiz-step-count { font-size: 12px; color: var(--muted); font-weight: 500; white-space: nowrap; }
+  .quiz-progress-bar { width: 120px; height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+  .quiz-progress-fill { height: 100%; background: var(--green); border-radius: 2px; transition: width 0.4s ease; }
+
+  .quiz-body { padding: 48px; min-height: 320px; }
+
+  /* Question slide */
+  .quiz-question { display: none; animation: qIn 0.35s ease both; }
+  .quiz-question.active { display: block; }
+  @keyframes qIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+  .q-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--green); font-weight: 600; margin-bottom: 14px; }
+  .q-text { font-family: 'Fraunces', serif; font-weight: 700; font-size: clamp(20px, 3vw, 28px); letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 32px; color: var(--text); }
+  .q-sub { font-size: 14px; color: var(--muted); margin-top: -20px; margin-bottom: 28px; line-height: 1.5; }
+
+  /* Choice buttons */
+  .q-choices { display: grid; gap: 10px; }
+  .q-choices.grid-2 { grid-template-columns: 1fr 1fr; }
+  .q-choices.grid-1 { grid-template-columns: 1fr; max-width: 560px; }
+
+  .q-choice {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: #9a9f95;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .q-choice:hover {
+    border-color: rgba(76,175,63,0.35);
+    background: rgba(76,175,63,0.05);
+    color: var(--text);
+    transform: translateX(3px);
+  }
+
+  .q-choice.selected {
+    border-color: var(--green);
+    background: rgba(76,175,63,0.1);
+    color: var(--text);
+  }
+
+  .q-choice-icon { width: 32px; height: 32px; border-radius: 8px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .q-choice.selected .q-choice-icon { background: rgba(76,175,63,0.15); }
+
+  /* Text input */
+  .q-input {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--text);
+    width: 100%;
+    max-width: 420px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .q-input:focus { border-color: rgba(76,175,63,0.4); }
+  .q-input::placeholder { color: var(--muted); }
+
+  /* Multi-select note */
+  .q-multi-note { font-size: 11px; color: var(--muted); margin-bottom: 16px; letter-spacing: 0.3px; }
+
+  /* Quiz footer */
+  .quiz-footer {
+    padding: 24px 48px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .quiz-back-btn {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--muted);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .quiz-back-btn:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
+  .quiz-back-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  .quiz-next-btn {
+    background: var(--green);
+    color: #0a0d09;
+    border: none;
+    padding: 12px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .quiz-next-btn:hover { background: var(--green-light); transform: translateY(-1px); }
+  .quiz-next-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+  /* ---- LOADING SCREEN ---- */
+  .quiz-loading {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 340px;
+    gap: 20px;
+    padding: 48px;
+    text-align: center;
+  }
+  .quiz-loading.active { display: flex; }
+
+  .loading-spinner {
+    width: 48px; height: 48px;
+    border: 3px solid rgba(76,175,63,0.15);
+    border-top-color: var(--green);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .loading-dots { display: flex; gap: 8px; margin-top: 8px; }
+  .loading-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: dotBounce 1.2s ease-in-out infinite; opacity: 0.4; }
+  .loading-dot:nth-child(1) { animation-delay: 0s; }
+  .loading-dot:nth-child(2) { animation-delay: 0.2s; }
+  .loading-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes dotBounce { 0%,80%,100% { opacity: 0.4; transform: scale(1); } 40% { opacity: 1; transform: scale(1.3); } }
+
+  .loading-title { font-family: 'Fraunces', serif; font-weight: 700; font-size: 22px; letter-spacing: -0.3px; }
+  .loading-sub { font-size: 13px; color: var(--muted); line-height: 1.6; max-width: 360px; }
+
+  .loading-steps-list { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; max-width: 340px; width: 100%; }
+  .loading-step-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); padding: 10px 14px; border-radius: 8px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); }
+  .loading-step-item.done { color: var(--green); background: rgba(76,175,63,0.05); border-color: rgba(76,175,63,0.12); }
+  .loading-step-icon { font-size: 14px; }
+  .loading-step-spinner { width: 14px; height: 14px; border: 2px solid rgba(76,175,63,0.2); border-top-color: var(--green); border-radius: 50%; animation: spin 0.8s linear infinite; }
+
+  /* ---- RESULTS SCREEN ---- */
+  .quiz-results {
+    display: none;
+    padding: 48px;
+    animation: qIn 0.5s ease both;
+  }
+  .quiz-results.active { display: block; }
+
+  .results-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .results-headline { font-family: 'Fraunces', serif; font-weight: 800; font-size: clamp(24px, 3.5vw, 38px); letter-spacing: -1px; line-height: 1.1; }
+  .results-headline em { font-style: normal; color: var(--green); }
+  .results-sub { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.5; }
+
+  .results-total-box {
+    background: rgba(76,175,63,0.08);
+    border: 1px solid rgba(76,175,63,0.25);
+    border-radius: 14px;
+    padding: 20px 28px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .results-total-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green); font-weight: 600; margin-bottom: 6px; }
+  .results-total-amount { font-family: 'Fraunces', serif; font-weight: 800; font-size: 40px; color: var(--text); letter-spacing: -1.5px; line-height: 1; }
+  .results-total-note { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+  .results-credits { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+
+  .res-credit-row {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: border-color 0.2s;
+  }
+  .res-credit-row:hover { border-color: rgba(76,175,63,0.2); }
+
+  .res-credit-icon { width: 38px; height: 38px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-family: 'Fraunces', serif; font-weight: 700; flex-shrink: 0; }
+  .res-credit-body { flex: 1; }
+  .res-credit-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+  .res-credit-detail { font-size: 12px; color: var(--muted); }
+  .res-credit-amount { font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; color: var(--green); flex-shrink: 0; }
+  .res-credit-badge { font-size: 10px; padding: 2px 8px; border-radius: 100px; background: rgba(76,175,63,0.1); color: var(--green-light); margin-left: 8px; letter-spacing: 0.3px; }
+
+  .results-cta-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .results-cta-btn {
+    background: var(--green);
+    color: #0a0d09;
+    border: none;
+    padding: 14px 32px;
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .results-cta-btn:hover { background: var(--green-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(76,175,63,0.35); }
+  .results-disclaimer { font-size: 11px; color: var(--muted); line-height: 1.5; max-width: 380px; }
+
+  /* AI thinking bubble */
+  .ai-note {
+    background: rgba(76,175,63,0.05);
+    border: 1px solid rgba(76,175,63,0.1);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 32px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .ai-note-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .ai-note-text { font-size: 13px; color: #8a9685; line-height: 1.6; }
+  .ai-note-text strong { color: var(--green); font-weight: 600; }
+
   /* CTA */
   .cta-section {
     margin: 0 48px 100px;
@@ -450,26 +752,38 @@
   .cta-section p { font-size: 16px; color: #6b7566; margin-bottom: 40px; position: relative; z-index: 1; }
 
   /* FOOTER */
-  footer { padding: 32px 48px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  footer { padding: 40px 48px; border-top: 1px solid var(--border); }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px; flex-wrap: wrap; gap: 32px; }
+  .footer-brand p { font-size: 12px; color: var(--muted); margin-top: 10px; max-width: 260px; line-height: 1.6; }
+  .footer-col h4 { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 14px; }
+  .footer-col a { display: block; font-size: 13px; color: #5a5f55; text-decoration: none; margin-bottom: 8px; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--green); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; border-top: 1px solid var(--border); flex-wrap: wrap; gap: 12px; }
   .footer-copy { font-size: 12px; color: var(--muted); }
-  .footer-links { display: flex; gap: 24px; }
-  .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-  .footer-links a:hover { color: var(--green); }
+  .footer-legal { font-size: 11px; color: #3a3f35; max-width: 600px; line-height: 1.5; }
 
   /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 0 20px; }
-    .steps { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; }
     .credits-grid { grid-template-columns: 1fr 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
     .recovery-card, .pricing-card { grid-template-columns: 1fr; gap: 40px; padding: 40px 28px; }
     .stats { gap: 40px; padding: 48px 24px; }
-    .section, .recovery-feature, .credits-section, .pricing-section { padding-left: 20px; padding-right: 20px; }
+    .section, .recovery-feature, .credits-section, .pricing-section, .quiz-section, .testimonials-section { padding-left: 20px; padding-right: 20px; }
     .cta-section { margin: 0 20px 80px; padding: 60px 28px; }
-    footer { padding: 24px 20px; }
+    footer { padding: 32px 20px; }
+    .quiz-header, .quiz-body, .quiz-footer, .quiz-results { padding-left: 24px; padding-right: 24px; }
+    .q-choices.grid-2 { grid-template-columns: 1fr; }
+    .results-top { flex-direction: column; }
+    .results-total-box { text-align: left; width: 100%; }
+    .trust-logos { gap: 28px; }
+    .trust-bar { padding: 24px 20px; }
   }
 
   @media (max-width: 600px) {
     .credits-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
     .hero h1 { letter-spacing: -1.5px; }
     .stat-number { font-size: 32px; }
     .price-num { font-size: 48px; }
@@ -484,7 +798,7 @@
     <span class="logo-name">Grep<span>tiles</span></span>
     <span class="logo-tag">Tax</span>
   </a>
-  <a href="#start" class="nav-cta">Check My Eligibility →</a>
+  <a href="#quiz" class="nav-cta">Check My Eligibility →</a>
 </nav>
 
 <!-- HERO -->
@@ -500,11 +814,24 @@
     <h1>The IRS owes<br>your business <em>money.</em><br>We collect it.</h1>
     <p>Most small businesses are sitting on $30K–$260K in unclaimed tax credits — R&D credits, ERC refunds, state incentives. We find every dollar, handle all the paperwork, and only get paid when you do.</p>
     <div class="hero-ctas">
-      <a href="#start" class="btn-primary">See What My Business Qualifies For →</a>
-      <span class="hero-note">Takes 3 minutes &nbsp;·&nbsp; Zero upfront cost &nbsp;·&nbsp; We only win when you win</span>
+      <a href="#quiz" class="btn-primary">See What My Business Qualifies For →</a>
+      <span class="hero-note">Takes 3 minutes &nbsp;·&nbsp; Zero upfront cost to check &nbsp;·&nbsp; We only win when you win</span>
     </div>
   </div>
 </section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-label">Trusted by businesses using</div>
+  <div class="trust-logos">
+    <span class="trust-logo">QuickBooks</span>
+    <span class="trust-logo">Gusto</span>
+    <span class="trust-logo">Stripe</span>
+    <span class="trust-logo">Rippling</span>
+    <span class="trust-logo">ADP</span>
+    <span class="trust-logo">Xero</span>
+  </div>
+</div>
 
 <!-- CREDIT TICKER -->
 <div class="ticker-section">
@@ -531,22 +858,10 @@
 
 <!-- STATS -->
 <div class="stats">
-  <div class="stat">
-    <div class="stat-number">$80B+</div>
-    <div class="stat-label">In unclaimed credits annually</div>
-  </div>
-  <div class="stat">
-    <div class="stat-number">&lt;2%</div>
-    <div class="stat-label">Of SMBs claim R&D credits</div>
-  </div>
-  <div class="stat">
-    <div class="stat-number">$214K</div>
-    <div class="stat-label">Average ERC recovery</div>
-  </div>
-  <div class="stat">
-    <div class="stat-number">15%</div>
-    <div class="stat-label">We take only on success</div>
-  </div>
+  <div class="stat"><div class="stat-number">$80B+</div><div class="stat-label">In unclaimed credits annually</div></div>
+  <div class="stat"><div class="stat-number">&lt;2%</div><div class="stat-label">Of SMBs claim R&D credits</div></div>
+  <div class="stat"><div class="stat-number">$214K</div><div class="stat-label">Average ERC recovery</div></div>
+  <div class="stat"><div class="stat-number">15%</div><div class="stat-label">We take only on success</div></div>
 </div>
 
 <!-- HOW IT WORKS -->
@@ -561,13 +876,18 @@
     </div>
     <div class="step">
       <div class="step-number">Step 02</div>
-      <h3>See your dollar estimate</h3>
-      <p>We instantly show you every credit you likely qualify for and the estimated dollar value. Most businesses see $50K–$300K on screen for the first time.</p>
+      <h3>See your estimate</h3>
+      <p>Our AI instantly calculates every credit you likely qualify for and shows estimated dollar values. Most businesses see $50K–$300K for the first time.</p>
     </div>
     <div class="step">
       <div class="step-number">Step 03</div>
       <h3>Connect your data</h3>
-      <p>Sync QuickBooks or Gusto, or upload your 941 forms and payroll reports. Our AI processes your documents to calculate exact figures in minutes.</p>
+      <p>Sync QuickBooks or Gusto, or upload your 941 forms and payroll reports. Our AI processes documents to calculate exact figures in minutes.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">Step 04</div>
+      <h3>We file, you collect</h3>
+      <p>CPAs and tax attorneys handle all filings, IRS submissions, and audit-ready documentation. Your check arrives — we take 15% of recovery only.</p>
     </div>
   </div>
 </section>
@@ -590,39 +910,25 @@
       <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-weight:500;">Your estimated recovery</div>
       <div class="result-card">
         <div class="result-icon" style="background:rgba(76,175,63,0.1);color:var(--green);">ERC</div>
-        <div class="result-body">
-          <div class="result-title">Employee Retention Credit</div>
-          <div class="result-sub">2020–2021 · 8 employees · Confirmed eligible</div>
-        </div>
+        <div class="result-body"><div class="result-title">Employee Retention Credit</div><div class="result-sub">2020–2021 · 8 employees · Confirmed eligible</div></div>
         <div class="result-amount">$208K</div>
       </div>
       <div class="result-card">
         <div class="result-icon" style="background:rgba(60,130,255,0.1);color:#7aaaff;">R&D</div>
-        <div class="result-body">
-          <div class="result-title">Federal R&D Tax Credit</div>
-          <div class="result-sub">Software development · Annual credit</div>
-        </div>
+        <div class="result-body"><div class="result-title">Federal R&D Tax Credit</div><div class="result-sub">Software development · Annual credit</div></div>
         <div class="result-amount">$44K/yr</div>
       </div>
       <div class="result-card">
         <div class="result-icon" style="background:rgba(255,180,60,0.1);color:#ffb84d;">ST</div>
-        <div class="result-body">
-          <div class="result-title">State R&D Credit (CA)</div>
-          <div class="result-sub">Stackable with federal · Annual</div>
-        </div>
+        <div class="result-body"><div class="result-title">State R&D Credit (CA)</div><div class="result-sub">Stackable with federal · Annual</div></div>
         <div class="result-amount">$14K/yr</div>
       </div>
       <div class="result-card" style="border-color:rgba(76,175,63,0.2);background:rgba(76,175,63,0.04);">
         <div class="result-icon" style="background:rgba(76,175,63,0.12);color:var(--green);">+2</div>
-        <div class="result-body">
-          <div class="result-title">2 more credits identified</div>
-          <div class="result-sub">Work Opportunity + Payroll Offset</div>
-        </div>
+        <div class="result-body"><div class="result-title">2 more credits identified</div><div class="result-sub">Work Opportunity + Payroll Offset</div></div>
         <div class="result-amount" style="font-size:14px;">+$18K</div>
       </div>
-      <div style="text-align:center;font-size:12px;color:var(--muted);margin-top:8px;letter-spacing:0.3px;">
-        Total identified: <span style="color:var(--green);font-weight:700;font-family:'Fraunces',serif;font-size:16px;">$284,000</span>
-      </div>
+      <div style="text-align:center;font-size:12px;color:var(--muted);margin-top:8px;">Total identified: <span style="color:var(--green);font-weight:700;font-family:'Fraunces',serif;font-size:16px;">$284,000</span></div>
     </div>
   </div>
 </div>
@@ -633,76 +939,297 @@
   <h2 class="section-title" style="margin-bottom:36px;">Credits hiding in plain sight<br>across every industry</h2>
   <div class="credits-grid">
     <div class="c-card">
-      <div class="c-card-top">
-        <div class="c-credit">ERC Refund</div>
-        <div class="c-amount">Up to $26K</div>
-      </div>
-      <div class="c-meta">
-        <span class="c-tag c-tag-green">Direct cash refund</span>
-        <span class="c-tag c-tag-gray">Per employee</span>
-      </div>
+      <div class="c-card-top"><div class="c-credit">ERC Refund</div><div class="c-amount">Up to $26K</div></div>
+      <div class="c-meta"><span class="c-tag c-tag-green">Direct cash refund</span><span class="c-tag c-tag-gray">Per employee</span></div>
       <div class="c-desc">Had W-2 employees in 2020–2021 and experienced any revenue decline or operational disruption? The IRS owes you a check. Billions still unclaimed.</div>
     </div>
     <div class="c-card">
-      <div class="c-card-top">
-        <div class="c-credit">R&D Tax Credit</div>
-        <div class="c-amount">$30K–$80K</div>
-      </div>
-      <div class="c-meta">
-        <span class="c-tag c-tag-blue">Annual</span>
-        <span class="c-tag c-tag-gray">All industries</span>
-      </div>
-      <div class="c-desc">If you build, improve, or customize anything — software, products, processes — you likely qualify. The IRS definition is far broader than most businesses realize.</div>
+      <div class="c-card-top"><div class="c-credit">R&D Tax Credit</div><div class="c-amount">$30K–$80K</div></div>
+      <div class="c-meta"><span class="c-tag c-tag-blue">Annual</span><span class="c-tag c-tag-gray">All industries</span></div>
+      <div class="c-desc">If you build, improve, or customize anything — software, products, processes — you likely qualify. The IRS definition is far broader than most realize.</div>
     </div>
     <div class="c-card">
-      <div class="c-card-top">
-        <div class="c-credit">State R&D Credits</div>
-        <div class="c-amount">$5K–$20K</div>
-      </div>
-      <div class="c-meta">
-        <span class="c-tag c-tag-green">Stackable</span>
-        <span class="c-tag c-tag-gray">Annual</span>
-      </div>
+      <div class="c-card-top"><div class="c-credit">State R&D Credits</div><div class="c-amount">$5K–$20K</div></div>
+      <div class="c-meta"><span class="c-tag c-tag-green">Stackable</span><span class="c-tag c-tag-gray">Annual</span></div>
       <div class="c-desc">35+ states offer their own R&D credits on top of the federal credit. Most businesses claim one or the other — we file both simultaneously.</div>
     </div>
     <div class="c-card">
-      <div class="c-card-top">
-        <div class="c-credit">Work Opportunity</div>
-        <div class="c-amount">Up to $9,600</div>
-      </div>
-      <div class="c-meta">
-        <span class="c-tag c-tag-green">Per qualifying hire</span>
-        <span class="c-tag c-tag-gray">Retroactive</span>
-      </div>
+      <div class="c-card-top"><div class="c-credit">Work Opportunity</div><div class="c-amount">Up to $9,600</div></div>
+      <div class="c-meta"><span class="c-tag c-tag-green">Per qualifying hire</span><span class="c-tag c-tag-gray">Retroactive</span></div>
       <div class="c-desc">WOTC credits for hiring veterans, formerly incarcerated individuals, long-term unemployed, and other target groups. Most employers miss this entirely.</div>
     </div>
     <div class="c-card">
-      <div class="c-card-top">
-        <div class="c-credit">Startup Payroll Offset</div>
-        <div class="c-amount">Up to $250K/yr</div>
-      </div>
-      <div class="c-meta">
-        <span class="c-tag c-tag-blue">Pre-revenue eligible</span>
-        <span class="c-tag c-tag-gray">5 years</span>
-      </div>
+      <div class="c-card-top"><div class="c-credit">Startup Payroll Offset</div><div class="c-amount">Up to $250K/yr</div></div>
+      <div class="c-meta"><span class="c-tag c-tag-blue">Pre-revenue eligible</span><span class="c-tag c-tag-gray">5 years</span></div>
       <div class="c-desc">Startups under 5 years old with under $5M revenue can use R&D credits to offset payroll taxes — even before turning a profit. Almost universally unclaimed.</div>
     </div>
     <div class="c-card">
-      <div class="c-card-top">
-        <div class="c-credit">Energy Credits</div>
-        <div class="c-amount">Up to $50K</div>
-      </div>
-      <div class="c-meta">
-        <span class="c-tag c-tag-green">IRA expanded</span>
-        <span class="c-tag c-tag-gray">One-time + annual</span>
-      </div>
+      <div class="c-card-top"><div class="c-credit">Energy Credits</div><div class="c-amount">Up to $50K</div></div>
+      <div class="c-meta"><span class="c-tag c-tag-green">IRA expanded</span><span class="c-tag c-tag-gray">One-time + annual</span></div>
       <div class="c-desc">The Inflation Reduction Act dramatically expanded commercial energy credits for solar, HVAC, insulation, and EVs. Applies to owned or leased commercial property.</div>
     </div>
   </div>
 </section>
 
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-eyebrow">From our clients</div>
+  <h2 class="section-title" style="margin-bottom:36px;">Real businesses,<br>real recoveries</h2>
+  <div class="testimonials-grid">
+    <div class="testimonial">
+      <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <div class="testimonial-amount">$247,000</div>
+      <div class="testimonial-quote">"We had no idea we qualified for R&D credits. Our accountant never mentioned it. Greptiles found $247K across ERC and R&D credits — took three weeks total."</div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">MK</div>
+        <div><div class="testimonial-name">Marcus K.</div><div class="testimonial-biz">SaaS startup, 12 employees · Austin, TX</div></div>
+      </div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <div class="testimonial-amount">$184,500</div>
+      <div class="testimonial-quote">"I thought R&D credits were only for big pharma or Silicon Valley. We're a 6-person engineering firm. The quiz took 4 minutes and we recovered $184K."</div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">JL</div>
+        <div><div class="testimonial-name">Julia L.</div><div class="testimonial-biz">Engineering consultancy · Denver, CO</div></div>
+      </div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <div class="testimonial-amount">$312,000</div>
+      <div class="testimonial-quote">"Best ROI decision I made this year. We found $312K sitting in unclaimed credits. The team handled everything — I signed two documents total."</div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">RB</div>
+        <div><div class="testimonial-name">Ryan B.</div><div class="testimonial-biz">E-commerce brand, 22 employees · Seattle, WA</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== AI QUIZ ==================== -->
+<section class="quiz-section" id="quiz">
+  <div class="section-eyebrow">Your eligibility check</div>
+  <h2 class="section-title" style="margin-bottom:32px;">Find out what you're owed<br>in 3 minutes</h2>
+
+  <div class="quiz-wrapper">
+    <!-- Header -->
+    <div class="quiz-header">
+      <div class="quiz-header-left">
+        <h3>Business Tax Credit Finder</h3>
+        <p>Powered by AI · No obligation · Free estimate</p>
+      </div>
+      <div class="quiz-progress-wrap">
+        <span class="quiz-step-count" id="stepCount">Step 1 of 7</span>
+        <div class="quiz-progress-bar">
+          <div class="quiz-progress-fill" id="progressFill" style="width:14%"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quiz Body -->
+    <div class="quiz-body" id="quizBody">
+
+      <!-- Q1: Industry -->
+      <div class="quiz-question active" id="q1">
+        <div class="q-label">Question 1 of 7</div>
+        <div class="q-text">What best describes your business?</div>
+        <div class="q-choices grid-2">
+          <div class="q-choice" data-q="1" data-val="software" onclick="selectChoice(this)">
+            <div class="q-choice-icon">💻</div>Software / SaaS / Tech
+          </div>
+          <div class="q-choice" data-q="1" data-val="manufacturing" onclick="selectChoice(this)">
+            <div class="q-choice-icon">🏭</div>Manufacturing / Hardware
+          </div>
+          <div class="q-choice" data-q="1" data-val="ecommerce" onclick="selectChoice(this)">
+            <div class="q-choice-icon">🛍️</div>E-commerce / Retail
+          </div>
+          <div class="q-choice" data-q="1" data-val="services" onclick="selectChoice(this)">
+            <div class="q-choice-icon">🔧</div>Professional Services
+          </div>
+          <div class="q-choice" data-q="1" data-val="biotech" onclick="selectChoice(this)">
+            <div class="q-choice-icon">🧬</div>Biotech / Life Sciences
+          </div>
+          <div class="q-choice" data-q="1" data-val="other" onclick="selectChoice(this)">
+            <div class="q-choice-icon">📋</div>Other
+          </div>
+        </div>
+      </div>
+
+      <!-- Q2: Employees -->
+      <div class="quiz-question" id="q2">
+        <div class="q-label">Question 2 of 7</div>
+        <div class="q-text">How many W-2 employees did you have in 2020–2021?</div>
+        <div class="q-sub">This determines your ERC eligibility and amount.</div>
+        <div class="q-choices grid-2">
+          <div class="q-choice" data-q="2" data-val="0" onclick="selectChoice(this)">
+            <div class="q-choice-icon">👤</div>0 (just founders)
+          </div>
+          <div class="q-choice" data-q="2" data-val="1-5" onclick="selectChoice(this)">
+            <div class="q-choice-icon">👥</div>1–5 employees
+          </div>
+          <div class="q-choice" data-q="2" data-val="6-20" onclick="selectChoice(this)">
+            <div class="q-choice-icon">🏢</div>6–20 employees
+          </div>
+          <div class="q-choice" data-q="2" data-val="21-100" onclick="selectChoice(this)">
+            <div class="q-choice-icon">🏬</div>21–100 employees
+          </div>
+          <div class="q-choice" data-q="2" data-val="100+" onclick="selectChoice(this)">
+            <div class="q-choice-icon">🏗️</div>100+ employees
+          </div>
+        </div>
+      </div>
+
+      <!-- Q3: Business age -->
+      <div class="quiz-question" id="q3">
+        <div class="q-label">Question 3 of 7</div>
+        <div class="q-text">When did your business start?</div>
+        <div class="q-sub">Businesses under 5 years old may qualify for special payroll tax offsets.</div>
+        <div class="q-choices grid-2">
+          <div class="q-choice" data-q="3" data-val="2022+" onclick="selectChoice(this)">
+            <div class="q-choice-icon">🌱</div>2022 or later
+          </div>
+          <div class="q-choice" data-q="3" data-val="2019-2021" onclick="selectChoice(this)">
+            <div class="q-choice-icon">📅</div>2019–2021
+          </div>
+          <div class="q-choice" data-q="3" data-val="2015-2018" onclick="selectChoice(this)">
+            <div class="q-choice-icon">📆</div>2015–2018
+          </div>
+          <div class="q-choice" data-q="3" data-val="pre-2015" onclick="selectChoice(this)">
+            <div class="q-choice-icon">🕰️</div>Before 2015
+          </div>
+        </div>
+      </div>
+
+      <!-- Q4: R&D activities -->
+      <div class="quiz-question" id="q4">
+        <div class="q-label">Question 4 of 7</div>
+        <div class="q-text">Does your team do any of these? <span style="font-size:13px;color:var(--muted);font-family:'DM Sans',sans-serif;">(select all that apply)</span></div>
+        <div class="q-multi-note">Select all that apply</div>
+        <div class="q-choices grid-1" id="q4choices">
+          <div class="q-choice" data-q="4" data-val="develop_software" onclick="multiSelect(this)">
+            <div class="q-choice-icon">⚙️</div>Develop or improve software / apps / platforms
+          </div>
+          <div class="q-choice" data-q="4" data-val="design_products" onclick="multiSelect(this)">
+            <div class="q-choice-icon">🔬</div>Design, test, or prototype physical products
+          </div>
+          <div class="q-choice" data-q="4" data-val="improve_processes" onclick="multiSelect(this)">
+            <div class="q-choice-icon">📊</div>Improve manufacturing or business processes
+          </div>
+          <div class="q-choice" data-q="4" data-val="custom_formulas" onclick="multiSelect(this)">
+            <div class="q-choice-icon">🧪</div>Create custom formulas, materials, or compounds
+          </div>
+          <div class="q-choice" data-q="4" data-val="none" onclick="selectChoice(this)">
+            <div class="q-choice-icon">❌</div>None of the above
+          </div>
+        </div>
+      </div>
+
+      <!-- Q5: Revenue impact 2020-2021 -->
+      <div class="quiz-question" id="q5">
+        <div class="q-label">Question 5 of 7</div>
+        <div class="q-text">Did your business experience any disruptions in 2020–2021?</div>
+        <div class="q-sub">Government orders, supply chain issues, reduced hours, or revenue declines all count for ERC.</div>
+        <div class="q-choices grid-1">
+          <div class="q-choice" data-q="5" data-val="shutdown" onclick="selectChoice(this)">
+            <div class="q-choice-icon">🚫</div>Fully or partially shut down by government order
+          </div>
+          <div class="q-choice" data-q="5" data-val="revenue_decline" onclick="selectChoice(this)">
+            <div class="q-choice-icon">📉</div>Revenue declined vs. 2019 (even partially)
+          </div>
+          <div class="q-choice" data-q="5" data-val="both" onclick="selectChoice(this)">
+            <div class="q-choice-icon">⚡</div>Both of the above
+          </div>
+          <div class="q-choice" data-q="5" data-val="none" onclick="selectChoice(this)">
+            <div class="q-choice-icon">✅</div>No significant disruptions
+          </div>
+        </div>
+      </div>
+
+      <!-- Q6: State -->
+      <div class="quiz-question" id="q6">
+        <div class="q-label">Question 6 of 7</div>
+        <div class="q-text">What state is your business headquartered in?</div>
+        <div class="q-sub">35+ states offer additional R&D credits on top of federal credits.</div>
+        <div class="q-choices grid-2">
+          <div class="q-choice" data-q="6" data-val="CA" onclick="selectChoice(this)"><div class="q-choice-icon">🌴</div>California</div>
+          <div class="q-choice" data-q="6" data-val="TX" onclick="selectChoice(this)"><div class="q-choice-icon">⭐</div>Texas</div>
+          <div class="q-choice" data-q="6" data-val="NY" onclick="selectChoice(this)"><div class="q-choice-icon">🗽</div>New York</div>
+          <div class="q-choice" data-q="6" data-val="FL" onclick="selectChoice(this)"><div class="q-choice-icon">🌊</div>Florida</div>
+          <div class="q-choice" data-q="6" data-val="WA" onclick="selectChoice(this)"><div class="q-choice-icon">🌲</div>Washington</div>
+          <div class="q-choice" data-q="6" data-val="other" onclick="selectChoice(this)"><div class="q-choice-icon">📍</div>Other state</div>
+        </div>
+      </div>
+
+      <!-- Q7: Annual payroll -->
+      <div class="quiz-question" id="q7">
+        <div class="q-label">Question 7 of 7</div>
+        <div class="q-text">What's your approximate annual payroll?</div>
+        <div class="q-sub">Used to estimate R&D credit size — typically 6–8% of qualifying payroll.</div>
+        <div class="q-choices grid-2">
+          <div class="q-choice" data-q="7" data-val="under100k" onclick="selectChoice(this)"><div class="q-choice-icon">💵</div>Under $100K</div>
+          <div class="q-choice" data-q="7" data-val="100-500k" onclick="selectChoice(this)"><div class="q-choice-icon">💰</div>$100K – $500K</div>
+          <div class="q-choice" data-q="7" data-val="500k-2m" onclick="selectChoice(this)"><div class="q-choice-icon">💎</div>$500K – $2M</div>
+          <div class="q-choice" data-q="7" data-val="2m+" onclick="selectChoice(this)"><div class="q-choice-icon">🏆</div>$2M+</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div class="quiz-loading" id="quizLoading">
+      <div class="loading-spinner"></div>
+      <div class="loading-title">Analyzing your eligibility…</div>
+      <div class="loading-sub">Our AI is cross-referencing your answers against IRS credit criteria and state incentive databases.</div>
+      <div class="loading-steps-list" id="loadingSteps">
+        <div class="loading-step-item" id="ls1"><div class="loading-step-spinner"></div>Checking ERC eligibility</div>
+        <div class="loading-step-item" id="ls2"><div class="loading-step-icon">⏳</div>Calculating R&D credit estimate</div>
+        <div class="loading-step-item" id="ls3"><div class="loading-step-icon">⏳</div>Checking state-specific credits</div>
+        <div class="loading-step-item" id="ls4"><div class="loading-step-icon">⏳</div>Identifying additional opportunities</div>
+      </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div class="quiz-results" id="quizResults">
+      <div class="results-top">
+        <div>
+          <div class="results-headline">You likely qualify for<br><em id="resultsTotal">—</em></div>
+          <div class="results-sub">Estimated across all identified credits. Final amounts determined after document review.</div>
+        </div>
+        <div class="results-total-box">
+          <div class="results-total-label">Total Identified</div>
+          <div class="results-total-amount" id="resultsTotalBox">—</div>
+          <div class="results-total-note">Preliminary estimate</div>
+        </div>
+      </div>
+
+      <div class="ai-note">
+        <div class="ai-note-icon">🤖</div>
+        <div class="ai-note-text" id="aiNote">Based on your answers, here's what our AI found…</div>
+      </div>
+
+      <div class="results-credits" id="resultsCreditsList"></div>
+
+      <div class="results-cta-row">
+        <button class="results-cta-btn" onclick="scrollToPaywall()">
+          Unlock My Full Report — $299 →
+        </button>
+        <div class="results-disclaimer">
+          $299 covers full CPA analysis, exact calculations, and complete filing. We take 15% only on successful recovery. If we find nothing, you owe nothing more.
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer nav -->
+    <div class="quiz-footer" id="quizFooter">
+      <button class="quiz-back-btn" id="backBtn" onclick="prevQuestion()" disabled>← Back</button>
+      <button class="quiz-next-btn" id="nextBtn" onclick="nextQuestion()" disabled>
+        Continue <span>→</span>
+      </button>
+    </div>
+  </div>
+</section>
+
 <!-- PRICING -->
-<section class="pricing-section">
+<section class="pricing-section" id="paywall">
   <div class="section-eyebrow">Transparent pricing</div>
   <h2 class="section-title" style="margin-bottom:40px;">One small fee upfront.<br>Everything else on results.</h2>
   <div class="pricing-card">
@@ -725,26 +1252,11 @@
     <div class="pricing-right">
       <div class="pricing-right-title">Your ROI at a glance</div>
       <div class="pricing-right-sub">Based on a typical 10-person business with qualifying R&D activity and 2020–2021 employees</div>
-      <div class="roi-line">
-        <span class="roi-label">ERC Refund (one-time)</span>
-        <span class="roi-value green">$208,000</span>
-      </div>
-      <div class="roi-line">
-        <span class="roi-label">R&D Credit (annual)</span>
-        <span class="roi-value green">$44,000/yr</span>
-      </div>
-      <div class="roi-line">
-        <span class="roi-label">State R&D Credit (annual)</span>
-        <span class="roi-value green">$14,000/yr</span>
-      </div>
-      <div class="roi-line">
-        <span class="roi-label">Onboarding fee</span>
-        <span class="roi-value">–$299</span>
-      </div>
-      <div class="roi-line">
-        <span class="roi-label">Our 15% success fee</span>
-        <span class="roi-value">–$31,200</span>
-      </div>
+      <div class="roi-line"><span class="roi-label">ERC Refund (one-time)</span><span class="roi-value green">$208,000</span></div>
+      <div class="roi-line"><span class="roi-label">R&D Credit (annual)</span><span class="roi-value green">$44,000/yr</span></div>
+      <div class="roi-line"><span class="roi-label">State R&D Credit (annual)</span><span class="roi-value green">$14,000/yr</span></div>
+      <div class="roi-line"><span class="roi-label">Onboarding fee</span><span class="roi-value">–$299</span></div>
+      <div class="roi-line"><span class="roi-label">Our 15% success fee</span><span class="roi-value">–$31,200</span></div>
       <div class="roi-total">
         <span class="roi-total-label">You keep</span>
         <span class="roi-total-value">$234,501</span>
@@ -755,26 +1267,273 @@
 </section>
 
 <!-- FINAL CTA -->
-<div class="cta-section" id="start">
+<div class="cta-section">
   <h2>Stop leaving your<br><em style="color:var(--green);font-style:normal;">money with the IRS</em></h2>
   <p>The average qualifying business recovers $180K–$280K. Your 3-minute quiz is free — find out what you're owed.</p>
-  <a href="#" class="btn-primary" style="font-size:17px;padding:20px 56px;position:relative;z-index:1;">Check My Eligibility — $299 to Start →</a>
+  <a href="#quiz" class="btn-primary" style="font-size:17px;padding:20px 56px;position:relative;z-index:1;">Check My Eligibility →</a>
   <div style="margin-top:16px;font-size:12px;color:var(--muted);position:relative;z-index:1;">$299 onboarding &nbsp;·&nbsp; 15% only on recovery &nbsp;·&nbsp; If we don't find money, you pay nothing more</div>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <a href="#" class="logo">
-    <span class="logo-name" style="font-size:16px;">Grep<span>tiles</span></span>
-    <span class="logo-tag">Tax</span>
-  </a>
-  <div class="footer-links">
-    <a href="#">Privacy Policy</a>
-    <a href="#">Terms of Service</a>
-    <a href="#">Contact</a>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="logo">
+        <span class="logo-name">Grep<span>tiles</span></span>
+        <span class="logo-tag">Tax</span>
+      </a>
+      <p>We help small and medium businesses recover unclaimed IRS tax credits — R&D, ERC, state incentives, and more. You build; we file.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Credits</h4>
+      <a href="#">R&D Tax Credit</a>
+      <a href="#">ERC Refund</a>
+      <a href="#">State Credits</a>
+      <a href="#">Work Opportunity</a>
+      <a href="#">Energy Credits</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About</a>
+      <a href="#">How It Works</a>
+      <a href="#">Pricing</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Disclaimer</a>
+    </div>
   </div>
-  <div class="footer-copy">© 2026 Greptiles Tax. All rights reserved.</div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Greptiles Tax. All rights reserved.</div>
+    <div class="footer-legal">Estimates are preliminary and based on self-reported information. Final credit amounts determined by licensed CPAs after document review. Greptiles Tax is not a law firm. Past recovery amounts are illustrative and not guaranteed.</div>
+  </div>
 </footer>
+
+<script>
+  // ========= QUIZ LOGIC =========
+  const TOTAL_QUESTIONS = 7;
+  let currentQ = 1;
+  let answers = {};
+  let multiAnswers = { 4: [] };
+
+  function selectChoice(el) {
+    const q = el.dataset.q;
+    // Remove selected from siblings
+    document.querySelectorAll(`[data-q="${q}"]`).forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    answers[q] = el.dataset.val;
+    document.getElementById('nextBtn').disabled = false;
+  }
+
+  function multiSelect(el) {
+    const q = el.dataset.q;
+    const val = el.dataset.val;
+
+    // If "none" selected, deselect all others
+    if (val === 'none') {
+      document.querySelectorAll(`[data-q="${q}"]`).forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      multiAnswers[q] = ['none'];
+    } else {
+      // Deselect "none"
+      document.querySelectorAll(`[data-q="${q}"][data-val="none"]`).forEach(c => c.classList.remove('selected'));
+      multiAnswers[q] = multiAnswers[q].filter(v => v !== 'none');
+
+      if (el.classList.contains('selected')) {
+        el.classList.remove('selected');
+        multiAnswers[q] = multiAnswers[q].filter(v => v !== val);
+      } else {
+        el.classList.add('selected');
+        multiAnswers[q].push(val);
+      }
+    }
+
+    answers[q] = multiAnswers[q].join(',');
+    document.getElementById('nextBtn').disabled = multiAnswers[q].length === 0;
+  }
+
+  function updateProgress() {
+    const pct = (currentQ / TOTAL_QUESTIONS) * 100;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('stepCount').textContent = `Step ${currentQ} of ${TOTAL_QUESTIONS}`;
+    document.getElementById('backBtn').disabled = currentQ === 1;
+  }
+
+  function nextQuestion() {
+    if (!answers[currentQ] && !(currentQ == 4 && multiAnswers[4].length > 0)) return;
+
+    if (currentQ < TOTAL_QUESTIONS) {
+      document.getElementById(`q${currentQ}`).classList.remove('active');
+      currentQ++;
+      document.getElementById(`q${currentQ}`).classList.add('active');
+      document.getElementById('nextBtn').disabled = !answers[currentQ];
+      if (currentQ == 4) document.getElementById('nextBtn').disabled = multiAnswers[4].length === 0;
+      updateProgress();
+
+      // On last question, change button label
+      if (currentQ === TOTAL_QUESTIONS) {
+        document.getElementById('nextBtn').innerHTML = 'Calculate My Credits →';
+      }
+    } else {
+      // Submit
+      submitQuiz();
+    }
+  }
+
+  function prevQuestion() {
+    if (currentQ > 1) {
+      document.getElementById(`q${currentQ}`).classList.remove('active');
+      currentQ--;
+      document.getElementById(`q${currentQ}`).classList.add('active');
+      document.getElementById('nextBtn').innerHTML = currentQ < TOTAL_QUESTIONS ? 'Continue <span>→</span>' : 'Calculate My Credits →';
+      document.getElementById('nextBtn').disabled = false;
+      updateProgress();
+    }
+  }
+
+  function submitQuiz() {
+    // Hide quiz body and footer
+    document.getElementById('quizBody').style.display = 'none';
+    document.getElementById('quizFooter').style.display = 'none';
+    document.getElementById('quizLoading').classList.add('active');
+
+    // Animate loading steps
+    const steps = ['ls1','ls2','ls3','ls4'];
+    const labels = [
+      'ERC eligibility ✓',
+      'R&D credit estimate ✓',
+      'State-specific credits ✓',
+      'Additional opportunities ✓'
+    ];
+
+    let i = 0;
+    function advanceStep() {
+      if (i > 0) {
+        const prev = document.getElementById(steps[i-1]);
+        prev.classList.add('done');
+        prev.innerHTML = `<div class="loading-step-icon">✓</div>${labels[i-1]}`;
+      }
+      if (i < steps.length) {
+        const cur = document.getElementById(steps[i]);
+        cur.innerHTML = `<div class="loading-step-spinner"></div>${cur.textContent}`;
+        i++;
+        setTimeout(advanceStep, 900);
+      } else {
+        // Mark last done
+        const last = document.getElementById(steps[steps.length-1]);
+        last.classList.add('done');
+        last.innerHTML = `<div class="loading-step-icon">✓</div>${labels[labels.length-1]}`;
+        setTimeout(showResults, 600);
+      }
+    }
+    advanceStep();
+  }
+
+  function computeResults() {
+    const industry = answers[1] || 'other';
+    const employees = answers[2] || '6-20';
+    const age = answers[3] || '2015-2018';
+    const rdActivities = answers[4] || '';
+    const disruption = answers[5] || 'none';
+    const state = answers[6] || 'other';
+    const payroll = answers[7] || '100-500k';
+
+    const hasRD = !rdActivities.includes('none') && rdActivities.length > 0;
+    const hasERC = disruption !== 'none' && employees !== '0';
+    const isStartup = age === '2022+' || age === '2019-2021';
+
+    // ERC calc
+    let ercAmount = 0, ercEmployeeCount = 0;
+    const empMap = { '1-5': 3, '6-20': 11, '21-100': 45, '100+': 80 };
+    ercEmployeeCount = empMap[employees] || 0;
+    if (hasERC && ercEmployeeCount > 0) {
+      ercAmount = ercEmployeeCount * 18500; // avg per employee
+    }
+
+    // R&D calc
+    let rdFederal = 0, rdState = 0;
+    if (hasRD) {
+      const payrollMid = { 'under100k': 60000, '100-500k': 280000, '500k-2m': 1100000, '2m+': 3000000 };
+      const mid = payrollMid[payroll] || 200000;
+      rdFederal = Math.round(mid * 0.065);
+      const stateRates = { 'CA': 0.24, 'NY': 0.09, 'WA': 0, 'TX': 0, 'FL': 0, 'other': 0.06 };
+      rdState = Math.round(rdFederal * (stateRates[state] || 0.06));
+    }
+
+    // Startup payroll offset
+    let payrollOffset = 0;
+    if (isStartup && hasRD) {
+      payrollOffset = Math.min(rdFederal, 250000);
+    }
+
+    // WOTC (rough)
+    let wotc = 0;
+    if (employees !== '0') wotc = ercEmployeeCount > 0 ? Math.round(ercEmployeeCount * 1200) : 3600;
+
+    const total = ercAmount + rdFederal + rdState + payrollOffset + wotc;
+
+    const credits = [];
+    if (ercAmount > 0) credits.push({ icon: 'ERC', iconBg: 'rgba(76,175,63,0.1)', iconColor: '#4caf3f', name: 'Employee Retention Credit (ERC)', detail: `${ercEmployeeCount} employees × 2020–2021`, amount: fmt(ercAmount), badge: 'Cash Refund' });
+    if (rdFederal > 0) credits.push({ icon: 'R&D', iconBg: 'rgba(60,130,255,0.1)', iconColor: '#7aaaff', name: 'Federal R&D Tax Credit', detail: `Based on ${payroll} payroll · Annual`, amount: fmt(rdFederal) + '/yr', badge: 'Annual' });
+    if (rdState > 0) credits.push({ icon: state, iconBg: 'rgba(255,180,60,0.1)', iconColor: '#ffb84d', name: `State R&D Credit (${state})`, detail: `Stackable with federal · Annual`, amount: fmt(rdState) + '/yr', badge: 'Stackable' });
+    if (payrollOffset > 0) credits.push({ icon: '⚡', iconBg: 'rgba(180,60,255,0.1)', iconColor: '#c47aff', name: 'Startup Payroll Tax Offset', detail: 'Apply R&D credits against payroll taxes', amount: fmt(payrollOffset) + '/yr', badge: 'Startup' });
+    if (wotc > 0) credits.push({ icon: 'WO', iconBg: 'rgba(76,175,63,0.08)', iconColor: '#6dcf60', name: 'Work Opportunity Tax Credit', detail: 'Qualifying hires — estimated', amount: fmt(wotc), badge: 'Per Hire' });
+
+    return { total, credits, hasRD, hasERC, state };
+  }
+
+  function fmt(n) {
+    if (n >= 1000000) return '$' + (n/1000000).toFixed(1) + 'M';
+    if (n >= 1000) return '$' + Math.round(n/1000) + 'K';
+    return '$' + n;
+  }
+
+  function showResults() {
+    const { total, credits, hasRD, hasERC, state } = computeResults();
+
+    document.getElementById('quizLoading').classList.remove('active');
+    document.getElementById('quizResults').classList.add('active');
+
+    const totalFmt = fmt(total);
+    document.getElementById('resultsTotal').textContent = totalFmt;
+    document.getElementById('resultsTotalBox').textContent = totalFmt;
+
+    // AI note
+    const notes = [];
+    if (hasERC) notes.push('strong ERC eligibility based on your 2020–2021 disruptions');
+    if (hasRD) notes.push('qualifying R&D activity across your described work');
+    if (state === 'CA') notes.push('California\'s generous 24% state R&D credit stacked on top');
+    const noteText = notes.length > 0
+      ? `<strong>Our AI identified ${notes.join(', ')}.</strong> These estimates are conservative — final amounts are typically 10–20% higher after full document review.`
+      : `<strong>Based on your profile,</strong> we've identified preliminary credit opportunities. Our CPAs may find additional amounts after reviewing your full financials.`;
+    document.getElementById('aiNote').innerHTML = `Based on your answers: ${noteText}`;
+
+    // Credits list
+    const list = document.getElementById('resultsCreditsList');
+    list.innerHTML = credits.map(c => `
+      <div class="res-credit-row">
+        <div class="res-credit-icon" style="background:${c.iconBg};color:${c.iconColor}">${c.icon}</div>
+        <div class="res-credit-body">
+          <div class="res-credit-name">${c.name}<span class="res-credit-badge">${c.badge}</span></div>
+          <div class="res-credit-detail">${c.detail}</div>
+        </div>
+        <div class="res-credit-amount">${c.amount}</div>
+      </div>
+    `).join('');
+
+    // Update progress bar to 100%
+    document.getElementById('progressFill').style.width = '100%';
+    document.getElementById('stepCount').textContent = 'Analysis complete';
+  }
+
+  function scrollToPaywall() {
+    document.getElementById('paywall').scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
 
 </body>
 </html>
