@@ -203,23 +203,23 @@
 
   /* TRUST LOGOS */
   .trust-bar {
-    padding: 32px 48px;
+    padding: 52px 48px;
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     background: var(--bg2);
     text-align: center;
   }
-  .trust-bar-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
-  .trust-logos { display: flex; justify-content: center; align-items: center; gap: 48px; flex-wrap: wrap; }
+  .trust-bar-label { font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; font-weight: 500; }
+  .trust-logos { display: flex; justify-content: center; align-items: center; gap: 56px; flex-wrap: wrap; }
   .trust-logo {
     font-family: 'Fraunces', serif;
     font-weight: 700;
-    font-size: 15px;
-    color: rgba(255,255,255,0.18);
-    letter-spacing: -0.3px;
-    transition: color 0.2s;
+    font-size: 22px;
+    color: rgba(255,255,255,0.22);
+    letter-spacing: -0.5px;
+    transition: color 0.25s;
   }
-  .trust-logo:hover { color: rgba(255,255,255,0.35); }
+  .trust-logo:hover { color: rgba(255,255,255,0.42); }
 
   /* CREDIT TICKER */
   .ticker-section {
@@ -777,8 +777,9 @@
     .q-choices.grid-2 { grid-template-columns: 1fr; }
     .results-top { flex-direction: column; }
     .results-total-box { text-align: left; width: 100%; }
-    .trust-logos { gap: 28px; }
-    .trust-bar { padding: 24px 20px; }
+    .trust-logos { gap: 32px; }
+    .trust-bar { padding: 36px 20px; }
+    .trust-logo { font-size: 18px; }
   }
 
   @media (max-width: 600px) {
@@ -798,7 +799,7 @@
     <span class="logo-name">Grep<span>tiles</span></span>
     <span class="logo-tag">Tax</span>
   </a>
-  <a href="#quiz" class="nav-cta">Check My Eligibility →</a>
+  <a href="#quiz" class="nav-cta">Check My Eligibility</a>
 </nav>
 
 <!-- HERO -->
@@ -814,7 +815,7 @@
     <h1>The IRS owes<br>your business <em>money.</em><br>We collect it.</h1>
     <p>Most small businesses are sitting on $30K–$260K in unclaimed tax credits — R&D credits, ERC refunds, state incentives. We find every dollar, handle all the paperwork, and only get paid when you do.</p>
     <div class="hero-ctas">
-      <a href="#quiz" class="btn-primary">See What My Business Qualifies For →</a>
+      <a href="#quiz" class="btn-primary">See What My Business Qualifies For</a>
       <span class="hero-note">Takes 3 minutes &nbsp;·&nbsp; Zero upfront cost to check &nbsp;·&nbsp; We only win when you win</span>
     </div>
   </div>
@@ -833,35 +834,14 @@
   </div>
 </div>
 
-<!-- CREDIT TICKER -->
-<div class="ticker-section">
-  <div class="ticker-label">Tax credits your business may qualify for</div>
-  <div style="overflow:hidden;">
-    <div class="ticker-track">
-      <div class="ticker-item"><span class="ticker-credit">ERC Refund</span><span class="ticker-amount">Up to $26K/employee</span><span class="ticker-badge">Cash refund</span></div>
-      <div class="ticker-item"><span class="ticker-credit">R&D Tax Credit</span><span class="ticker-amount">$30K–$80K/yr</span><span class="ticker-badge">Annual</span></div>
-      <div class="ticker-item"><span class="ticker-credit">State R&D Credits</span><span class="ticker-amount">$5K–$20K/yr</span><span class="ticker-badge">Stackable</span></div>
-      <div class="ticker-item"><span class="ticker-credit">Work Opportunity Credit</span><span class="ticker-amount">Up to $9,600/hire</span><span class="ticker-badge">Per employee</span></div>
-      <div class="ticker-item"><span class="ticker-credit">Energy Efficiency</span><span class="ticker-amount">Up to $50K</span><span class="ticker-badge">One-time</span></div>
-      <div class="ticker-item"><span class="ticker-credit">Disabled Access Credit</span><span class="ticker-amount">Up to $5K/yr</span><span class="ticker-badge">Annual</span></div>
-      <div class="ticker-item"><span class="ticker-credit">Payroll Tax Offset</span><span class="ticker-amount">Up to $250K/yr</span><span class="ticker-badge">Startup credit</span></div>
-      <div class="ticker-item"><span class="ticker-credit">ERC Refund</span><span class="ticker-amount">Up to $26K/employee</span><span class="ticker-badge">Cash refund</span></div>
-      <div class="ticker-item"><span class="ticker-credit">R&D Tax Credit</span><span class="ticker-amount">$30K–$80K/yr</span><span class="ticker-badge">Annual</span></div>
-      <div class="ticker-item"><span class="ticker-credit">State R&D Credits</span><span class="ticker-amount">$5K–$20K/yr</span><span class="ticker-badge">Stackable</span></div>
-      <div class="ticker-item"><span class="ticker-credit">Work Opportunity Credit</span><span class="ticker-amount">Up to $9,600/hire</span><span class="ticker-badge">Per employee</span></div>
-      <div class="ticker-item"><span class="ticker-credit">Energy Efficiency</span><span class="ticker-amount">Up to $50K</span><span class="ticker-badge">One-time</span></div>
-      <div class="ticker-item"><span class="ticker-credit">Disabled Access Credit</span><span class="ticker-amount">Up to $5K/yr</span><span class="ticker-badge">Annual</span></div>
-      <div class="ticker-item"><span class="ticker-credit">Payroll Tax Offset</span><span class="ticker-amount">Up to $250K/yr</span><span class="ticker-badge">Startup credit</span></div>
-    </div>
-  </div>
-</div>
+
 
 <!-- STATS -->
 <div class="stats">
   <div class="stat"><div class="stat-number">$80B+</div><div class="stat-label">In unclaimed credits annually</div></div>
   <div class="stat"><div class="stat-number">&lt;2%</div><div class="stat-label">Of SMBs claim R&D credits</div></div>
   <div class="stat"><div class="stat-number">$214K</div><div class="stat-label">Average ERC recovery</div></div>
-  <div class="stat"><div class="stat-number">15%</div><div class="stat-label">We take only on success</div></div>
+  <div class="stat"><div class="stat-number">5%</div><div class="stat-label">Success fee — lowest in the industry</div></div>
 </div>
 
 <!-- HOW IT WORKS -->
@@ -887,7 +867,7 @@
     <div class="step">
       <div class="step-number">Step 04</div>
       <h3>We file, you collect</h3>
-      <p>CPAs and tax attorneys handle all filings, IRS submissions, and audit-ready documentation. Your check arrives — we take 15% of recovery only.</p>
+      <p>CPAs and tax attorneys handle all filings, IRS submissions, and audit-ready documentation. Your check arrives — we take just 5% of recovery.</p>
     </div>
   </div>
 </section>
@@ -1210,10 +1190,10 @@
 
       <div class="results-cta-row">
         <button class="results-cta-btn" onclick="scrollToPaywall()">
-          Unlock My Full Report — $299 →
+          Unlock My Full Report — $299
         </button>
         <div class="results-disclaimer">
-          $299 covers full CPA analysis, exact calculations, and complete filing. We take 15% only on successful recovery. If we find nothing, you owe nothing more.
+          $299/month covers full CPA analysis, exact calculations, and complete filing. We take just 5% only on successful recovery. If we find nothing, you owe nothing more.
         </div>
       </div>
     </div>
@@ -1222,7 +1202,7 @@
     <div class="quiz-footer" id="quizFooter">
       <button class="quiz-back-btn" id="backBtn" onclick="prevQuestion()" disabled>← Back</button>
       <button class="quiz-next-btn" id="nextBtn" onclick="nextQuestion()" disabled>
-        Continue <span>→</span>
+        Continue <span></span>
       </button>
     </div>
   </div>
@@ -1231,16 +1211,16 @@
 <!-- PRICING -->
 <section class="pricing-section" id="paywall">
   <div class="section-eyebrow">Transparent pricing</div>
-  <h2 class="section-title" style="margin-bottom:40px;">One small fee upfront.<br>Everything else on results.</h2>
+  <h2 class="section-title" style="margin-bottom:40px;">Simple monthly subscription.<br>Tiny cut of what we recover.</h2>
   <div class="pricing-card">
     <div class="pricing-left">
       <h2>Simple, <em>aligned</em> pricing</h2>
-      <p>A $299 onboarding fee covers your full eligibility analysis, document processing, and expert CPA review. After that, we only take 15% of what we actually recover for you.</p>
+      <p>$299/month covers your full eligibility analysis, ongoing document processing, and dedicated CPA review. We take just 5% of what we actually recover — the lowest success fee in the industry.</p>
       <div class="price-tag">
         <span class="price-currency">$</span>
         <span class="price-num">299</span>
       </div>
-      <div class="price-label">One-time onboarding fee &nbsp;+&nbsp; 15% of recovered amount</div>
+      <div class="price-label">per month &nbsp;+&nbsp; 5% of recovered amount</div>
       <div class="pricing-perks">
         <div class="pricing-perk"><div class="pricing-perk-check">✓</div><span>Full eligibility analysis across all available credits</span></div>
         <div class="pricing-perk"><div class="pricing-perk-check">✓</div><span>CPA and tax attorney review of your specific situation</span></div>
@@ -1255,11 +1235,11 @@
       <div class="roi-line"><span class="roi-label">ERC Refund (one-time)</span><span class="roi-value green">$208,000</span></div>
       <div class="roi-line"><span class="roi-label">R&D Credit (annual)</span><span class="roi-value green">$44,000/yr</span></div>
       <div class="roi-line"><span class="roi-label">State R&D Credit (annual)</span><span class="roi-value green">$14,000/yr</span></div>
-      <div class="roi-line"><span class="roi-label">Onboarding fee</span><span class="roi-value">–$299</span></div>
-      <div class="roi-line"><span class="roi-label">Our 15% success fee</span><span class="roi-value">–$31,200</span></div>
+      <div class="roi-line"><span class="roi-label">Monthly fee (12 months)</span><span class="roi-value">–$3,588</span></div>
+      <div class="roi-line"><span class="roi-label">Our 5% success fee</span><span class="roi-value">–$10,400</span></div>
       <div class="roi-total">
         <span class="roi-total-label">You keep</span>
-        <span class="roi-total-value">$234,501</span>
+        <span class="roi-total-value">$252,012</span>
       </div>
       <div style="margin-top:12px;font-size:11px;color:var(--muted);line-height:1.6;">First-year estimate. R&D credits continue annually for the life of your business.</div>
     </div>
@@ -1270,8 +1250,8 @@
 <div class="cta-section">
   <h2>Stop leaving your<br><em style="color:var(--green);font-style:normal;">money with the IRS</em></h2>
   <p>The average qualifying business recovers $180K–$280K. Your 3-minute quiz is free — find out what you're owed.</p>
-  <a href="#quiz" class="btn-primary" style="font-size:17px;padding:20px 56px;position:relative;z-index:1;">Check My Eligibility →</a>
-  <div style="margin-top:16px;font-size:12px;color:var(--muted);position:relative;z-index:1;">$299 onboarding &nbsp;·&nbsp; 15% only on recovery &nbsp;·&nbsp; If we don't find money, you pay nothing more</div>
+  <a href="#quiz" class="btn-primary" style="font-size:17px;padding:20px 56px;position:relative;z-index:1;">Check My Eligibility</a>
+  <div style="margin-top:16px;font-size:12px;color:var(--muted);position:relative;z-index:1;">$299/month &nbsp;·&nbsp; 5% only on recovery &nbsp;·&nbsp; Cancel anytime</div>
 </div>
 
 <!-- FOOTER -->
@@ -1376,7 +1356,7 @@
 
       // On last question, change button label
       if (currentQ === TOTAL_QUESTIONS) {
-        document.getElementById('nextBtn').innerHTML = 'Calculate My Credits →';
+        document.getElementById('nextBtn').innerHTML = 'Calculate My Credits';
       }
     } else {
       // Submit
@@ -1389,7 +1369,7 @@
       document.getElementById(`q${currentQ}`).classList.remove('active');
       currentQ--;
       document.getElementById(`q${currentQ}`).classList.add('active');
-      document.getElementById('nextBtn').innerHTML = currentQ < TOTAL_QUESTIONS ? 'Continue <span>→</span>' : 'Calculate My Credits →';
+      document.getElementById('nextBtn').innerHTML = currentQ < TOTAL_QUESTIONS ? 'Continue <span></span>' : 'Calculate My Credits';
       document.getElementById('nextBtn').disabled = false;
       updateProgress();
     }
