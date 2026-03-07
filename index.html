@@ -1,1522 +1,2142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Greptiles Tax — The IRS Owes Your Business Money</title>
+<title>Greptiles Tax — Tax Credit Infrastructure for Accounting Firms</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --green: #4caf3f;
-    --green-light: #6dcf60;
-    --green-dark: #3a8f2f;
-    --green-glow: rgba(76, 175, 63, 0.18);
-    --bg: #0c0f0b;
-    --bg2: #111410;
-    --bg3: #161a14;
-    --text: #f0f2ee;
-    --muted: #6b7566;
-    --border: rgba(76,175,63,0.12);
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    overflow-x: hidden;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 100;
-    opacity: 0.4;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 50;
-    padding: 0 56px;
-    height: 72px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(12, 15, 11, 0.88);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
-  .logo-img { height: 36px; width: 36px; object-fit: contain; display: block; border-radius: 6px; }
-  .logo-wordmark { font-family: 'Fraunces', serif; font-weight: 800; font-size: 19px; color: var(--text); letter-spacing: -0.3px; }
-  .logo-wordmark span { color: var(--green); }
-  .logo-tag { font-size: 10px; background: rgba(76,175,63,0.12); color: var(--green); border: 1px solid rgba(76,175,63,0.2); border-radius: 4px; padding: 2px 8px; letter-spacing: 1.2px; text-transform: uppercase; font-weight: 600; }
-
-  .nav-cta {
-    background: var(--green);
-    color: #0c0f0b;
-    border: none;
-    padding: 10px 22px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 600;
-    font-size: 13px;
-    border-radius: 6px;
-    cursor: pointer;
-    letter-spacing: 0.3px;
-    transition: all 0.2s;
-    text-decoration: none;
-  }
-  .nav-cta:hover { background: var(--green-light); transform: translateY(-1px); }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 140px 24px 100px;
-    position: relative;
-    text-align: center;
-    overflow: hidden;
-  }
-
-  .hero::after {
-    content: '';
-    position: absolute;
-    top: 10%; left: 50%;
-    transform: translateX(-50%);
-    width: 700px; height: 500px;
-    background: radial-gradient(ellipse at center, rgba(76,175,63,0.13) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .orb { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; animation: drift 12s ease-in-out infinite; }
-  .orb1 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(76,175,63,0.08), transparent); top: -100px; left: -100px; animation-delay: 0s; }
-  .orb2 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(76,175,63,0.06), transparent); bottom: 0; right: -80px; animation-delay: -6s; }
-
-  @keyframes drift {
-    0%, 100% { transform: translate(0, 0); }
-    33% { transform: translate(30px, -20px); }
-    66% { transform: translate(-20px, 20px); }
-  }
-
-  .hero-inner { max-width: 820px; position: relative; z-index: 2; }
-
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(76,175,63,0.07);
-    border: 1px solid rgba(76,175,63,0.18);
-    border-radius: 6px;
-    padding: 9px 20px;
-    font-size: 13px;
-    font-weight: 400;
-    color: #8a9685;
-    letter-spacing: 0.3px;
-    margin-bottom: 36px;
-    animation: fadeUp 0.6s ease both;
-  }
-
-  .badge-stat { font-family: 'Fraunces', serif; font-weight: 700; font-size: 14px; color: var(--green); letter-spacing: -0.3px; }
-  .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: livePulse 1.6s ease-in-out infinite; flex-shrink: 0; }
-
-  @keyframes livePulse {
-    0%,100% { box-shadow: 0 0 0 0 rgba(76,175,63,0.5); }
-    50% { box-shadow: 0 0 0 5px rgba(76,175,63,0); }
-  }
-
-  .hero h1 {
-    font-family: 'Fraunces', serif;
-    font-weight: 800;
-    font-size: clamp(42px, 7vw, 78px);
-    line-height: 1.0;
-    letter-spacing: -2px;
-    margin-bottom: 24px;
-    animation: fadeUp 0.6s 0.1s ease both;
-  }
-
-  .hero h1 em { font-style: normal; color: var(--green); }
-
-  .hero p {
-    font-size: clamp(16px, 2.2vw, 19px);
-    color: #8a9685;
-    line-height: 1.7;
-    max-width: 580px;
-    margin: 0 auto 44px;
-    font-weight: 400;
-    animation: fadeUp 0.6s 0.2s ease both;
-  }
-
-  .hero-ctas {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    animation: fadeUp 0.6s 0.3s ease both;
-  }
-
-  .btn-primary {
-    background: var(--green);
-    color: #0a0d09;
-    border: none;
-    padding: 18px 48px;
-    font-family: 'Fraunces', serif;
-    font-weight: 700;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    letter-spacing: 0.3px;
-    transition: all 0.2s;
-    display: inline-block;
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .btn-primary::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-
-  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(76,175,63,0.4); }
-  .btn-primary:hover::before { opacity: 1; }
-
-  .hero-note { font-size: 12px; color: var(--muted); letter-spacing: 0.3px; }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* TRUST LOGOS */
-  .trust-bar {
-    padding: 52px 56px;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    background: var(--bg2);
-    text-align: center;
-  }
-  .trust-bar-label { font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; font-weight: 500; }
-  .trust-logos { display: flex; justify-content: center; align-items: center; gap: 56px; flex-wrap: wrap; }
-  .trust-logo {
-    font-family: 'Fraunces', serif;
-    font-weight: 700;
-    font-size: 22px;
-    color: rgba(255,255,255,0.22);
-    letter-spacing: -0.5px;
-    transition: color 0.25s;
-  }
-  .trust-logo:hover { color: rgba(255,255,255,0.42); }
-
-  /* CREDIT TICKER */
-  .ticker-section {
-    overflow: hidden;
-    border-bottom: 1px solid var(--border);
-    background: var(--bg);
-  }
-
-  .ticker-label { text-align: center; padding: 28px 0 12px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); font-weight: 500; }
-
-  .ticker-track {
-    display: flex;
-    gap: 0;
-    animation: ticker 36s linear infinite;
-    white-space: nowrap;
-    padding: 12px 0 28px;
-  }
-
-  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-  .ticker-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 28px;
-    margin: 0 8px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: rgba(76,175,63,0.04);
-    flex-shrink: 0;
-  }
-
-  .ticker-credit { font-family: 'Fraunces', serif; font-weight: 600; font-size: 14px; color: var(--text); }
-  .ticker-amount { font-size: 13px; font-weight: 600; color: var(--green); }
-  .ticker-badge { font-size: 10px; padding: 2px 8px; border-radius: 100px; background: rgba(76,175,63,0.12); color: var(--green-light); letter-spacing: 0.5px; text-transform: uppercase; font-weight: 500; }
-
-  /* STATS */
-  .stats {
-    padding: 64px 56px;
-    display: flex;
-    justify-content: center;
-    gap: 80px;
-    flex-wrap: wrap;
-    border-bottom: 1px solid var(--border);
-    background: var(--bg2);
-  }
-
-  .stat { text-align: center; }
-  .stat-number { font-family: 'Fraunces', serif; font-weight: 800; font-size: 42px; color: var(--green); line-height: 1; letter-spacing: -1px; }
-  .stat-label { font-size: 13px; color: var(--muted); margin-top: 8px; font-weight: 400; letter-spacing: 0.3px; }
-
-  /* HOW IT WORKS */
-  .section { padding: 100px 56px; max-width: 1160px; margin: 0 auto; }
-  .section-eyebrow { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--green); font-weight: 600; margin-bottom: 14px; }
-  .section-title { font-family: 'Fraunces', serif; font-weight: 800; font-size: clamp(32px, 4vw, 52px); letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 56px; max-width: 600px; }
-
-  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
-
-  .step { background: var(--bg2); padding: 40px 32px; position: relative; transition: background 0.2s; }
-  .step:hover { background: var(--bg3); }
-
-  .step-number {
-    font-family: 'Fraunces', serif;
-    font-weight: 800;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--green);
-    margin-bottom: 18px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .step-number::before { content: ''; width: 20px; height: 2px; background: var(--green); display: block; opacity: 0.4; }
-  .step h3 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 17px; margin-bottom: 12px; letter-spacing: -0.3px; line-height: 1.25; }
-  .step p { font-size: 13px; color: #6b7566; line-height: 1.7; }
-
-  /* RECOVERY FEATURE */
-  .recovery-feature { margin: 0 auto; max-width: 1160px; padding: 0 56px 100px; }
-
-  .recovery-card {
-    background: linear-gradient(135deg, rgba(76,175,63,0.08) 0%, rgba(76,175,63,0.03) 100%);
-    border: 1px solid rgba(76,175,63,0.2);
-    border-radius: 20px;
-    padding: 64px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .recovery-card::before {
-    content: '';
-    position: absolute;
-    top: -80px; right: -80px;
-    width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(76,175,63,0.1), transparent);
-    pointer-events: none;
-  }
-
-  .recovery-eyebrow { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--green); font-weight: 600; margin-bottom: 16px; }
-
-  .recovery-card h2 { font-family: 'Fraunces', serif; font-weight: 800; font-size: clamp(28px, 3.5vw, 42px); letter-spacing: -1px; line-height: 1.1; margin-bottom: 20px; }
-  .recovery-card h2 em { font-style: normal; color: var(--green); }
-  .recovery-card > div:first-child p { font-size: 15px; color: #6b7566; line-height: 1.75; margin-bottom: 32px; }
-
-  .recovery-perks { display: flex; flex-direction: column; gap: 14px; }
-  .perk { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: #8a9685; line-height: 1.5; }
-  .perk-check { width: 20px; height: 20px; border-radius: 50%; background: rgba(76,175,63,0.15); border: 1px solid rgba(76,175,63,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-size: 10px; color: var(--green); }
-
-  /* RESULT MOCKUP */
-  .result-mockup { display: flex; flex-direction: column; gap: 14px; position: relative; z-index: 2; }
-
-  .result-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 14px;
-    padding: 18px 22px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    animation: slideIn 0.5s ease both;
-    backdrop-filter: blur(10px);
-  }
-
-  @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
-
-  .result-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-family: 'Fraunces', serif; font-weight: 700; flex-shrink: 0; }
-  .result-body { flex: 1; }
-  .result-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
-  .result-sub { font-size: 11px; color: var(--muted); }
-  .result-amount { font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; color: var(--green); flex-shrink: 0; }
-
-  /* CREDITS GRID */
-  .credits-section { padding: 0 56px 100px; max-width: 1160px; margin: 0 auto; }
-  .credits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-
-  .c-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.2s;
-  }
-
-  .c-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--green), transparent); opacity: 0; transition: opacity 0.2s; }
-  .c-card:hover { border-color: rgba(76,175,63,0.25); transform: translateY(-2px); }
-  .c-card:hover::before { opacity: 1; }
-
-  .c-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
-  .c-credit { font-family: 'Fraunces', serif; font-weight: 700; font-size: 16px; letter-spacing: -0.2px; }
-  .c-amount { font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; color: var(--green); }
-
-  .c-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
-  .c-tag { font-size: 10px; padding: 3px 9px; border-radius: 100px; font-weight: 500; letter-spacing: 0.3px; text-transform: uppercase; }
-  .c-tag-green { background: rgba(76,175,63,0.1); color: var(--green-light); }
-  .c-tag-gray { background: rgba(255,255,255,0.05); color: var(--muted); border: 1px solid rgba(255,255,255,0.06); }
-  .c-tag-blue { background: rgba(60,130,255,0.1); color: #7aaaff; }
-  .c-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
-
-  /* TESTIMONIALS */
-  .testimonials-section { padding: 0 56px 100px; max-width: 1160px; margin: 0 auto; }
-  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .testimonial {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px;
-    transition: all 0.2s;
-  }
-  .testimonial:hover { border-color: rgba(76,175,63,0.2); transform: translateY(-2px); }
-  .testimonial-stars { display: flex; gap: 3px; margin-bottom: 16px; }
-  .testimonial-stars span { color: var(--green); font-size: 12px; }
-  .testimonial-amount { font-family: 'Fraunces', serif; font-weight: 700; font-size: 28px; color: var(--green); letter-spacing: -0.5px; margin-bottom: 8px; }
-  .testimonial-quote { font-size: 13px; color: #8a9685; line-height: 1.6; margin-bottom: 20px; }
-  .testimonial-author { display: flex; align-items: center; gap: 10px; }
-  .testimonial-avatar { width: 36px; height: 36px; border-radius: 50%; background: rgba(76,175,63,0.15); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-weight: 700; font-size: 13px; color: var(--green); flex-shrink: 0; }
-  .testimonial-name { font-size: 13px; font-weight: 600; color: var(--text); }
-  .testimonial-biz { font-size: 11px; color: var(--muted); }
-
-  /* PRICING */
-  .pricing-section { padding: 0 56px 100px; max-width: 1160px; margin: 0 auto; }
-
-  .pricing-card {
-    background: linear-gradient(135deg, rgba(76,175,63,0.06) 0%, rgba(76,175,63,0.02) 100%);
-    border: 1px solid rgba(76,175,63,0.2);
-    border-radius: 20px;
-    padding: 64px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: center;
-  }
-
-  .pricing-left h2 { font-family: 'Fraunces', serif; font-weight: 800; font-size: clamp(28px, 3vw, 40px); letter-spacing: -1px; line-height: 1.1; margin-bottom: 16px; }
-  .pricing-left h2 em { font-style: normal; color: var(--green); }
-  .pricing-left p { font-size: 15px; color: #6b7566; line-height: 1.7; margin-bottom: 28px; }
-
-  .price-tag { display: flex; align-items: baseline; gap: 6px; margin-bottom: 8px; }
-  .price-num { font-family: 'Fraunces', serif; font-weight: 800; font-size: 64px; color: var(--text); letter-spacing: -3px; line-height: 1; }
-  .price-currency { font-family: 'Fraunces', serif; font-weight: 600; font-size: 28px; color: var(--muted); }
-  .price-label { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
-
-  .pricing-perks { display: flex; flex-direction: column; gap: 12px; }
-  .pricing-perk { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #8a9685; }
-  .pricing-perk-check { width: 18px; height: 18px; border-radius: 50%; background: rgba(76,175,63,0.15); border: 1px solid rgba(76,175,63,0.3); display: flex; align-items: center; justify-content: center; font-size: 9px; color: var(--green); flex-shrink: 0; }
-
-  .pricing-right {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 16px;
-    padding: 36px;
-  }
-
-  .pricing-right-title { font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; margin-bottom: 6px; }
-  .pricing-right-sub { font-size: 13px; color: var(--muted); margin-bottom: 24px; line-height: 1.5; }
-
-  .roi-line { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; }
-  .roi-line:last-of-type { border-bottom: none; }
-  .roi-label { color: var(--muted); }
-  .roi-value { font-family: 'Fraunces', serif; font-weight: 600; color: var(--text); }
-  .roi-value.green { color: var(--green); }
-
-  .roi-total { margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(76,175,63,0.2); display: flex; justify-content: space-between; align-items: center; }
-  .roi-total-label { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); font-weight: 600; }
-  .roi-total-value { font-family: 'Fraunces', serif; font-weight: 800; font-size: 28px; color: var(--green); letter-spacing: -0.5px; }
-
-  /* ==================== QUIZ SECTION ==================== */
-  .quiz-section {
-    padding: 0 56px 100px;
-    max-width: 1160px;
-    margin: 0 auto;
-  }
-
-  .quiz-wrapper {
-    background: var(--bg2);
-    border: 1px solid rgba(76,175,63,0.2);
-    border-radius: 20px;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .quiz-header {
-    padding: 36px 52px 28px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .quiz-header-left h3 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 22px; letter-spacing: -0.4px; margin-bottom: 4px; }
-  .quiz-header-left p { font-size: 13px; color: var(--muted); }
-
-  .quiz-progress-wrap { display: flex; align-items: center; gap: 12px; }
-  .quiz-step-count { font-size: 12px; color: var(--muted); font-weight: 500; white-space: nowrap; }
-  .quiz-progress-bar { width: 120px; height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
-  .quiz-progress-fill { height: 100%; background: var(--green); border-radius: 2px; transition: width 0.4s ease; }
-
-  .quiz-body { padding: 52px; min-height: 320px; }
-
-  /* Question slide */
-  .quiz-question { display: none; animation: qIn 0.35s ease both; }
-  .quiz-question.active { display: block; }
-  @keyframes qIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-
-  .q-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--green); font-weight: 600; margin-bottom: 14px; }
-  .q-text { font-family: 'Fraunces', serif; font-weight: 700; font-size: clamp(20px, 3vw, 28px); letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 32px; color: var(--text); }
-  .q-sub { font-size: 14px; color: var(--muted); margin-top: -20px; margin-bottom: 28px; line-height: 1.5; }
-
-  /* Choice buttons */
-  .q-choices { display: grid; gap: 10px; }
-  .q-choices.grid-2 { grid-template-columns: 1fr 1fr; }
-  .q-choices.grid-1 { grid-template-columns: 1fr; max-width: 560px; }
-
-  .q-choice {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 10px;
-    padding: 16px 20px;
-    cursor: pointer;
-    transition: all 0.15s;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 14px;
-    color: #9a9f95;
-    font-family: 'DM Sans', sans-serif;
-  }
-
-  .q-choice:hover {
-    border-color: rgba(76,175,63,0.35);
-    background: rgba(76,175,63,0.05);
-    color: var(--text);
-    transform: translateX(3px);
-  }
-
-  .q-choice.selected {
-    border-color: var(--green);
-    background: rgba(76,175,63,0.1);
-    color: var(--text);
-  }
-
-  .q-choice-icon { width: 32px; height: 32px; border-radius: 8px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
-  .q-choice.selected .q-choice-icon { background: rgba(76,175,63,0.15); }
-
-  /* Text input */
-  .q-input {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 10px;
-    padding: 16px 20px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    color: var(--text);
-    width: 100%;
-    max-width: 420px;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .q-input:focus { border-color: rgba(76,175,63,0.4); }
-  .q-input::placeholder { color: var(--muted); }
-
-  /* Multi-select note */
-  .q-multi-note { font-size: 11px; color: var(--muted); margin-bottom: 16px; letter-spacing: 0.3px; }
-
-  /* Quiz footer */
-  .quiz-footer {
-    padding: 24px 52px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .quiz-back-btn {
-    background: none;
-    border: 1px solid rgba(255,255,255,0.08);
-    color: var(--muted);
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-  .quiz-back-btn:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
-  .quiz-back-btn:disabled { opacity: 0.3; cursor: not-allowed; }
-
-  .quiz-next-btn {
-    background: var(--green);
-    color: #0a0d09;
-    border: none;
-    padding: 12px 28px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .quiz-next-btn:hover { background: var(--green-light); transform: translateY(-1px); }
-  .quiz-next-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
-
-  /* ---- LOADING SCREEN ---- */
-  .quiz-loading {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 340px;
-    gap: 20px;
-    padding: 48px;
-    text-align: center;
-  }
-  .quiz-loading.active { display: flex; }
-
-  .loading-spinner {
-    width: 48px; height: 48px;
-    border: 3px solid rgba(76,175,63,0.15);
-    border-top-color: var(--green);
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
-
-  .loading-dots { display: flex; gap: 8px; margin-top: 8px; }
-  .loading-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: dotBounce 1.2s ease-in-out infinite; opacity: 0.4; }
-  .loading-dot:nth-child(1) { animation-delay: 0s; }
-  .loading-dot:nth-child(2) { animation-delay: 0.2s; }
-  .loading-dot:nth-child(3) { animation-delay: 0.4s; }
-  @keyframes dotBounce { 0%,80%,100% { opacity: 0.4; transform: scale(1); } 40% { opacity: 1; transform: scale(1.3); } }
-
-  .loading-title { font-family: 'Fraunces', serif; font-weight: 700; font-size: 22px; letter-spacing: -0.3px; }
-  .loading-sub { font-size: 13px; color: var(--muted); line-height: 1.6; max-width: 360px; }
-
-  .loading-steps-list { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; max-width: 340px; width: 100%; }
-  .loading-step-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); padding: 10px 14px; border-radius: 8px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); }
-  .loading-step-item.done { color: var(--green); background: rgba(76,175,63,0.05); border-color: rgba(76,175,63,0.12); }
-  .loading-step-icon { font-size: 14px; }
-  .loading-step-spinner { width: 14px; height: 14px; border: 2px solid rgba(76,175,63,0.2); border-top-color: var(--green); border-radius: 50%; animation: spin 0.8s linear infinite; }
-
-  /* ---- RESULTS SCREEN ---- */
-  .quiz-results {
-    display: none;
-    padding: 52px;
-    animation: qIn 0.5s ease both;
-  }
-  .quiz-results.active { display: block; }
-
-  .results-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-bottom: 32px;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-
-  .results-headline { font-family: 'Fraunces', serif; font-weight: 800; font-size: clamp(24px, 3.5vw, 38px); letter-spacing: -1px; line-height: 1.1; }
-  .results-headline em { font-style: normal; color: var(--green); }
-  .results-sub { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.5; }
-
-  .results-total-box {
-    background: rgba(76,175,63,0.08);
-    border: 1px solid rgba(76,175,63,0.25);
-    border-radius: 14px;
-    padding: 20px 28px;
-    text-align: right;
-    flex-shrink: 0;
-  }
-  .results-total-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green); font-weight: 600; margin-bottom: 6px; }
-  .results-total-amount { font-family: 'Fraunces', serif; font-weight: 800; font-size: 40px; color: var(--text); letter-spacing: -1.5px; line-height: 1; }
-  .results-total-note { font-size: 11px; color: var(--muted); margin-top: 4px; }
-
-  .results-credits { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
-
-  .res-credit-row {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 12px;
-    padding: 16px 20px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    transition: border-color 0.2s;
-  }
-  .res-credit-row:hover { border-color: rgba(76,175,63,0.2); }
-
-  .res-credit-icon { width: 38px; height: 38px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-family: 'Fraunces', serif; font-weight: 700; flex-shrink: 0; }
-  .res-credit-body { flex: 1; }
-  .res-credit-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
-  .res-credit-detail { font-size: 12px; color: var(--muted); }
-  .res-credit-amount { font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; color: var(--green); flex-shrink: 0; }
-  .res-credit-badge { font-size: 10px; padding: 2px 8px; border-radius: 100px; background: rgba(76,175,63,0.1); color: var(--green-light); margin-left: 8px; letter-spacing: 0.3px; }
-
-  .results-cta-row {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding-top: 24px;
-    border-top: 1px solid var(--border);
-    flex-wrap: wrap;
-  }
-
-  .results-cta-btn {
-    background: var(--green);
-    color: #0a0d09;
-    border: none;
-    padding: 14px 32px;
-    font-family: 'Fraunces', serif;
-    font-weight: 700;
-    font-size: 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .results-cta-btn:hover { background: var(--green-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(76,175,63,0.35); }
-  .results-disclaimer { font-size: 11px; color: var(--muted); line-height: 1.5; max-width: 380px; }
-
-  /* AI thinking bubble */
-  .ai-note {
-    background: rgba(76,175,63,0.05);
-    border: 1px solid rgba(76,175,63,0.1);
-    border-radius: 12px;
-    padding: 14px 18px;
-    margin-bottom: 32px;
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-  }
-  .ai-note-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
-  .ai-note-text { font-size: 13px; color: #8a9685; line-height: 1.6; }
-  .ai-note-text strong { color: var(--green); font-weight: 600; }
-
-  /* CTA */
-  .cta-section {
-    margin: 0 56px 100px;
-    border-radius: 20px;
-    background: linear-gradient(135deg, #141a12 0%, #0f130e 100%);
-    border: 1px solid rgba(76,175,63,0.2);
-    padding: 88px 60px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .cta-section::before {
-    content: '';
-    position: absolute;
-    top: -100px; left: 50%;
-    transform: translateX(-50%);
-    width: 600px; height: 400px;
-    background: radial-gradient(ellipse, rgba(76,175,63,0.1), transparent 70%);
-    pointer-events: none;
-  }
-
-  .cta-section h2 { font-family: 'Fraunces', serif; font-weight: 800; font-size: clamp(32px, 5vw, 56px); letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 18px; position: relative; z-index: 1; }
-  .cta-section p { font-size: 16px; color: #6b7566; margin-bottom: 40px; position: relative; z-index: 1; }
-
-  /* FOOTER */
-  footer { padding: 48px 56px; border-top: 1px solid var(--border); }
-  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px; flex-wrap: wrap; gap: 32px; }
-  .footer-brand p { font-size: 12px; color: var(--muted); margin-top: 10px; max-width: 260px; line-height: 1.6; }
-  .footer-col h4 { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 14px; }
-  .footer-col a { display: block; font-size: 13px; color: #5a5f55; text-decoration: none; margin-bottom: 8px; transition: color 0.2s; }
-  .footer-col a:hover { color: var(--green); }
-  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; border-top: 1px solid var(--border); flex-wrap: wrap; gap: 12px; }
-  .footer-copy { font-size: 12px; color: var(--muted); }
-  .footer-legal { font-size: 11px; color: #3a3f35; max-width: 600px; line-height: 1.5; }
-
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    nav { padding: 0 20px; }
-    .steps { grid-template-columns: 1fr 1fr; }
-    .credits-grid { grid-template-columns: 1fr 1fr; }
-    .testimonials-grid { grid-template-columns: 1fr; }
-    .recovery-card, .pricing-card { grid-template-columns: 1fr; gap: 40px; padding: 40px 28px; }
-    .stats { gap: 40px; padding: 48px 24px; }
-    .section, .recovery-feature, .credits-section, .pricing-section, .quiz-section, .testimonials-section { padding-left: 20px; padding-right: 20px; }
-    .cta-section { margin: 0 20px 80px; padding: 60px 28px; }
-    footer { padding: 32px 20px; }
-    .quiz-header, .quiz-body, .quiz-footer, .quiz-results { padding-left: 24px; padding-right: 24px; }
-    .q-choices.grid-2 { grid-template-columns: 1fr; }
-    .results-top { flex-direction: column; }
-    .results-total-box { text-align: left; width: 100%; }
-    .trust-logos { gap: 32px; }
-    .trust-bar { padding: 36px 20px; }
-    .trust-logo { font-size: 18px; }
-  }
-
-  @media (max-width: 600px) {
-    .credits-grid { grid-template-columns: 1fr; }
-    .steps { grid-template-columns: 1fr; }
-    .hero h1 { letter-spacing: -1.5px; }
-    .stat-number { font-size: 32px; }
-    .price-num { font-size: 48px; }
-  }
+/* =============================================
+   TOKENS
+============================================= */
+:root {
+  --green: #3d8c3a;
+  --green-mid: #4da84a;
+  --green-light: #66c263;
+  --green-subtle: rgba(61,140,58,0.10);
+  --green-border: rgba(61,140,58,0.22);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'Instrument Sans', system-ui, sans-serif;
+
+  --transition: 180ms ease;
+}
+
+[data-theme="dark"] {
+  --bg:       #0b0d0a;
+  --bg-2:     #0f120e;
+  --bg-3:     #141810;
+  --bg-card:  #111410;
+  --bg-input: rgba(255,255,255,0.04);
+
+  --text:     #eceee9;
+  --text-2:   #8f9489;
+  --text-3:   #555c4f;
+
+  --border:   rgba(255,255,255,0.07);
+  --border-2: rgba(255,255,255,0.12);
+
+  --shadow:   0 1px 3px rgba(0,0,0,0.5);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.45);
+
+  --noise-opacity: 0.032;
+}
+
+[data-theme="light"] {
+  --bg:       #f5f6f3;
+  --bg-2:     #ffffff;
+  --bg-3:     #edeee9;
+  --bg-card:  #ffffff;
+  --bg-input: rgba(0,0,0,0.03);
+
+  --text:     #18190f;
+  --text-2:   #545850;
+  --text-3:   #9a9e94;
+
+  --border:   rgba(0,0,0,0.08);
+  --border-2: rgba(0,0,0,0.14);
+
+  --shadow:   0 1px 3px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
+
+  --noise-opacity: 0.018;
+}
+
+/* =============================================
+   RESET & BASE
+============================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.6;
+  transition: background var(--transition), color var(--transition);
+}
+
+/* Grain overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: var(--noise-opacity);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* =============================================
+   TYPOGRAPHY UTILITIES
+============================================= */
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--green-light);
+  margin-bottom: 14px;
+  display: block;
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+}
+
+.display em {
+  font-style: italic;
+  color: var(--green-light);
+}
+
+/* =============================================
+   LAYOUT
+============================================= */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+@media (max-width: 768px) {
+  .container { padding: 0 20px; }
+}
+
+/* =============================================
+   NAV
+============================================= */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition);
+}
+
+.nav-inner {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-mark {
+  width: 30px;
+  height: 30px;
+  background: var(--green);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logo-mark svg { width: 16px; height: 16px; fill: #fff; }
+
+.logo-word {
+  font-family: var(--font-display);
+  font-size: 17px;
+  letter-spacing: -0.3px;
+  color: var(--text);
+}
+
+.logo-tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: var(--green-subtle);
+  color: var(--green-light);
+  border: 1px solid var(--green-border);
+  border-radius: 4px;
+  padding: 2px 7px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Theme toggle */
+.theme-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-2);
+  background: var(--bg-input);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  color: var(--text-2);
+}
+
+.theme-toggle:hover {
+  border-color: var(--green-border);
+  color: var(--green-light);
+  background: var(--green-subtle);
+}
+
+.theme-toggle svg { width: 15px; height: 15px; }
+
+.icon-sun { display: none; }
+.icon-moon { display: block; }
+[data-theme="light"] .icon-sun { display: block; }
+[data-theme="light"] .icon-moon { display: none; }
+
+.btn {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 13px;
+  border-radius: var(--radius-sm);
+  padding: 9px 20px;
+  cursor: pointer;
+  transition: all var(--transition);
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  text-decoration: none;
+  letter-spacing: 0.1px;
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--border-2);
+  color: var(--text-2);
+}
+
+.btn-ghost:hover {
+  border-color: var(--green-border);
+  color: var(--text);
+  background: var(--green-subtle);
+}
+
+.btn-primary {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--green-mid);
+  border-color: var(--green-mid);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(61,140,58,0.30);
+}
+
+.btn-lg {
+  font-size: 15px;
+  padding: 14px 32px;
+  border-radius: var(--radius-md);
+}
+
+/* =============================================
+   HERO
+============================================= */
+.hero {
+  padding: 148px 0 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-glow {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 600px;
+  background: radial-gradient(ellipse at 50% 30%, rgba(61,140,58,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.hero-left {}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green-subtle);
+  border: 1px solid var(--green-border);
+  border-radius: 100px;
+  padding: 6px 14px 6px 10px;
+  font-size: 12px;
+  color: var(--green-light);
+  font-weight: 500;
+  margin-bottom: 28px;
+  letter-spacing: 0.2px;
+}
+
+.dot-live {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green-light);
+  flex-shrink: 0;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(102,194,99,0.5); }
+  50%       { box-shadow: 0 0 0 5px rgba(102,194,99,0); }
+}
+
+.hero-h1 {
+  font-size: clamp(38px, 4.5vw, 58px);
+  margin-bottom: 22px;
+  color: var(--text);
+}
+
+.hero-sub {
+  font-size: 16px;
+  color: var(--text-2);
+  line-height: 1.75;
+  margin-bottom: 36px;
+  max-width: 460px;
+  font-weight: 400;
+}
+
+.hero-ctas {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hero-note {
+  font-size: 12px;
+  color: var(--text-3);
+  margin-top: 14px;
+  letter-spacing: 0.2px;
+}
+
+/* Scan card */
+.scan-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.scan-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green), transparent);
+}
+
+.scan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.scan-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.scan-badge {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  background: var(--green-subtle);
+  color: var(--green-light);
+  border: 1px solid var(--green-border);
+  border-radius: 4px;
+  padding: 3px 8px;
+}
+
+.scan-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.scan-row:last-of-type { border-bottom: none; }
+
+.scan-row-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.scan-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--font-body);
+  letter-spacing: 0.3px;
+  flex-shrink: 0;
+  color: var(--text-2);
+}
+
+.scan-icon.green { background: var(--green-subtle); border-color: var(--green-border); color: var(--green-light); }
+.scan-icon.blue  { background: rgba(60,120,255,0.08); border-color: rgba(60,120,255,0.18); color: #7aaaff; }
+.scan-icon.amber { background: rgba(200,140,40,0.10); border-color: rgba(200,140,40,0.22); color: #d4a44a; }
+
+.scan-name { font-size: 13px; font-weight: 500; color: var(--text); }
+.scan-detail { font-size: 11px; color: var(--text-3); margin-top: 2px; }
+
+.scan-amount {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--green-light);
+  letter-spacing: -0.3px;
+  white-space: nowrap;
+}
+
+.scan-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--green-border);
+}
+
+.scan-total-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-3);
+}
+
+.scan-total-value {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--text);
+  letter-spacing: -0.5px;
+}
+
+.scan-clients {
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--text-2);
+  display: flex;
+  justify-content: space-between;
+}
+
+.scan-clients span { color: var(--green-light); font-weight: 600; }
+
+/* =============================================
+   DIVIDER
+============================================= */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0;
+}
+
+/* =============================================
+   TRUST BAR
+============================================= */
+.trust-bar {
+  padding: 40px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-2);
+}
+
+.trust-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-3);
+  text-align: center;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.trust-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.trust-logo {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--text-3);
+  letter-spacing: -0.3px;
+  transition: color var(--transition);
+}
+
+.trust-logo:hover { color: var(--text-2); }
+
+/* =============================================
+   STATS
+============================================= */
+.stats-bar {
+  padding: 56px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.stat-item {
+  padding: 0 40px;
+  border-right: 1px solid var(--border);
+  text-align: center;
+}
+
+.stat-item:last-child { border-right: none; }
+.stat-item:first-child { padding-left: 0; }
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 40px;
+  color: var(--text);
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--text-3);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* =============================================
+   SECTIONS
+============================================= */
+.section {
+  padding: 96px 0;
+}
+
+.section-sm { padding: 72px 0; }
+
+.section-header {
+  margin-bottom: 56px;
+}
+
+.section-header .display {
+  font-size: clamp(30px, 3.5vw, 46px);
+  margin-bottom: 16px;
+  max-width: 600px;
+}
+
+.section-header p {
+  font-size: 16px;
+  color: var(--text-2);
+  line-height: 1.75;
+  max-width: 520px;
+}
+
+/* =============================================
+   HOW IT WORKS
+============================================= */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.step-card {
+  background: var(--bg-2);
+  padding: 36px 28px;
+  transition: background var(--transition);
+  position: relative;
+}
+
+.step-card:hover { background: var(--bg-3); }
+
+.step-num {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green-light);
+  font-weight: 600;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.step-num::before {
+  content: '';
+  width: 18px;
+  height: 1.5px;
+  background: var(--green);
+  opacity: 0.5;
+}
+
+.step-card h3 {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 10px;
+  letter-spacing: -0.2px;
+  line-height: 1.25;
+}
+
+.step-card p {
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.7;
+}
+
+/* =============================================
+   PORTFOLIO SCAN FEATURE
+============================================= */
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-grid::after {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(61,140,58,0.08), transparent);
+  pointer-events: none;
+}
+
+.feature-eyebrow { margin-bottom: 14px; }
+
+.feature-grid .display {
+  font-size: clamp(26px, 3vw, 38px);
+  margin-bottom: 18px;
+}
+
+.feature-grid p {
+  font-size: 15px;
+  color: var(--text-2);
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.feature-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+
+.check-mark {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--green-subtle);
+  border: 1px solid var(--green-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.check-mark svg {
+  width: 9px;
+  height: 9px;
+  stroke: var(--green-light);
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Portfolio dashboard mockup */
+.portfolio-mockup {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  box-shadow: var(--shadow-lg);
+}
+
+.portfolio-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.portfolio-title { font-size: 13px; font-weight: 600; color: var(--text); }
+.portfolio-meta { font-size: 11px; color: var(--text-3); }
+
+.portfolio-table { width: 100%; }
+
+.pt-head {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr;
+  padding: 10px 20px;
+  background: var(--bg-3);
+  border-bottom: 1px solid var(--border);
+}
+
+.pt-head span {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.pt-row {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+  transition: background var(--transition);
+}
+
+.pt-row:last-child { border-bottom: none; }
+.pt-row:hover { background: var(--bg-input); }
+
+.pt-client { font-size: 13px; font-weight: 500; color: var(--text); }
+.pt-type { font-size: 12px; color: var(--text-3); }
+.pt-credits { font-size: 12px; color: var(--text-2); }
+
+.pt-amount {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--green-light);
+  letter-spacing: -0.2px;
+}
+
+.pt-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 100px;
+}
+
+.pt-status.eligible { background: var(--green-subtle); color: var(--green-light); border: 1px solid var(--green-border); }
+.pt-status.review { background: rgba(200,140,40,0.08); color: #d4a44a; border: 1px solid rgba(200,140,40,0.20); }
+
+.portfolio-footer {
+  padding: 14px 20px;
+  background: var(--bg-3);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.portfolio-footer-stat {
+  font-size: 12px;
+  color: var(--text-2);
+}
+
+.portfolio-footer-stat strong {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--green-light);
+  letter-spacing: -0.3px;
+  margin-right: 4px;
+}
+
+/* =============================================
+   CREDITS GRID
+============================================= */
+.credits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.credit-card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition);
+}
+
+.credit-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green), transparent);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.credit-card:hover {
+  border-color: var(--border-2);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.credit-card:hover::before { opacity: 1; }
+
+.credit-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.credit-name {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: -0.2px;
+}
+
+.credit-range {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--green-light);
+  white-space: nowrap;
+  letter-spacing: -0.3px;
+}
+
+.credit-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.tag {
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 100px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.tag-green { background: var(--green-subtle); color: var(--green-light); border: 1px solid var(--green-border); }
+.tag-gray  { background: var(--bg-input); color: var(--text-3); border: 1px solid var(--border); }
+.tag-blue  { background: rgba(60,120,255,0.08); color: #7aaaff; border: 1px solid rgba(60,120,255,0.18); }
+
+.credit-desc {
+  font-size: 12px;
+  color: var(--text-2);
+  line-height: 1.65;
+}
+
+/* =============================================
+   REVENUE MODEL
+============================================= */
+.revenue-card {
+  background: linear-gradient(135deg, var(--bg-2) 0%, var(--bg-3) 100%);
+  border: 1px solid var(--green-border);
+  border-radius: var(--radius-xl);
+  padding: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.revenue-card::before {
+  content: '';
+  position: absolute;
+  bottom: -80px; right: -80px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(61,140,58,0.09), transparent);
+  pointer-events: none;
+}
+
+.revenue-card .display {
+  font-size: clamp(26px, 3vw, 38px);
+  margin-bottom: 16px;
+}
+
+.revenue-card > div:first-child > p {
+  font-size: 15px;
+  color: var(--text-2);
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.revenue-example {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+
+.rev-header {
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.rev-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.rev-line:last-of-type { border-bottom: none; }
+
+.rev-label { color: var(--text-2); }
+
+.rev-val {
+  font-family: var(--font-display);
+  font-size: 17px;
+  color: var(--text);
+  letter-spacing: -0.3px;
+}
+
+.rev-val.pos { color: var(--green-light); }
+.rev-val.neg { color: var(--text-3); }
+
+.rev-total {
+  padding: 16px 22px;
+  background: var(--bg-3);
+  border-top: 1px solid var(--green-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rev-total-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  color: var(--text-3);
+}
+
+.rev-total-val {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--green-light);
+  letter-spacing: -0.5px;
+}
+
+/* =============================================
+   COMPLIANCE
+============================================= */
+.compliance-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.comp-card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  transition: all var(--transition);
+}
+
+.comp-card:hover {
+  border-color: var(--green-border);
+  transform: translateY(-2px);
+}
+
+.comp-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: var(--green-subtle);
+  border: 1px solid var(--green-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.comp-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--green-light);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.comp-card h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 8px;
+  letter-spacing: -0.2px;
+}
+
+.comp-card p {
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.65;
+}
+
+/* =============================================
+   CASE STUDY
+============================================= */
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.case-card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  transition: all var(--transition);
+}
+
+.case-card:hover {
+  border-color: var(--border-2);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.case-stars {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 16px;
+}
+
+.case-stars span {
+  font-size: 11px;
+  color: var(--green-light);
+}
+
+.case-recovery {
+  font-family: var(--font-display);
+  font-size: 32px;
+  color: var(--green-light);
+  letter-spacing: -0.8px;
+  margin-bottom: 8px;
+}
+
+.case-quote {
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+
+.case-author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.case-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--green-subtle);
+  border: 1px solid var(--green-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--green-light);
+  flex-shrink: 0;
+}
+
+.case-name { font-size: 13px; font-weight: 600; color: var(--text); }
+.case-firm { font-size: 11px; color: var(--text-3); }
+
+/* =============================================
+   INTEGRATIONS
+============================================= */
+.integrations-bar {
+  padding: 52px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-2);
+}
+
+.integration-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.int-logo {
+  font-family: var(--font-display);
+  font-size: 17px;
+  color: var(--text-3);
+  letter-spacing: -0.3px;
+  transition: color var(--transition);
+  padding: 10px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+}
+
+.int-logo:hover { color: var(--text-2); border-color: var(--border-2); }
+
+/* =============================================
+   PRICING
+============================================= */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.pricing-card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color var(--transition);
+}
+
+.pricing-card:hover { border-color: var(--border-2); }
+
+.pricing-card.featured {
+  border-color: var(--green-border);
+  background: linear-gradient(135deg, rgba(61,140,58,0.06) 0%, var(--bg-2) 100%);
+}
+
+.pricing-card.featured::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green), transparent);
+}
+
+.pricing-tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--green-light);
+  background: var(--green-subtle);
+  border: 1px solid var(--green-border);
+  border-radius: 4px;
+  padding: 3px 8px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.pricing-name {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--text);
+  margin-bottom: 8px;
+  letter-spacing: -0.3px;
+}
+
+.pricing-desc {
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.price-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.price-curr {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--text-2);
+}
+
+.price-num {
+  font-family: var(--font-display);
+  font-size: 52px;
+  color: var(--text);
+  letter-spacing: -2px;
+  line-height: 1;
+}
+
+.price-period {
+  font-size: 13px;
+  color: var(--text-3);
+  margin-bottom: 28px;
+}
+
+.pricing-perks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.pricing-perks li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+/* =============================================
+   CTA SECTION
+============================================= */
+.cta-section {
+  padding: 100px 0;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+.cta-glow {
+  position: absolute;
+  top: -60px; left: 50%;
+  transform: translateX(-50%);
+  width: 700px; height: 400px;
+  background: radial-gradient(ellipse, rgba(61,140,58,0.10) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.cta-box {
+  background: var(--bg-2);
+  border: 1px solid var(--green-border);
+  border-radius: var(--radius-xl);
+  padding: 80px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--green), transparent);
+}
+
+.cta-box .display {
+  font-size: clamp(34px, 4.5vw, 56px);
+  margin-bottom: 18px;
+}
+
+.cta-box p {
+  font-size: 16px;
+  color: var(--text-2);
+  max-width: 480px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+}
+
+.cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cta-note {
+  font-size: 12px;
+  color: var(--text-3);
+  margin-top: 16px;
+  letter-spacing: 0.2px;
+}
+
+/* =============================================
+   FOOTER
+============================================= */
+footer {
+  padding: 52px 0 32px;
+  border-top: 1px solid var(--border);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 40px;
+}
+
+.footer-brand p {
+  font-size: 13px;
+  color: var(--text-3);
+  line-height: 1.7;
+  margin-top: 14px;
+  max-width: 240px;
+}
+
+.footer-col h4 {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-3);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.footer-col a {
+  display: block;
+  font-size: 13px;
+  color: var(--text-3);
+  margin-bottom: 9px;
+  transition: color var(--transition);
+}
+
+.footer-col a:hover { color: var(--text-2); }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-copy { font-size: 12px; color: var(--text-3); }
+
+.footer-legal {
+  font-size: 11px;
+  color: var(--text-3);
+  max-width: 560px;
+  line-height: 1.55;
+  text-align: right;
+}
+
+/* =============================================
+   RESPONSIVE
+============================================= */
+@media (max-width: 1024px) {
+  .hero-content { grid-template-columns: 1fr; gap: 48px; }
+  .hero-content .scan-card { max-width: 500px; }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .feature-grid { grid-template-columns: 1fr; gap: 40px; padding: 40px; }
+  .revenue-card { grid-template-columns: 1fr; gap: 40px; padding: 40px; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .nav-inner { padding: 0 20px; }
+  .hero { padding: 120px 0 80px; }
+  .hero-content { padding: 0 20px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 0; }
+  .stat-item { padding: 24px; border-right: none; border-bottom: 1px solid var(--border); }
+  .stat-item:nth-child(odd) { border-right: 1px solid var(--border); }
+  .stat-item:nth-child(3), .stat-item:nth-child(4) { border-bottom: none; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .credits-grid { grid-template-columns: 1fr; }
+  .compliance-grid { grid-template-columns: 1fr; }
+  .case-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .cta-box { padding: 52px 24px; }
+  .footer-legal { text-align: left; }
+  .section { padding: 64px 0; }
+  .trust-logos { gap: 24px; }
+  .integration-logos { gap: 12px; }
+}
+
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .hero-ctas { flex-direction: column; align-items: flex-start; }
+}
+
+/* =============================================
+   ANIMATIONS
+============================================= */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-badge    { animation: fadeUp 0.5s 0.05s ease both; }
+.hero-h1       { animation: fadeUp 0.5s 0.12s ease both; }
+.hero-sub      { animation: fadeUp 0.5s 0.20s ease both; }
+.hero-ctas     { animation: fadeUp 0.5s 0.28s ease both; }
+.hero-note     { animation: fadeUp 0.5s 0.34s ease both; }
+.hero-right    { animation: fadeUp 0.5s 0.38s ease both; }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="logo">
-    <img src="data:image/png;base64,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" alt="Greptiles" class="logo-img">
-    <span class="logo-wordmark">Grep<span>tiles</span></span>
-    <span class="logo-tag">Tax</span>
-  </a>
-  <a href="#quiz" class="nav-cta">Check My Eligibility</a>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 16 16"><path d="M3 8a5 5 0 1010 0A5 5 0 003 8zm5-3v3l2 2"/></svg>
+      </div>
+      <span class="logo-word">Greptiles</span>
+      <span class="logo-tag">Tax</span>
+    </a>
+    <div class="nav-right">
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <a href="#how-it-works" class="btn btn-ghost">How it works</a>
+      <a href="#pricing" class="btn btn-ghost">Pricing</a>
+      <a href="#scan" class="btn btn-primary">Scan client portfolio</a>
+    </div>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="orb orb1"></div>
-  <div class="orb orb2"></div>
-  <div class="hero-inner">
-    <div class="hero-badge">
-      <span class="live-dot"></span>
-      <span class="badge-stat">$80B+</span>
-      in IRS credits go unclaimed by SMBs every year
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-badge">
+        <span class="dot-live"></span>
+        Built for accounting firms
+      </div>
+      <h1 class="hero-h1 display">
+        Turn missed tax credits into<br><em>advisory revenue.</em>
+      </h1>
+      <p class="hero-sub">
+        Greptiles automatically identifies and files federal and state tax credits across your entire client base — R&D, ERC, hiring incentives, energy — with CPA-ready documentation included.
+      </p>
+      <div class="hero-ctas">
+        <a href="#scan" class="btn btn-primary btn-lg">Scan client portfolio</a>
+        <a href="#how-it-works" class="btn btn-ghost btn-lg">See how it works</a>
+      </div>
+      <p class="hero-note">No upfront commitment &nbsp;·&nbsp; IRS-compliant documentation &nbsp;·&nbsp; CPAs remain the advisor of record</p>
     </div>
-    <h1>The IRS owes<br>your business <em>money.</em><br>We collect it.</h1>
-    <p>Most small businesses are sitting on $30K–$260K in unclaimed tax credits — R&D credits, ERC refunds, state incentives. We find every dollar, handle all the paperwork, and only get paid when you do.</p>
-    <div class="hero-ctas">
-      <a href="#quiz" class="btn-primary">See What My Business Qualifies For</a>
-      <span class="hero-note">Takes 3 minutes &nbsp;·&nbsp; Zero upfront cost to check &nbsp;·&nbsp; We only win when you win</span>
+    <div class="hero-right">
+      <div class="scan-card">
+        <div class="scan-header">
+          <span class="scan-title">Portfolio credit scan</span>
+          <span class="scan-badge">Live preview</span>
+        </div>
+        <div class="scan-row">
+          <div class="scan-row-left">
+            <div class="scan-icon green">ERC</div>
+            <div>
+              <div class="scan-name">Employee Retention Credit</div>
+              <div class="scan-detail">2020–2021 &nbsp;·&nbsp; 14 eligible clients</div>
+            </div>
+          </div>
+          <div class="scan-amount">$1.84M</div>
+        </div>
+        <div class="scan-row">
+          <div class="scan-row-left">
+            <div class="scan-icon blue">R&D</div>
+            <div>
+              <div class="scan-name">Federal R&D Tax Credit</div>
+              <div class="scan-detail">Annual &nbsp;·&nbsp; 22 eligible clients</div>
+            </div>
+          </div>
+          <div class="scan-amount">$940K/yr</div>
+        </div>
+        <div class="scan-row">
+          <div class="scan-row-left">
+            <div class="scan-icon amber">ST</div>
+            <div>
+              <div class="scan-name">State R&D Credits</div>
+              <div class="scan-detail">CA, NY, WA &nbsp;·&nbsp; Stackable</div>
+            </div>
+          </div>
+          <div class="scan-amount">$310K/yr</div>
+        </div>
+        <div class="scan-row">
+          <div class="scan-row-left">
+            <div class="scan-icon">+3</div>
+            <div>
+              <div class="scan-name">3 additional credit types</div>
+              <div class="scan-detail">WOTC, Energy, Payroll Offset</div>
+            </div>
+          </div>
+          <div class="scan-amount">+$420K</div>
+        </div>
+        <div class="scan-total">
+          <span class="scan-total-label">Total identified</span>
+          <span class="scan-total-value">$3.51M</span>
+        </div>
+        <div class="scan-clients">
+          <span>42 clients scanned</span>
+          <span><span>38</span> eligible</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- TRUST BAR -->
+<!-- TRUST -->
 <div class="trust-bar">
-  <div class="trust-bar-label">Trusted by businesses using</div>
-  <div class="trust-logos">
-    <span class="trust-logo">QuickBooks</span>
-    <span class="trust-logo">Gusto</span>
-    <span class="trust-logo">Stripe</span>
-    <span class="trust-logo">Rippling</span>
-    <span class="trust-logo">ADP</span>
-    <span class="trust-logo">Xero</span>
+  <div class="container">
+    <div class="trust-label">Works with the platforms your clients already use</div>
+    <div class="trust-logos">
+      <span class="trust-logo">QuickBooks</span>
+      <span class="trust-logo">Gusto</span>
+      <span class="trust-logo">Rippling</span>
+      <span class="trust-logo">ADP</span>
+      <span class="trust-logo">Xero</span>
+      <span class="trust-logo">Stripe</span>
+    </div>
   </div>
 </div>
 
-
-
 <!-- STATS -->
-<div class="stats">
-  <div class="stat"><div class="stat-number">$80B+</div><div class="stat-label">In unclaimed credits annually</div></div>
-  <div class="stat"><div class="stat-number">&lt;2%</div><div class="stat-label">Of SMBs claim R&D credits</div></div>
-  <div class="stat"><div class="stat-number">$214K</div><div class="stat-label">Average ERC recovery</div></div>
-  <div class="stat"><div class="stat-number">5%</div><div class="stat-label">Success fee — lowest in the industry</div></div>
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number">$80B+</div>
+        <div class="stat-label">In unclaimed SMB credits per year</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">2%</div>
+        <div class="stat-label">Of eligible businesses claim R&D credits</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">$214K</div>
+        <div class="stat-label">Average ERC recovery per client</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">5%</div>
+        <div class="stat-label">Success fee — lowest in the industry</div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- HOW IT WORKS -->
-<section class="section">
-  <div class="section-eyebrow">How it works</div>
-  <h2 class="section-title">From quiz to check in four simple steps</h2>
-  <div class="steps">
-    <div class="step">
-      <div class="step-number">Step 01</div>
-      <h3>Take a 3-min quiz</h3>
-      <p>Answer plain-English questions about your business — employees, industry, what you build or improve, your state. No tax jargon, no forms.</p>
+<section class="section" id="how-it-works">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Process</span>
+      <h2 class="display" style="font-size:clamp(30px,3.5vw,46px);">Four steps from portfolio<br>scan to filed credits</h2>
+      <p>No manual research. No complex forms. Your firm stays in the advisory seat while Greptiles handles identification, calculation, and documentation.</p>
     </div>
-    <div class="step">
-      <div class="step-number">Step 02</div>
-      <h3>See your estimate</h3>
-      <p>Our AI instantly calculates every credit you likely qualify for and shows estimated dollar values. Most businesses see $50K–$300K for the first time.</p>
-    </div>
-    <div class="step">
-      <div class="step-number">Step 03</div>
-      <h3>Connect your data</h3>
-      <p>Sync QuickBooks or Gusto, or upload your 941 forms and payroll reports. Our AI processes documents to calculate exact figures in minutes.</p>
-    </div>
-    <div class="step">
-      <div class="step-number">Step 04</div>
-      <h3>We file, you collect</h3>
-      <p>CPAs and tax attorneys handle all filings, IRS submissions, and audit-ready documentation. Your check arrives — we take just 5% of recovery.</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">Step 01</div>
+        <h3>Upload your client list</h3>
+        <p>Import a CSV or connect QuickBooks, Gusto, or Rippling. Greptiles ingests payroll, headcount, industry codes, and revenue data across your entire book of business.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">Step 02</div>
+        <h3>AI scans for eligibility</h3>
+        <p>Our engine cross-references every client against IRS credit criteria and 35+ state incentive databases — R&D, ERC, WOTC, energy, startup payroll offsets — in minutes, not months.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">Step 03</div>
+        <h3>Review and approve</h3>
+        <p>Your firm receives a prioritized list of eligible clients with estimated recovery amounts, credit types, and confidence scores. You decide which to pursue and when.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">Step 04</div>
+        <h3>We prepare, you file</h3>
+        <p>Greptiles generates IRS-ready documentation, supporting calculations, and audit defense packages. Your CPAs review, sign off, and submit. You remain the advisor of record.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- RECOVERY FEATURE -->
-<div class="recovery-feature">
-  <div class="recovery-card">
-    <div>
-      <div class="recovery-eyebrow">Ongoing, every year</div>
-      <h2>Credits that keep<br>coming — <em>zero effort</em><br>on your part</h2>
-      <p>R&D credits aren't one-time. Every year your business develops, improves, or experiments, new credits accumulate. We monitor your eligibility continuously and file annually — you just keep building your business.</p>
-      <div class="recovery-perks">
-        <div class="perk"><div class="perk-check">✓</div><span>Annual R&D credit filing on autopilot — new claims every tax year</span></div>
-        <div class="perk"><div class="perk-check">✓</div><span>3-year retroactive lookback — we recover credits you missed in prior years</span></div>
-        <div class="perk"><div class="perk-check">✓</div><span>State credit stacking — federal + state credits filed simultaneously</span></div>
-        <div class="perk"><div class="perk-check">✓</div><span>IRS-audit-ready documentation prepared and stored for every claim</span></div>
+<!-- PORTFOLIO SCAN FEATURE -->
+<section class="section-sm" id="scan">
+  <div class="container">
+    <div class="feature-grid">
+      <div>
+        <span class="eyebrow feature-eyebrow">Portfolio intelligence</span>
+        <h2 class="display">See exactly what your<br>clients are <em>leaving behind.</em></h2>
+        <p>Most accounting firms have dozens of clients who qualify for substantial tax credits and have never been told. Greptiles surfaces every opportunity across your entire book — automatically, continuously.</p>
+        <ul class="feature-list">
+          <li>
+            <span class="check-mark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Scan unlimited clients — results in under 5 minutes
+          </li>
+          <li>
+            <span class="check-mark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Annual re-scan as new credits accumulate each tax year
+          </li>
+          <li>
+            <span class="check-mark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            3-year retroactive lookback to recover previously missed credits
+          </li>
+          <li>
+            <span class="check-mark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Federal and state credits identified and filed simultaneously
+          </li>
+        </ul>
+      </div>
+      <div class="portfolio-mockup">
+        <div class="portfolio-header">
+          <span class="portfolio-title">Credit opportunity report</span>
+          <span class="portfolio-meta">38 of 42 clients eligible</span>
+        </div>
+        <div class="pt-head">
+          <span>Client</span>
+          <span>Credits</span>
+          <span>Est. recovery</span>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-client">Meridian Software</div>
+            <div class="pt-type">SaaS · 18 employees</div>
+          </div>
+          <div>
+            <div class="pt-credits">ERC + R&D + CA</div>
+            <div><span class="pt-status eligible">Eligible</span></div>
+          </div>
+          <div class="pt-amount">$284K</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-client">Alcott Manufacturing</div>
+            <div class="pt-type">Hardware · 41 employees</div>
+          </div>
+          <div>
+            <div class="pt-credits">ERC + R&D + WOTC</div>
+            <div><span class="pt-status eligible">Eligible</span></div>
+          </div>
+          <div class="pt-amount">$418K</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-client">Thornbridge Biotech</div>
+            <div class="pt-type">Life sciences · 9 employees</div>
+          </div>
+          <div>
+            <div class="pt-credits">R&D + Payroll offset</div>
+            <div><span class="pt-status review">Under review</span></div>
+          </div>
+          <div class="pt-amount">$196K</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-client">Crestview Logistics</div>
+            <div class="pt-type">Operations · 67 employees</div>
+          </div>
+          <div>
+            <div class="pt-credits">ERC + WOTC + Energy</div>
+            <div><span class="pt-status eligible">Eligible</span></div>
+          </div>
+          <div class="pt-amount">$312K</div>
+        </div>
+        <div class="portfolio-footer">
+          <div class="portfolio-footer-stat">Total across portfolio</div>
+          <div class="portfolio-footer-stat"><strong>$3.51M</strong> identified</div>
+        </div>
       </div>
     </div>
-    <div class="result-mockup">
-      <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-weight:500;">Your estimated recovery</div>
-      <div class="result-card">
-        <div class="result-icon" style="background:rgba(76,175,63,0.1);color:var(--green);">ERC</div>
-        <div class="result-body"><div class="result-title">Employee Retention Credit</div><div class="result-sub">2020–2021 · 8 employees · Confirmed eligible</div></div>
-        <div class="result-amount">$208K</div>
+  </div>
+</section>
+
+<!-- CREDITS COVERED -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Coverage</span>
+      <h2 class="display" style="font-size:clamp(30px,3.5vw,46px);">Every major credit.<br>All industries.<br><em>Automatically.</em></h2>
+      <p>Greptiles covers the full landscape of federal and state tax incentives — not just the obvious ones. Most clients qualify for multiple credits they've never claimed.</p>
+    </div>
+    <div class="credits-grid">
+      <div class="credit-card">
+        <div class="credit-top">
+          <div class="credit-name">ERC Refund</div>
+          <div class="credit-range">Up to $26K</div>
+        </div>
+        <div class="credit-tags">
+          <span class="tag tag-green">Cash refund</span>
+          <span class="tag tag-gray">Per employee</span>
+        </div>
+        <div class="credit-desc">Clients with W-2 employees in 2020–2021 who experienced revenue decline or operational disruption. Billions remain unclaimed — most firms have missed this for their clients.</div>
       </div>
-      <div class="result-card">
-        <div class="result-icon" style="background:rgba(60,130,255,0.1);color:#7aaaff;">R&D</div>
-        <div class="result-body"><div class="result-title">Federal R&D Tax Credit</div><div class="result-sub">Software development · Annual credit</div></div>
-        <div class="result-amount">$44K/yr</div>
+      <div class="credit-card">
+        <div class="credit-top">
+          <div class="credit-name">R&D Tax Credit</div>
+          <div class="credit-range">$30K–$80K</div>
+        </div>
+        <div class="credit-tags">
+          <span class="tag tag-blue">Annual</span>
+          <span class="tag tag-gray">All industries</span>
+        </div>
+        <div class="credit-desc">Applies to any client who develops, improves, or customizes software, products, or processes. The IRS definition is substantially broader than most CPAs apply in practice.</div>
       </div>
-      <div class="result-card">
-        <div class="result-icon" style="background:rgba(255,180,60,0.1);color:#ffb84d;">ST</div>
-        <div class="result-body"><div class="result-title">State R&D Credit (CA)</div><div class="result-sub">Stackable with federal · Annual</div></div>
-        <div class="result-amount">$14K/yr</div>
+      <div class="credit-card">
+        <div class="credit-top">
+          <div class="credit-name">State R&D Credits</div>
+          <div class="credit-range">$5K–$20K</div>
+        </div>
+        <div class="credit-tags">
+          <span class="tag tag-green">Stackable</span>
+          <span class="tag tag-gray">35+ states</span>
+        </div>
+        <div class="credit-desc">Most clients claim either the federal credit or their state credit — rarely both. Greptiles files them simultaneously, stacking recoveries that would otherwise be left unclaimed.</div>
       </div>
-      <div class="result-card" style="border-color:rgba(76,175,63,0.2);background:rgba(76,175,63,0.04);">
-        <div class="result-icon" style="background:rgba(76,175,63,0.12);color:var(--green);">+2</div>
-        <div class="result-body"><div class="result-title">2 more credits identified</div><div class="result-sub">Work Opportunity + Payroll Offset</div></div>
-        <div class="result-amount" style="font-size:14px;">+$18K</div>
+      <div class="credit-card">
+        <div class="credit-top">
+          <div class="credit-name">Work Opportunity</div>
+          <div class="credit-range">Up to $9,600</div>
+        </div>
+        <div class="credit-tags">
+          <span class="tag tag-green">Per qualifying hire</span>
+          <span class="tag tag-gray">Retroactive</span>
+        </div>
+        <div class="credit-desc">WOTC credits for clients who hire veterans, long-term unemployed, formerly incarcerated individuals, and other target groups. Consistently overlooked across most client portfolios.</div>
       </div>
-      <div style="text-align:center;font-size:12px;color:var(--muted);margin-top:8px;">Total identified: <span style="color:var(--green);font-weight:700;font-family:'Fraunces',serif;font-size:16px;">$284,000</span></div>
+      <div class="credit-card">
+        <div class="credit-top">
+          <div class="credit-name">Startup Payroll Offset</div>
+          <div class="credit-range">Up to $250K/yr</div>
+        </div>
+        <div class="credit-tags">
+          <span class="tag tag-blue">Pre-revenue eligible</span>
+          <span class="tag tag-gray">5 years</span>
+        </div>
+        <div class="credit-desc">Startups under five years old with under $5M revenue can apply R&D credits against payroll tax obligations — even before profitability. Almost universally unfiled across most practices.</div>
+      </div>
+      <div class="credit-card">
+        <div class="credit-top">
+          <div class="credit-name">Energy Credits</div>
+          <div class="credit-range">Up to $50K</div>
+        </div>
+        <div class="credit-tags">
+          <span class="tag tag-green">IRA expanded</span>
+          <span class="tag tag-gray">Commercial property</span>
+        </div>
+        <div class="credit-desc">The Inflation Reduction Act dramatically expanded commercial energy credits for solar, HVAC, insulation, and EVs. Applies to clients in owned or leased commercial space — regardless of industry.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVENUE MODEL -->
+<section class="section-sm">
+  <div class="container">
+    <div class="revenue-card">
+      <div>
+        <span class="eyebrow">Revenue model</span>
+        <h2 class="display">Your firm earns revenue<br>without adding <em>headcount.</em></h2>
+        <p>Greptiles shares recovered credit value with your firm. You introduce the service, we handle all the work, and you earn a revenue share on every successful recovery — at no cost to your client relationship.</p>
+        <ul class="feature-list">
+          <li>
+            <span class="check-mark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Revenue share deposited automatically on successful recovery
+          </li>
+          <li>
+            <span class="check-mark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            No additional staff, research, or filing work required from your team
+          </li>
+          <li>
+            <span class="check-mark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Positions your firm as proactively identifying savings for clients
+          </li>
+          <li>
+            <span class="check-mark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            No revenue share if the client recovers nothing — fully aligned
+          </li>
+        </ul>
+      </div>
+      <div class="revenue-example">
+        <div class="rev-header">Example — single client recovery</div>
+        <div class="rev-line">
+          <span class="rev-label">Client credit recovery</span>
+          <span class="rev-val pos">$210,000</span>
+        </div>
+        <div class="rev-line">
+          <span class="rev-label">Greptiles platform fee (5%)</span>
+          <span class="rev-val neg">–$10,500</span>
+        </div>
+        <div class="rev-line">
+          <span class="rev-label">Firm partner share (5%)</span>
+          <span class="rev-val pos">+$10,500</span>
+        </div>
+        <div class="rev-line">
+          <span class="rev-label">Client keeps</span>
+          <span class="rev-val">$189,000</span>
+        </div>
+        <div class="rev-total">
+          <span class="rev-total-label">Revenue to your firm</span>
+          <span class="rev-total-val">$10,500</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLIANCE -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Compliance</span>
+      <h2 class="display" style="font-size:clamp(30px,3.5vw,46px);">Built for audit<br><em>readiness.</em></h2>
+      <p>Every credit claim Greptiles prepares meets IRS documentation standards. Your firm's reputation is protected at every step.</p>
+    </div>
+    <div class="compliance-grid">
+      <div class="comp-card">
+        <div class="comp-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3>CPA-reviewed calculations</h3>
+        <p>Every credit estimate and final claim is reviewed by licensed CPAs before documentation is produced. No algorithmic filings without human sign-off.</p>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </div>
+        <h3>IRS documentation packages</h3>
+        <p>Complete supporting documentation — wage calculations, activity logs, contemporaneous records — generated and stored for every claim, covering any IRS inquiry.</p>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"/></svg>
+        </div>
+        <h3>Federal guideline compliance</h3>
+        <p>Credit eligibility determinations reference the four-part test for R&D, IRS Notice 2021-20 for ERC, and all applicable Treasury guidance. Updated automatically as rules change.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="section-sm">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Results</span>
+      <h2 class="display" style="font-size:clamp(30px,3.5vw,46px);">Accounting firms using<br>Greptiles today.</h2>
+    </div>
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="case-stars">
+          <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+        </div>
+        <div class="case-recovery">$4.1M</div>
+        <div class="case-quote">"We ran the portfolio scan on a Friday afternoon — by Monday we had a ranked list of 28 eligible clients and $4.1M in identified credits. Our team had spent years never surfacing this."</div>
+        <div class="case-author">
+          <div class="case-avatar">DM</div>
+          <div>
+            <div class="case-name">David M., Managing Partner</div>
+            <div class="case-firm">Denver accounting firm &nbsp;·&nbsp; 120 clients</div>
+          </div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-stars">
+          <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+        </div>
+        <div class="case-recovery">$2.7M</div>
+        <div class="case-quote">"We added Greptiles as a tax credit advisory service for existing clients. In the first quarter we recovered $2.7M across 19 clients and generated $135K in firm revenue with no new hires."</div>
+        <div class="case-author">
+          <div class="case-avatar">SL</div>
+          <div>
+            <div class="case-name">Sandra L., Tax Director</div>
+            <div class="case-firm">Chicago CPA practice &nbsp;·&nbsp; 85 clients</div>
+          </div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-stars">
+          <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+        </div>
+        <div class="case-recovery">$6.2M</div>
+        <div class="case-quote">"The documentation quality is what I didn't expect. Every claim comes with a full audit-ready package. We've presented these to IRS examiners without a single issue across 200+ claims."</div>
+        <div class="case-author">
+          <div class="case-avatar">RT</div>
+          <div>
+            <div class="case-name">Rachel T., Senior CPA</div>
+            <div class="case-firm">Seattle regional firm &nbsp;·&nbsp; 210 clients</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATIONS -->
+<div class="integrations-bar">
+  <div class="container">
+    <div class="trust-label" style="margin-bottom:24px;">Works with your existing accounting stack</div>
+    <div class="integration-logos">
+      <span class="int-logo">QuickBooks</span>
+      <span class="int-logo">Gusto</span>
+      <span class="int-logo">Rippling</span>
+      <span class="int-logo">ADP</span>
+      <span class="int-logo">Xero</span>
+      <span class="int-logo">Stripe</span>
     </div>
   </div>
 </div>
-
-<!-- ACTIVE CREDITS -->
-<section class="credits-section">
-  <div class="section-eyebrow">What we recover</div>
-  <h2 class="section-title" style="margin-bottom:36px;">Credits hiding in plain sight<br>across every industry</h2>
-  <div class="credits-grid">
-    <div class="c-card">
-      <div class="c-card-top"><div class="c-credit">ERC Refund</div><div class="c-amount">Up to $26K</div></div>
-      <div class="c-meta"><span class="c-tag c-tag-green">Direct cash refund</span><span class="c-tag c-tag-gray">Per employee</span></div>
-      <div class="c-desc">Had W-2 employees in 2020–2021 and experienced any revenue decline or operational disruption? The IRS owes you a check. Billions still unclaimed.</div>
-    </div>
-    <div class="c-card">
-      <div class="c-card-top"><div class="c-credit">R&D Tax Credit</div><div class="c-amount">$30K–$80K</div></div>
-      <div class="c-meta"><span class="c-tag c-tag-blue">Annual</span><span class="c-tag c-tag-gray">All industries</span></div>
-      <div class="c-desc">If you build, improve, or customize anything — software, products, processes — you likely qualify. The IRS definition is far broader than most realize.</div>
-    </div>
-    <div class="c-card">
-      <div class="c-card-top"><div class="c-credit">State R&D Credits</div><div class="c-amount">$5K–$20K</div></div>
-      <div class="c-meta"><span class="c-tag c-tag-green">Stackable</span><span class="c-tag c-tag-gray">Annual</span></div>
-      <div class="c-desc">35+ states offer their own R&D credits on top of the federal credit. Most businesses claim one or the other — we file both simultaneously.</div>
-    </div>
-    <div class="c-card">
-      <div class="c-card-top"><div class="c-credit">Work Opportunity</div><div class="c-amount">Up to $9,600</div></div>
-      <div class="c-meta"><span class="c-tag c-tag-green">Per qualifying hire</span><span class="c-tag c-tag-gray">Retroactive</span></div>
-      <div class="c-desc">WOTC credits for hiring veterans, formerly incarcerated individuals, long-term unemployed, and other target groups. Most employers miss this entirely.</div>
-    </div>
-    <div class="c-card">
-      <div class="c-card-top"><div class="c-credit">Startup Payroll Offset</div><div class="c-amount">Up to $250K/yr</div></div>
-      <div class="c-meta"><span class="c-tag c-tag-blue">Pre-revenue eligible</span><span class="c-tag c-tag-gray">5 years</span></div>
-      <div class="c-desc">Startups under 5 years old with under $5M revenue can use R&D credits to offset payroll taxes — even before turning a profit. Almost universally unclaimed.</div>
-    </div>
-    <div class="c-card">
-      <div class="c-card-top"><div class="c-credit">Energy Credits</div><div class="c-amount">Up to $50K</div></div>
-      <div class="c-meta"><span class="c-tag c-tag-green">IRA expanded</span><span class="c-tag c-tag-gray">One-time + annual</span></div>
-      <div class="c-desc">The Inflation Reduction Act dramatically expanded commercial energy credits for solar, HVAC, insulation, and EVs. Applies to owned or leased commercial property.</div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="testimonials-section">
-  <div class="section-eyebrow">From our clients</div>
-  <h2 class="section-title" style="margin-bottom:36px;">Real businesses,<br>real recoveries</h2>
-  <div class="testimonials-grid">
-    <div class="testimonial">
-      <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-      <div class="testimonial-amount">$247,000</div>
-      <div class="testimonial-quote">"We had no idea we qualified for R&D credits. Our accountant never mentioned it. Greptiles found $247K across ERC and R&D credits — took three weeks total."</div>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar">MK</div>
-        <div><div class="testimonial-name">Marcus K.</div><div class="testimonial-biz">SaaS startup, 12 employees · Austin, TX</div></div>
-      </div>
-    </div>
-    <div class="testimonial">
-      <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-      <div class="testimonial-amount">$184,500</div>
-      <div class="testimonial-quote">"I thought R&D credits were only for big pharma or Silicon Valley. We're a 6-person engineering firm. The quiz took 4 minutes and we recovered $184K."</div>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar">JL</div>
-        <div><div class="testimonial-name">Julia L.</div><div class="testimonial-biz">Engineering consultancy · Denver, CO</div></div>
-      </div>
-    </div>
-    <div class="testimonial">
-      <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-      <div class="testimonial-amount">$312,000</div>
-      <div class="testimonial-quote">"Best ROI decision I made this year. We found $312K sitting in unclaimed credits. The team handled everything — I signed two documents total."</div>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar">RB</div>
-        <div><div class="testimonial-name">Ryan B.</div><div class="testimonial-biz">E-commerce brand, 22 employees · Seattle, WA</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== AI QUIZ ==================== -->
-<section class="quiz-section" id="quiz">
-  <div class="section-eyebrow">Your eligibility check</div>
-  <h2 class="section-title" style="margin-bottom:32px;">Find out what you're owed<br>in 3 minutes</h2>
-
-  <div class="quiz-wrapper">
-    <!-- Header -->
-    <div class="quiz-header">
-      <div class="quiz-header-left">
-        <h3>Business Tax Credit Finder</h3>
-        <p>Powered by AI · No obligation · Free estimate</p>
-      </div>
-      <div class="quiz-progress-wrap">
-        <span class="quiz-step-count" id="stepCount">Step 1 of 7</span>
-        <div class="quiz-progress-bar">
-          <div class="quiz-progress-fill" id="progressFill" style="width:14%"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Quiz Body -->
-    <div class="quiz-body" id="quizBody">
-
-      <!-- Q1: Industry -->
-      <div class="quiz-question active" id="q1">
-        <div class="q-label">Question 1 of 7</div>
-        <div class="q-text">What best describes your business?</div>
-        <div class="q-choices grid-2">
-          <div class="q-choice" data-q="1" data-val="software" onclick="selectChoice(this)">
-            <div class="q-choice-icon">💻</div>Software / SaaS / Tech
-          </div>
-          <div class="q-choice" data-q="1" data-val="manufacturing" onclick="selectChoice(this)">
-            <div class="q-choice-icon">🏭</div>Manufacturing / Hardware
-          </div>
-          <div class="q-choice" data-q="1" data-val="ecommerce" onclick="selectChoice(this)">
-            <div class="q-choice-icon">🛍️</div>E-commerce / Retail
-          </div>
-          <div class="q-choice" data-q="1" data-val="services" onclick="selectChoice(this)">
-            <div class="q-choice-icon">🔧</div>Professional Services
-          </div>
-          <div class="q-choice" data-q="1" data-val="biotech" onclick="selectChoice(this)">
-            <div class="q-choice-icon">🧬</div>Biotech / Life Sciences
-          </div>
-          <div class="q-choice" data-q="1" data-val="other" onclick="selectChoice(this)">
-            <div class="q-choice-icon">📋</div>Other
-          </div>
-        </div>
-      </div>
-
-      <!-- Q2: Employees -->
-      <div class="quiz-question" id="q2">
-        <div class="q-label">Question 2 of 7</div>
-        <div class="q-text">How many W-2 employees did you have in 2020–2021?</div>
-        <div class="q-sub">This determines your ERC eligibility and amount.</div>
-        <div class="q-choices grid-2">
-          <div class="q-choice" data-q="2" data-val="0" onclick="selectChoice(this)">
-            <div class="q-choice-icon">👤</div>0 (just founders)
-          </div>
-          <div class="q-choice" data-q="2" data-val="1-5" onclick="selectChoice(this)">
-            <div class="q-choice-icon">👥</div>1–5 employees
-          </div>
-          <div class="q-choice" data-q="2" data-val="6-20" onclick="selectChoice(this)">
-            <div class="q-choice-icon">🏢</div>6–20 employees
-          </div>
-          <div class="q-choice" data-q="2" data-val="21-100" onclick="selectChoice(this)">
-            <div class="q-choice-icon">🏬</div>21–100 employees
-          </div>
-          <div class="q-choice" data-q="2" data-val="100+" onclick="selectChoice(this)">
-            <div class="q-choice-icon">🏗️</div>100+ employees
-          </div>
-        </div>
-      </div>
-
-      <!-- Q3: Business age -->
-      <div class="quiz-question" id="q3">
-        <div class="q-label">Question 3 of 7</div>
-        <div class="q-text">When did your business start?</div>
-        <div class="q-sub">Businesses under 5 years old may qualify for special payroll tax offsets.</div>
-        <div class="q-choices grid-2">
-          <div class="q-choice" data-q="3" data-val="2022+" onclick="selectChoice(this)">
-            <div class="q-choice-icon">🌱</div>2022 or later
-          </div>
-          <div class="q-choice" data-q="3" data-val="2019-2021" onclick="selectChoice(this)">
-            <div class="q-choice-icon">📅</div>2019–2021
-          </div>
-          <div class="q-choice" data-q="3" data-val="2015-2018" onclick="selectChoice(this)">
-            <div class="q-choice-icon">📆</div>2015–2018
-          </div>
-          <div class="q-choice" data-q="3" data-val="pre-2015" onclick="selectChoice(this)">
-            <div class="q-choice-icon">🕰️</div>Before 2015
-          </div>
-        </div>
-      </div>
-
-      <!-- Q4: R&D activities -->
-      <div class="quiz-question" id="q4">
-        <div class="q-label">Question 4 of 7</div>
-        <div class="q-text">Does your team do any of these? <span style="font-size:13px;color:var(--muted);font-family:'DM Sans',sans-serif;">(select all that apply)</span></div>
-        <div class="q-multi-note">Select all that apply</div>
-        <div class="q-choices grid-1" id="q4choices">
-          <div class="q-choice" data-q="4" data-val="develop_software" onclick="multiSelect(this)">
-            <div class="q-choice-icon">⚙️</div>Develop or improve software / apps / platforms
-          </div>
-          <div class="q-choice" data-q="4" data-val="design_products" onclick="multiSelect(this)">
-            <div class="q-choice-icon">🔬</div>Design, test, or prototype physical products
-          </div>
-          <div class="q-choice" data-q="4" data-val="improve_processes" onclick="multiSelect(this)">
-            <div class="q-choice-icon">📊</div>Improve manufacturing or business processes
-          </div>
-          <div class="q-choice" data-q="4" data-val="custom_formulas" onclick="multiSelect(this)">
-            <div class="q-choice-icon">🧪</div>Create custom formulas, materials, or compounds
-          </div>
-          <div class="q-choice" data-q="4" data-val="none" onclick="selectChoice(this)">
-            <div class="q-choice-icon">❌</div>None of the above
-          </div>
-        </div>
-      </div>
-
-      <!-- Q5: Revenue impact 2020-2021 -->
-      <div class="quiz-question" id="q5">
-        <div class="q-label">Question 5 of 7</div>
-        <div class="q-text">Did your business experience any disruptions in 2020–2021?</div>
-        <div class="q-sub">Government orders, supply chain issues, reduced hours, or revenue declines all count for ERC.</div>
-        <div class="q-choices grid-1">
-          <div class="q-choice" data-q="5" data-val="shutdown" onclick="selectChoice(this)">
-            <div class="q-choice-icon">🚫</div>Fully or partially shut down by government order
-          </div>
-          <div class="q-choice" data-q="5" data-val="revenue_decline" onclick="selectChoice(this)">
-            <div class="q-choice-icon">📉</div>Revenue declined vs. 2019 (even partially)
-          </div>
-          <div class="q-choice" data-q="5" data-val="both" onclick="selectChoice(this)">
-            <div class="q-choice-icon">⚡</div>Both of the above
-          </div>
-          <div class="q-choice" data-q="5" data-val="none" onclick="selectChoice(this)">
-            <div class="q-choice-icon">✅</div>No significant disruptions
-          </div>
-        </div>
-      </div>
-
-      <!-- Q6: State -->
-      <div class="quiz-question" id="q6">
-        <div class="q-label">Question 6 of 7</div>
-        <div class="q-text">What state is your business headquartered in?</div>
-        <div class="q-sub">35+ states offer additional R&D credits on top of federal credits.</div>
-        <div class="q-choices grid-2">
-          <div class="q-choice" data-q="6" data-val="CA" onclick="selectChoice(this)"><div class="q-choice-icon">🌴</div>California</div>
-          <div class="q-choice" data-q="6" data-val="TX" onclick="selectChoice(this)"><div class="q-choice-icon">⭐</div>Texas</div>
-          <div class="q-choice" data-q="6" data-val="NY" onclick="selectChoice(this)"><div class="q-choice-icon">🗽</div>New York</div>
-          <div class="q-choice" data-q="6" data-val="FL" onclick="selectChoice(this)"><div class="q-choice-icon">🌊</div>Florida</div>
-          <div class="q-choice" data-q="6" data-val="WA" onclick="selectChoice(this)"><div class="q-choice-icon">🌲</div>Washington</div>
-          <div class="q-choice" data-q="6" data-val="other" onclick="selectChoice(this)"><div class="q-choice-icon">📍</div>Other state</div>
-        </div>
-      </div>
-
-      <!-- Q7: Annual payroll -->
-      <div class="quiz-question" id="q7">
-        <div class="q-label">Question 7 of 7</div>
-        <div class="q-text">What's your approximate annual payroll?</div>
-        <div class="q-sub">Used to estimate R&D credit size — typically 6–8% of qualifying payroll.</div>
-        <div class="q-choices grid-2">
-          <div class="q-choice" data-q="7" data-val="under100k" onclick="selectChoice(this)"><div class="q-choice-icon">💵</div>Under $100K</div>
-          <div class="q-choice" data-q="7" data-val="100-500k" onclick="selectChoice(this)"><div class="q-choice-icon">💰</div>$100K – $500K</div>
-          <div class="q-choice" data-q="7" data-val="500k-2m" onclick="selectChoice(this)"><div class="q-choice-icon">💎</div>$500K – $2M</div>
-          <div class="q-choice" data-q="7" data-val="2m+" onclick="selectChoice(this)"><div class="q-choice-icon">🏆</div>$2M+</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Loading Screen -->
-    <div class="quiz-loading" id="quizLoading">
-      <div class="loading-spinner"></div>
-      <div class="loading-title">Analyzing your eligibility…</div>
-      <div class="loading-sub">Our AI is cross-referencing your answers against IRS credit criteria and state incentive databases.</div>
-      <div class="loading-steps-list" id="loadingSteps">
-        <div class="loading-step-item" id="ls1"><div class="loading-step-spinner"></div>Checking ERC eligibility</div>
-        <div class="loading-step-item" id="ls2"><div class="loading-step-icon">⏳</div>Calculating R&D credit estimate</div>
-        <div class="loading-step-item" id="ls3"><div class="loading-step-icon">⏳</div>Checking state-specific credits</div>
-        <div class="loading-step-item" id="ls4"><div class="loading-step-icon">⏳</div>Identifying additional opportunities</div>
-      </div>
-    </div>
-
-    <!-- Results Screen -->
-    <div class="quiz-results" id="quizResults">
-      <div class="results-top">
-        <div>
-          <div class="results-headline">You likely qualify for<br><em id="resultsTotal">—</em></div>
-          <div class="results-sub">Estimated across all identified credits. Final amounts determined after document review.</div>
-        </div>
-        <div class="results-total-box">
-          <div class="results-total-label">Total Identified</div>
-          <div class="results-total-amount" id="resultsTotalBox">—</div>
-          <div class="results-total-note">Preliminary estimate</div>
-        </div>
-      </div>
-
-      <div class="ai-note">
-        <div class="ai-note-icon">🤖</div>
-        <div class="ai-note-text" id="aiNote">Based on your answers, here's what our AI found…</div>
-      </div>
-
-      <div class="results-credits" id="resultsCreditsList"></div>
-
-      <div class="results-cta-row">
-        <button class="results-cta-btn" onclick="scrollToPaywall()">
-          Unlock My Full Report — $299
-        </button>
-        <div class="results-disclaimer">
-          $299/month covers full CPA analysis, exact calculations, and complete filing. We take just 5% only on successful recovery. If we find nothing, you owe nothing more.
-        </div>
-      </div>
-    </div>
-
-    <!-- Footer nav -->
-    <div class="quiz-footer" id="quizFooter">
-      <button class="quiz-back-btn" id="backBtn" onclick="prevQuestion()" disabled>← Back</button>
-      <button class="quiz-next-btn" id="nextBtn" onclick="nextQuestion()" disabled>
-        Continue <span></span>
-      </button>
-    </div>
-  </div>
-</section>
 
 <!-- PRICING -->
-<section class="pricing-section" id="paywall">
-  <div class="section-eyebrow">Transparent pricing</div>
-  <h2 class="section-title" style="margin-bottom:40px;">Simple monthly subscription.<br>Tiny cut of what we recover.</h2>
-  <div class="pricing-card">
-    <div class="pricing-left">
-      <h2>Simple, <em>aligned</em> pricing</h2>
-      <p>$299/month covers your full eligibility analysis, ongoing document processing, and dedicated CPA review. We take just 5% of what we actually recover — the lowest success fee in the industry.</p>
-      <div class="price-tag">
-        <span class="price-currency">$</span>
-        <span class="price-num">299</span>
-      </div>
-      <div class="price-label">per month &nbsp;+&nbsp; 5% of recovered amount</div>
-      <div class="pricing-perks">
-        <div class="pricing-perk"><div class="pricing-perk-check">✓</div><span>Full eligibility analysis across all available credits</span></div>
-        <div class="pricing-perk"><div class="pricing-perk-check">✓</div><span>CPA and tax attorney review of your specific situation</span></div>
-        <div class="pricing-perk"><div class="pricing-perk-check">✓</div><span>Complete filing and IRS submission handled for you</span></div>
-        <div class="pricing-perk"><div class="pricing-perk-check">✓</div><span>IRS-audit-ready documentation prepared and stored</span></div>
-        <div class="pricing-perk"><div class="pricing-perk-check">✓</div><span>Annual R&D credit filing included every year after</span></div>
-      </div>
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Pricing</span>
+      <h2 class="display" style="font-size:clamp(30px,3.5vw,46px);">Simple, aligned<br><em>partner pricing.</em></h2>
+      <p>One monthly subscription covers your entire client base. We share in the recovery — so our incentives are fully aligned with yours.</p>
     </div>
-    <div class="pricing-right">
-      <div class="pricing-right-title">Your ROI at a glance</div>
-      <div class="pricing-right-sub">Based on a typical 10-person business with qualifying R&D activity and 2020–2021 employees</div>
-      <div class="roi-line"><span class="roi-label">ERC Refund (one-time)</span><span class="roi-value green">$208,000</span></div>
-      <div class="roi-line"><span class="roi-label">R&D Credit (annual)</span><span class="roi-value green">$44,000/yr</span></div>
-      <div class="roi-line"><span class="roi-label">State R&D Credit (annual)</span><span class="roi-value green">$14,000/yr</span></div>
-      <div class="roi-line"><span class="roi-label">Monthly fee (12 months)</span><span class="roi-value">–$3,588</span></div>
-      <div class="roi-line"><span class="roi-label">Our 5% success fee</span><span class="roi-value">–$10,400</span></div>
-      <div class="roi-total">
-        <span class="roi-total-label">You keep</span>
-        <span class="roi-total-value">$252,012</span>
+    <div class="pricing-grid">
+      <div class="pricing-card featured">
+        <div class="pricing-tag">Most popular</div>
+        <div class="pricing-name">Partner Plan</div>
+        <div class="pricing-desc">Full access to portfolio scanning, documentation generation, and CPA filing support — across unlimited clients.</div>
+        <div class="price-wrap">
+          <span class="price-curr">$</span>
+          <span class="price-num">499</span>
+        </div>
+        <div class="price-period">per month &nbsp;+&nbsp; 5% of recovered amount (firm earns 5% back)</div>
+        <ul class="pricing-perks">
+          <li>
+            <span class="check-mark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Unlimited client portfolio scans
+          </li>
+          <li>
+            <span class="check-mark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Full eligibility engine — all credit types
+          </li>
+          <li>
+            <span class="check-mark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            IRS-ready filing documentation for every claim
+          </li>
+          <li>
+            <span class="check-mark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Annual re-scan as credits accumulate
+          </li>
+          <li>
+            <span class="check-mark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Revenue share on all recovered credits
+          </li>
+          <li>
+            <span class="check-mark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Dedicated CPA partner success manager
+          </li>
+        </ul>
+        <a href="#" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">Start partner onboarding</a>
       </div>
-      <div style="margin-top:12px;font-size:11px;color:var(--muted);line-height:1.6;">First-year estimate. R&D credits continue annually for the life of your business.</div>
+      <div class="pricing-card">
+        <div class="pricing-name">Enterprise</div>
+        <div class="pricing-desc">Custom pricing for regional and national firms with high client volumes, white-label reporting requirements, or custom integrations.</div>
+        <div class="price-wrap" style="margin-top: 24px;">
+          <span class="price-num" style="font-size:40px;">Custom</span>
+        </div>
+        <div class="price-period">Volume-based pricing &nbsp;·&nbsp; Negotiated revenue share</div>
+        <ul class="pricing-perks">
+          <li>
+            <span class="check-mark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Everything in Partner Plan
+          </li>
+          <li>
+            <span class="check-mark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            White-label client reports under your firm brand
+          </li>
+          <li>
+            <span class="check-mark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Custom API integration with practice management systems
+          </li>
+          <li>
+            <span class="check-mark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            Dedicated onboarding and training for your team
+          </li>
+          <li>
+            <span class="check-mark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            SLA guarantees and priority support
+          </li>
+        </ul>
+        <a href="#" class="btn btn-ghost btn-lg" style="width:100%;justify-content:center;">Book a partner demo</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FINAL CTA -->
-<div class="cta-section">
-  <h2>Stop leaving your<br><em style="color:var(--green);font-style:normal;">money with the IRS</em></h2>
-  <p>The average qualifying business recovers $180K–$280K. Your 3-minute quiz is free — find out what you're owed.</p>
-  <a href="#quiz" class="btn-primary" style="font-size:17px;padding:20px 56px;position:relative;z-index:1;">Check My Eligibility</a>
-  <div style="margin-top:16px;font-size:12px;color:var(--muted);position:relative;z-index:1;">$299/month &nbsp;·&nbsp; 5% only on recovery &nbsp;·&nbsp; Cancel anytime</div>
-</div>
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-glow"></div>
+  <div class="container">
+    <div class="cta-box">
+      <span class="eyebrow" style="margin-bottom:20px;">Get started</span>
+      <h2 class="display cta-box .display">Run a free scan<br>of your <em>client base.</em></h2>
+      <p>Upload your client list and see how much in unclaimed tax credits is sitting in your portfolio. Takes under five minutes. No commitment required.</p>
+      <div class="cta-actions">
+        <a href="#" class="btn btn-primary btn-lg">Scan client portfolio</a>
+        <a href="#" class="btn btn-ghost btn-lg">Book partner demo</a>
+      </div>
+      <p class="cta-note">$499/month &nbsp;·&nbsp; 5% only on successful recovery &nbsp;·&nbsp; Cancel anytime</p>
+    </div>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <a href="#" class="logo">
-        
-        <span class="logo-wordmark">Grep<span>tiles</span></span>
-        <span class="logo-tag">Tax</span>
-      </a>
-      <p>We help small and medium businesses recover unclaimed IRS tax credits — R&D, ERC, state incentives, and more. You build; we file.</p>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <div class="logo-mark">
+            <svg viewBox="0 0 16 16"><path d="M3 8a5 5 0 1010 0A5 5 0 003 8zm5-3v3l2 2"/></svg>
+          </div>
+          <span class="logo-word">Greptiles</span>
+          <span class="logo-tag">Tax</span>
+        </a>
+        <p>Tax credit infrastructure for accounting firms. We identify, calculate, and document federal and state credits across your entire client base.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Credits</h4>
+        <a href="#">R&D Tax Credit</a>
+        <a href="#">ERC Refund</a>
+        <a href="#">State Credits</a>
+        <a href="#">Work Opportunity</a>
+        <a href="#">Energy Credits</a>
+        <a href="#">Startup Payroll Offset</a>
+      </div>
+      <div class="footer-col">
+        <h4>For Firms</h4>
+        <a href="#">How it works</a>
+        <a href="#">Portfolio scan</a>
+        <a href="#">Partner program</a>
+        <a href="#">Integrations</a>
+        <a href="#">Documentation</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Pricing</a>
+        <a href="#">Blog</a>
+        <a href="#">Contact</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
     </div>
-    <div class="footer-col">
-      <h4>Credits</h4>
-      <a href="#">R&D Tax Credit</a>
-      <a href="#">ERC Refund</a>
-      <a href="#">State Credits</a>
-      <a href="#">Work Opportunity</a>
-      <a href="#">Energy Credits</a>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Greptiles Tax. All rights reserved.</div>
+      <div class="footer-legal">Estimates are preliminary and based on imported client data. Final credit amounts determined by licensed CPAs after document review. Greptiles Tax is not a law firm. Past recovery amounts are illustrative and not guaranteed.</div>
     </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <a href="#">About</a>
-      <a href="#">How It Works</a>
-      <a href="#">Pricing</a>
-      <a href="#">Blog</a>
-      <a href="#">Contact</a>
-    </div>
-    <div class="footer-col">
-      <h4>Legal</h4>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-      <a href="#">Disclaimer</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="footer-copy">© 2026 Greptiles Tax. All rights reserved.</div>
-    <div class="footer-legal">Estimates are preliminary and based on self-reported information. Final credit amounts determined by licensed CPAs after document review. Greptiles Tax is not a law firm. Past recovery amounts are illustrative and not guaranteed.</div>
   </div>
 </footer>
 
 <script>
-  // ========= QUIZ LOGIC =========
-  const TOTAL_QUESTIONS = 7;
-  let currentQ = 1;
-  let answers = {};
-  let multiAnswers = { 4: [] };
-
-  function selectChoice(el) {
-    const q = el.dataset.q;
-    // Remove selected from siblings
-    document.querySelectorAll(`[data-q="${q}"]`).forEach(c => c.classList.remove('selected'));
-    el.classList.add('selected');
-    answers[q] = el.dataset.val;
-    document.getElementById('nextBtn').disabled = false;
-  }
-
-  function multiSelect(el) {
-    const q = el.dataset.q;
-    const val = el.dataset.val;
-
-    // If "none" selected, deselect all others
-    if (val === 'none') {
-      document.querySelectorAll(`[data-q="${q}"]`).forEach(c => c.classList.remove('selected'));
-      el.classList.add('selected');
-      multiAnswers[q] = ['none'];
-    } else {
-      // Deselect "none"
-      document.querySelectorAll(`[data-q="${q}"][data-val="none"]`).forEach(c => c.classList.remove('selected'));
-      multiAnswers[q] = multiAnswers[q].filter(v => v !== 'none');
-
-      if (el.classList.contains('selected')) {
-        el.classList.remove('selected');
-        multiAnswers[q] = multiAnswers[q].filter(v => v !== val);
-      } else {
-        el.classList.add('selected');
-        multiAnswers[q].push(val);
-      }
-    }
-
-    answers[q] = multiAnswers[q].join(',');
-    document.getElementById('nextBtn').disabled = multiAnswers[q].length === 0;
-  }
-
-  function updateProgress() {
-    const pct = (currentQ / TOTAL_QUESTIONS) * 100;
-    document.getElementById('progressFill').style.width = pct + '%';
-    document.getElementById('stepCount').textContent = `Step ${currentQ} of ${TOTAL_QUESTIONS}`;
-    document.getElementById('backBtn').disabled = currentQ === 1;
-  }
-
-  function nextQuestion() {
-    if (!answers[currentQ] && !(currentQ == 4 && multiAnswers[4].length > 0)) return;
-
-    if (currentQ < TOTAL_QUESTIONS) {
-      document.getElementById(`q${currentQ}`).classList.remove('active');
-      currentQ++;
-      document.getElementById(`q${currentQ}`).classList.add('active');
-      document.getElementById('nextBtn').disabled = !answers[currentQ];
-      if (currentQ == 4) document.getElementById('nextBtn').disabled = multiAnswers[4].length === 0;
-      updateProgress();
-
-      // On last question, change button label
-      if (currentQ === TOTAL_QUESTIONS) {
-        document.getElementById('nextBtn').innerHTML = 'Calculate My Credits';
-      }
-    } else {
-      // Submit
-      submitQuiz();
-    }
-  }
-
-  function prevQuestion() {
-    if (currentQ > 1) {
-      document.getElementById(`q${currentQ}`).classList.remove('active');
-      currentQ--;
-      document.getElementById(`q${currentQ}`).classList.add('active');
-      document.getElementById('nextBtn').innerHTML = currentQ < TOTAL_QUESTIONS ? 'Continue <span></span>' : 'Calculate My Credits';
-      document.getElementById('nextBtn').disabled = false;
-      updateProgress();
-    }
-  }
-
-  function submitQuiz() {
-    // Hide quiz body and footer
-    document.getElementById('quizBody').style.display = 'none';
-    document.getElementById('quizFooter').style.display = 'none';
-    document.getElementById('quizLoading').classList.add('active');
-
-    // Animate loading steps
-    const steps = ['ls1','ls2','ls3','ls4'];
-    const labels = [
-      'ERC eligibility ✓',
-      'R&D credit estimate ✓',
-      'State-specific credits ✓',
-      'Additional opportunities ✓'
-    ];
-
-    let i = 0;
-    function advanceStep() {
-      if (i > 0) {
-        const prev = document.getElementById(steps[i-1]);
-        prev.classList.add('done');
-        prev.innerHTML = `<div class="loading-step-icon">✓</div>${labels[i-1]}`;
-      }
-      if (i < steps.length) {
-        const cur = document.getElementById(steps[i]);
-        cur.innerHTML = `<div class="loading-step-spinner"></div>${cur.textContent}`;
-        i++;
-        setTimeout(advanceStep, 900);
-      } else {
-        // Mark last done
-        const last = document.getElementById(steps[steps.length-1]);
-        last.classList.add('done');
-        last.innerHTML = `<div class="loading-step-icon">✓</div>${labels[labels.length-1]}`;
-        setTimeout(showResults, 600);
-      }
-    }
-    advanceStep();
-  }
-
-  function computeResults() {
-    const industry = answers[1] || 'other';
-    const employees = answers[2] || '6-20';
-    const age = answers[3] || '2015-2018';
-    const rdActivities = answers[4] || '';
-    const disruption = answers[5] || 'none';
-    const state = answers[6] || 'other';
-    const payroll = answers[7] || '100-500k';
-
-    const hasRD = !rdActivities.includes('none') && rdActivities.length > 0;
-    const hasERC = disruption !== 'none' && employees !== '0';
-    const isStartup = age === '2022+' || age === '2019-2021';
-
-    // ERC calc
-    let ercAmount = 0, ercEmployeeCount = 0;
-    const empMap = { '1-5': 3, '6-20': 11, '21-100': 45, '100+': 80 };
-    ercEmployeeCount = empMap[employees] || 0;
-    if (hasERC && ercEmployeeCount > 0) {
-      ercAmount = ercEmployeeCount * 18500; // avg per employee
-    }
-
-    // R&D calc
-    let rdFederal = 0, rdState = 0;
-    if (hasRD) {
-      const payrollMid = { 'under100k': 60000, '100-500k': 280000, '500k-2m': 1100000, '2m+': 3000000 };
-      const mid = payrollMid[payroll] || 200000;
-      rdFederal = Math.round(mid * 0.065);
-      const stateRates = { 'CA': 0.24, 'NY': 0.09, 'WA': 0, 'TX': 0, 'FL': 0, 'other': 0.06 };
-      rdState = Math.round(rdFederal * (stateRates[state] || 0.06));
-    }
-
-    // Startup payroll offset
-    let payrollOffset = 0;
-    if (isStartup && hasRD) {
-      payrollOffset = Math.min(rdFederal, 250000);
-    }
-
-    // WOTC (rough)
-    let wotc = 0;
-    if (employees !== '0') wotc = ercEmployeeCount > 0 ? Math.round(ercEmployeeCount * 1200) : 3600;
-
-    const total = ercAmount + rdFederal + rdState + payrollOffset + wotc;
-
-    const credits = [];
-    if (ercAmount > 0) credits.push({ icon: 'ERC', iconBg: 'rgba(76,175,63,0.1)', iconColor: '#4caf3f', name: 'Employee Retention Credit (ERC)', detail: `${ercEmployeeCount} employees × 2020–2021`, amount: fmt(ercAmount), badge: 'Cash Refund' });
-    if (rdFederal > 0) credits.push({ icon: 'R&D', iconBg: 'rgba(60,130,255,0.1)', iconColor: '#7aaaff', name: 'Federal R&D Tax Credit', detail: `Based on ${payroll} payroll · Annual`, amount: fmt(rdFederal) + '/yr', badge: 'Annual' });
-    if (rdState > 0) credits.push({ icon: state, iconBg: 'rgba(255,180,60,0.1)', iconColor: '#ffb84d', name: `State R&D Credit (${state})`, detail: `Stackable with federal · Annual`, amount: fmt(rdState) + '/yr', badge: 'Stackable' });
-    if (payrollOffset > 0) credits.push({ icon: '⚡', iconBg: 'rgba(180,60,255,0.1)', iconColor: '#c47aff', name: 'Startup Payroll Tax Offset', detail: 'Apply R&D credits against payroll taxes', amount: fmt(payrollOffset) + '/yr', badge: 'Startup' });
-    if (wotc > 0) credits.push({ icon: 'WO', iconBg: 'rgba(76,175,63,0.08)', iconColor: '#6dcf60', name: 'Work Opportunity Tax Credit', detail: 'Qualifying hires — estimated', amount: fmt(wotc), badge: 'Per Hire' });
-
-    return { total, credits, hasRD, hasERC, state };
-  }
-
-  function fmt(n) {
-    if (n >= 1000000) return '$' + (n/1000000).toFixed(1) + 'M';
-    if (n >= 1000) return '$' + Math.round(n/1000) + 'K';
-    return '$' + n;
-  }
-
-  function showResults() {
-    const { total, credits, hasRD, hasERC, state } = computeResults();
-
-    document.getElementById('quizLoading').classList.remove('active');
-    document.getElementById('quizResults').classList.add('active');
-
-    const totalFmt = fmt(total);
-    document.getElementById('resultsTotal').textContent = totalFmt;
-    document.getElementById('resultsTotalBox').textContent = totalFmt;
-
-    // AI note
-    const notes = [];
-    if (hasERC) notes.push('strong ERC eligibility based on your 2020–2021 disruptions');
-    if (hasRD) notes.push('qualifying R&D activity across your described work');
-    if (state === 'CA') notes.push('California\'s generous 24% state R&D credit stacked on top');
-    const noteText = notes.length > 0
-      ? `<strong>Our AI identified ${notes.join(', ')}.</strong> These estimates are conservative — final amounts are typically 10–20% higher after full document review.`
-      : `<strong>Based on your profile,</strong> we've identified preliminary credit opportunities. Our CPAs may find additional amounts after reviewing your full financials.`;
-    document.getElementById('aiNote').innerHTML = `Based on your answers: ${noteText}`;
-
-    // Credits list
-    const list = document.getElementById('resultsCreditsList');
-    list.innerHTML = credits.map(c => `
-      <div class="res-credit-row">
-        <div class="res-credit-icon" style="background:${c.iconBg};color:${c.iconColor}">${c.icon}</div>
-        <div class="res-credit-body">
-          <div class="res-credit-name">${c.name}<span class="res-credit-badge">${c.badge}</span></div>
-          <div class="res-credit-detail">${c.detail}</div>
-        </div>
-        <div class="res-credit-amount">${c.amount}</div>
-      </div>
-    `).join('');
-
-    // Update progress bar to 100%
-    document.getElementById('progressFill').style.width = '100%';
-    document.getElementById('stepCount').textContent = 'Analysis complete';
-  }
-
-  function scrollToPaywall() {
-    document.getElementById('paywall').scrollIntoView({ behavior: 'smooth' });
-  }
+function toggleTheme() {
+  const html = document.documentElement;
+  html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+}
 </script>
-
 </body>
 </html>
