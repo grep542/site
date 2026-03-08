@@ -204,6 +204,61 @@ html,body{height:100%;font-family:var(--sans);background:var(--paper);color:var(
   .steps-strip{grid-template-columns:1fr}
   .step-item{border-right:none!important;border-bottom:1px solid var(--border)}
 }
+/* ── TEMPLATE LAYOUT ── */
+.tmpl-layout{display:grid;grid-template-columns:320px 1fr;gap:20px;align-items:start}
+.tmpl-editor{display:flex;flex-direction:column;gap:16px}
+.tmpl-panel{background:#fff;border:1px solid var(--border);border-radius:3px;overflow:hidden}
+.tmpl-panel-hdr{padding:14px 20px;border-bottom:1px solid var(--border);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:#faf9f6}
+.tmpl-field{padding:16px 20px;border-bottom:1px solid #f0ede6}
+.tmpl-field:last-child{border-bottom:none}
+.tmpl-label{display:block;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.tmpl-input{width:100%;padding:9px 12px;border:1px solid var(--border);background:#fff;font-family:var(--sans);font-size:13px;color:var(--ink);border-radius:3px;outline:none;transition:border-color .2s}
+.tmpl-input:focus{border-color:var(--accent)}
+
+/* LOGO UPLOAD */
+.logo-upload-zone{border:2px dashed var(--border);border-radius:3px;padding:20px 16px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;min-height:76px;display:flex;align-items:center;justify-content:center}
+.logo-upload-zone:hover,.logo-upload-zone.drag-over{border-color:var(--accent);background:rgba(74,155,63,.02)}
+
+/* COLOR SWATCHES */
+.color-schemes{padding:16px 20px;display:flex;flex-direction:column;gap:8px}
+.color-swatch{display:flex;align-items:center;gap:8px;padding:9px 12px;border:1px solid var(--border);border-radius:3px;cursor:pointer;transition:all .15s;background:#fff}
+.color-swatch:hover{border-color:var(--accent);background:rgba(74,155,63,.03)}
+.color-swatch.active{border-color:var(--accent-dark);background:rgba(45,102,39,.06)}
+.color-swatch span{font-size:13px;color:var(--ink);font-weight:400;margin-left:4px}
+
+/* PREVIEW COL */
+.tmpl-preview-col{position:sticky;top:20px}
+.tmpl-preview-label{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.tmpl-preview-frame{border:1px solid var(--border);border-radius:4px;overflow:hidden;background:#fff;max-height:72vh;overflow-y:auto;box-shadow:0 4px 24px rgba(0,0,0,.06)}
+
+/* PREVIEW HEADER */
+.pv-header{padding:28px 32px 22px;border-bottom:1px solid var(--border)}
+.pv-logo-area{display:flex;align-items:center;gap:12px;margin-bottom:18px;min-height:28px}
+.pv-firm-name{font-family:var(--serif);font-size:16px;color:var(--ink);letter-spacing:-.01em}
+.pv-title{font-family:var(--serif);font-size:22px;letter-spacing:-.02em;color:var(--ink);margin-bottom:8px;line-height:1.2}
+.pv-subtitle{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:18px}
+.pv-progress-row{display:flex;align-items:center;gap:12px}
+.pv-progress-label{font-size:11px;color:var(--muted);white-space:nowrap;letter-spacing:.04em}
+.pv-progress-bar{flex:1;height:3px;background:var(--border);border-radius:2px;overflow:hidden}
+.pv-progress-fill{height:100%;border-radius:2px;background:var(--accent-dark);transition:background .4s}
+
+/* PREVIEW QUESTIONS */
+.pv-q-block{padding:18px 32px;border-bottom:1px solid #f0ede6}
+.pv-q-block:last-child{border-bottom:none}
+.pv-q-row{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
+.pv-q-num{width:24px;height:24px;min-width:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;color:#fff;margin-top:1px;transition:background .4s}
+.pv-q-text{font-size:13px;color:var(--ink);line-height:1.5}
+.pv-q-tag{font-size:11px;color:var(--muted);font-style:italic;margin-top:2px}
+.pv-q-opts{display:flex;flex-wrap:wrap;gap:7px;padding-left:36px}
+.pv-opt{padding:6px 14px;border:1px solid var(--border);border-radius:3px;font-size:12px;color:var(--ink);cursor:pointer;transition:all .15s;background:#fff;font-family:var(--sans);user-select:none}
+.pv-opt:hover{border-color:currentColor;opacity:.85}
+
+.pv-footer{padding:14px 32px;border-top:1px solid var(--border);background:#faf9f6;font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+@media(max-width:900px){
+  .tmpl-layout{grid-template-columns:1fr}
+  .tmpl-preview-col{position:static}
+}
 </style>
 </head>
 <body>
@@ -371,20 +426,128 @@ html,body{height:100%;font-family:var(--sans);background:var(--paper);color:var(
       <div class="section-hdr">
         <h3>Questionnaire Template</h3>
         <div style="display:flex;gap:10px">
-          <button class="btn-secondary" onclick="previewTemplate()">Preview</button>
           <button class="btn-primary" onclick="shareTemplate()">Share with Clients</button>
         </div>
       </div>
-      <div class="quiz-wrap">
-        <div class="quiz-hdr">
-          <h4>Tax Credit Eligibility Survey</h4>
-          <span style="font-size:12px;color:var(--muted)">12 questions · Multiple choice</span>
+
+      <!-- TWO-COL LAYOUT: EDITOR LEFT, PREVIEW RIGHT -->
+      <div class="tmpl-layout">
+
+        <!-- LEFT: BRANDING PANEL -->
+        <div class="tmpl-editor">
+          <div class="tmpl-panel">
+            <div class="tmpl-panel-hdr">Branding</div>
+
+            <!-- LOGO UPLOAD -->
+            <div class="tmpl-field">
+              <label class="tmpl-label">Firm Logo</label>
+              <div class="logo-upload-zone" id="logo-drop-zone" onclick="document.getElementById('logo-file-input').click()" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')" ondrop="handleLogoDrop(event)">
+                <div id="logo-upload-placeholder">
+                  <svg style="width:28px;height:28px;margin:0 auto 8px;display:block;opacity:.3" viewBox="0 0 28 28" fill="none" stroke="#7a7267" stroke-width="1.5"><rect x="2" y="2" width="24" height="24" rx="3"/><circle cx="10" cy="10" r="3"/><path d="M2 20l6-6 4 4 4-5 8 7"/></svg>
+                  <div style="font-size:13px;color:var(--muted)">Click or drag to upload logo</div>
+                  <div style="font-size:11px;color:var(--border);margin-top:3px">PNG, JPG · Recommended 200×60px</div>
+                </div>
+                <img id="logo-preview-img" style="display:none;max-height:48px;max-width:160px;object-fit:contain" alt="Logo preview">
+              </div>
+              <input type="file" id="logo-file-input" accept="image/*" style="display:none" onchange="handleLogoFile(this)">
+              <button id="logo-remove-btn" onclick="removeLogo()" style="display:none;margin-top:8px;font-size:12px;color:var(--muted);background:none;border:none;cursor:pointer;padding:0;font-family:var(--sans)">Remove logo</button>
+            </div>
+
+            <!-- FIRM NAME -->
+            <div class="tmpl-field">
+              <label class="tmpl-label">Firm Name</label>
+              <input type="text" id="tmpl-firm-name" class="tmpl-input" placeholder="Your CPA Firm Name" oninput="updatePreview()" value="">
+            </div>
+
+            <!-- SURVEY TITLE -->
+            <div class="tmpl-field">
+              <label class="tmpl-label">Survey Title</label>
+              <input type="text" id="tmpl-survey-title" class="tmpl-input" placeholder="Tax Credit Eligibility Survey" oninput="updatePreview()" value="Tax Credit Eligibility Survey">
+            </div>
+
+            <!-- SURVEY SUBTITLE -->
+            <div class="tmpl-field">
+              <label class="tmpl-label">Subtitle / Welcome Message</label>
+              <textarea id="tmpl-subtitle" class="tmpl-input" rows="2" placeholder="Please complete this short survey to help us identify tax credit opportunities for your business." oninput="updatePreview()" style="resize:vertical">Please complete this short survey to help us identify tax credit opportunities for your business.</textarea>
+            </div>
+          </div>
+
+          <!-- COLOR SCHEME -->
+          <div class="tmpl-panel">
+            <div class="tmpl-panel-hdr">Color Scheme</div>
+            <div class="color-schemes">
+              <div class="color-swatch active" data-scheme="forest" onclick="setScheme(this,'forest')" title="Forest">
+                <div style="background:#2d6627;width:20px;height:20px;border-radius:2px"></div>
+                <div style="background:#4a9b3f;width:20px;height:20px;border-radius:2px"></div>
+                <div style="background:#f5f2ec;width:20px;height:20px;border-radius:2px;border:1px solid #ddd"></div>
+                <span>Forest</span>
+              </div>
+              <div class="color-swatch" data-scheme="navy" onclick="setScheme(this,'navy')" title="Navy">
+                <div style="background:#1a3a6b;width:20px;height:20px;border-radius:2px"></div>
+                <div style="background:#2c5aa0;width:20px;height:20px;border-radius:2px"></div>
+                <div style="background:#f4f6fb;width:20px;height:20px;border-radius:2px;border:1px solid #ddd"></div>
+                <span>Navy</span>
+              </div>
+              <div class="color-swatch" data-scheme="slate" onclick="setScheme(this,'slate')" title="Slate">
+                <div style="background:#2d3748;width:20px;height:20px;border-radius:2px"></div>
+                <div style="background:#4a5568;width:20px;height:20px;border-radius:2px"></div>
+                <div style="background:#f7f8fa;width:20px;height:20px;border-radius:2px;border:1px solid #ddd"></div>
+                <span>Slate</span>
+              </div>
+              <div class="color-swatch" data-scheme="burgundy" onclick="setScheme(this,'burgundy')" title="Burgundy">
+                <div style="background:#6b1a2d;width:20px;height:20px;border-radius:2px"></div>
+                <div style="background:#9b2a40;width:20px;height:20px;border-radius:2px"></div>
+                <div style="background:#fdf5f6;width:20px;height:20px;border-radius:2px;border:1px solid #ddd"></div>
+                <span>Burgundy</span>
+              </div>
+              <div class="color-swatch" data-scheme="midnight" onclick="setScheme(this,'midnight')" title="Midnight">
+                <div style="background:#0f0e0c;width:20px;height:20px;border-radius:2px"></div>
+                <div style="background:#2a2825;width:20px;height:20px;border-radius:2px"></div>
+                <div style="background:#f5f2ec;width:20px;height:20px;border-radius:2px;border:1px solid #ddd"></div>
+                <span>Midnight</span>
+              </div>
+              <div class="color-swatch" data-scheme="amber" onclick="setScheme(this,'amber')" title="Amber">
+                <div style="background:#92600a;width:20px;height:20px;border-radius:2px"></div>
+                <div style="background:#c8a84b;width:20px;height:20px;border-radius:2px"></div>
+                <div style="background:#fdf9f0;width:20px;height:20px;border-radius:2px;border:1px solid #ddd"></div>
+                <span>Amber</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="quiz-body" id="quiz-questions"></div>
-      </div>
-      <div class="share-bar">
-        <p>Ready to send? Share this template with your <span id="share-client-count">clients</span> via email or direct link.</p>
-        <button style="padding:9px 20px;background:var(--gold);color:var(--ink);font-size:12px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;border:none;border-radius:3px;cursor:pointer;font-family:var(--sans)" onclick="shareTemplate()">Share Now</button>
+
+        <!-- RIGHT: LIVE PREVIEW -->
+        <div class="tmpl-preview-col">
+          <div class="tmpl-preview-label">Live Preview</div>
+          <div class="tmpl-preview-frame" id="preview-frame">
+            <!-- PREVIEW HEADER -->
+            <div class="pv-header" id="pv-header">
+              <div class="pv-logo-area" id="pv-logo-area">
+                <img id="pv-logo-img" style="display:none;max-height:40px;max-width:140px;object-fit:contain" alt="">
+                <span class="pv-firm-name" id="pv-firm-name"></span>
+              </div>
+              <div class="pv-title" id="pv-title">Tax Credit Eligibility Survey</div>
+              <div class="pv-subtitle" id="pv-subtitle">Please complete this short survey to help us identify tax credit opportunities for your business.</div>
+              <div class="pv-progress-row">
+                <span class="pv-progress-label">Question 1 of 12</span>
+                <div class="pv-progress-bar"><div class="pv-progress-fill" id="pv-progress-fill" style="width:8%"></div></div>
+              </div>
+            </div>
+
+            <!-- PREVIEW QUESTIONS (scrollable) -->
+            <div class="pv-body" id="quiz-questions"></div>
+
+            <div class="pv-footer" id="pv-footer">
+              <span>Powered by Greptiles</span>
+            </div>
+          </div>
+
+          <div class="share-bar" style="margin-top:16px">
+            <p>Ready? Share with your <span id="share-client-count">clients</span></p>
+            <button style="padding:9px 20px;background:var(--gold);color:var(--ink);font-size:12px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;border:none;border-radius:3px;cursor:pointer;font-family:var(--sans)" onclick="shareTemplate()">Share Now</button>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -664,44 +827,142 @@ function renderClients(){
   updateDashboard();
 }
 
-// ── QUIZ ──
-function renderQuestions(){
-  const container=document.getElementById('quiz-questions');
-  container.innerHTML='';
-  QUESTIONS.forEach((q,qi)=>{
-    const block=document.createElement('div');
-    block.className='q-block';
-    block.style.animationDelay=(qi*0.03)+'s';
-    const optHtml=q.opts.map((o,oi)=>{
-      const key=q.id+'-'+oi;
-      return `<div class="q-opt" data-qid="${q.id}" data-oi="${oi}" data-multi="${q.multi}" onclick="selectOpt(this)">${o}</div>`;
-    }).join('');
-    block.innerHTML=`<div class="q-row">
-      <div class="q-num">${q.num}</div>
-      <div style="flex:1">
-        <div class="q-text">${q.text}</div>
-        <div class="q-tag">${q.tag}${q.multi?' &middot; Select all that apply':''}</div>
-      </div>
-    </div>
-    <div class="q-options">${optHtml}</div>`;
-    container.appendChild(block);
-  });
+// ── COLOR SCHEMES ──
+const SCHEMES = {
+  forest:   {primary:'#2d6627', accent:'#4a9b3f', bg:'#f5f2ec', headerBg:'#2d6627', headerText:'#ffffff'},
+  navy:     {primary:'#1a3a6b', accent:'#2c5aa0', bg:'#f4f6fb', headerBg:'#1a3a6b', headerText:'#ffffff'},
+  slate:    {primary:'#2d3748', accent:'#4a5568', bg:'#f7f8fa', headerBg:'#2d3748', headerText:'#ffffff'},
+  burgundy: {primary:'#6b1a2d', accent:'#9b2a40', bg:'#fdf5f6', headerBg:'#6b1a2d', headerText:'#ffffff'},
+  midnight: {primary:'#0f0e0c', accent:'#2a2825', bg:'#f5f2ec', headerBg:'#0f0e0c', headerText:'#f5f2ec'},
+  amber:    {primary:'#92600a', accent:'#c8a84b', bg:'#fdf9f0', headerBg:'#92600a', headerText:'#ffffff'},
+};
+let currentScheme = 'forest';
+let brandLogoDataUri = null;
+
+function setScheme(el, scheme) {
+  document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+  el.classList.add('active');
+  currentScheme = scheme;
+  updatePreview();
 }
 
-function selectOpt(el){
-  const qid=el.getAttribute('data-qid');
-  const multi=el.getAttribute('data-multi')==='true';
-  const oi=parseInt(el.getAttribute('data-oi'));
-  const siblings=document.querySelectorAll(`.q-opt[data-qid="${qid}"]`);
-  if(multi){
-    el.classList.toggle('multi-selected');
-    if(!answers[qid]) answers[qid]=[];
-    const idx=answers[qid].indexOf(oi);
-    if(idx>-1) answers[qid].splice(idx,1); else answers[qid].push(oi);
+// ── LOGO HANDLING ──
+function handleLogoDrop(e) {
+  e.preventDefault();
+  document.getElementById('logo-drop-zone').classList.remove('drag-over');
+  const file = e.dataTransfer.files[0];
+  if (file && file.type.startsWith('image/')) loadLogoFile(file);
+}
+function handleLogoFile(input) {
+  if (input.files[0]) loadLogoFile(input.files[0]);
+}
+function loadLogoFile(file) {
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    brandLogoDataUri = e.target.result;
+    document.getElementById('logo-preview-img').src = brandLogoDataUri;
+    document.getElementById('logo-preview-img').style.display = 'block';
+    document.getElementById('logo-upload-placeholder').style.display = 'none';
+    document.getElementById('logo-remove-btn').style.display = 'block';
+    updatePreview();
+  };
+  reader.readAsDataURL(file);
+}
+function removeLogo() {
+  brandLogoDataUri = null;
+  document.getElementById('logo-preview-img').style.display = 'none';
+  document.getElementById('logo-upload-placeholder').style.display = 'block';
+  document.getElementById('logo-remove-btn').style.display = 'none';
+  document.getElementById('logo-file-input').value = '';
+  updatePreview();
+}
+
+// ── LIVE PREVIEW UPDATE ──
+function updatePreview() {
+  const sc = SCHEMES[currentScheme];
+  const firmName = document.getElementById('tmpl-firm-name').value.trim();
+  const title = document.getElementById('tmpl-survey-title').value.trim() || 'Tax Credit Eligibility Survey';
+  const subtitle = document.getElementById('tmpl-subtitle').value.trim();
+
+  // Apply scheme to preview header
+  const hdr = document.getElementById('pv-header');
+  hdr.style.background = sc.headerBg;
+  hdr.style.borderBottom = 'none';
+
+  // Firm name + logo
+  const pvLogo = document.getElementById('pv-logo-img');
+  const pvFirm = document.getElementById('pv-firm-name');
+  if (brandLogoDataUri) {
+    pvLogo.src = brandLogoDataUri;
+    pvLogo.style.display = 'block';
   } else {
-    siblings.forEach(s=>s.classList.remove('selected'));
-    el.classList.add('selected');
-    answers[qid]=oi;
+    pvLogo.style.display = 'none';
+  }
+  pvFirm.textContent = firmName;
+  pvFirm.style.color = sc.headerText;
+  pvFirm.style.opacity = firmName ? '1' : '0';
+
+  document.getElementById('pv-title').textContent = title;
+  document.getElementById('pv-title').style.color = sc.headerText;
+  document.getElementById('pv-subtitle').textContent = subtitle;
+  document.getElementById('pv-subtitle').style.color = sc.headerText;
+  document.getElementById('pv-subtitle').style.opacity = '0.75';
+
+  document.getElementById('pv-progress-fill').style.background = sc.accent;
+
+  // Update q-num circles and opt hover color via CSS variable on frame
+  const frame = document.getElementById('preview-frame');
+  frame.style.background = sc.bg;
+  document.querySelectorAll('.pv-q-num').forEach(el => { el.style.background = sc.primary; });
+  document.querySelectorAll('.pv-opt').forEach(el => {
+    el.style.setProperty('--opt-hover', sc.primary);
+  });
+  document.getElementById('pv-footer').style.background = sc.bg;
+}
+
+// ── RENDER QUIZ IN PREVIEW ──
+function renderQuestions() {
+  const container = document.getElementById('quiz-questions');
+  container.innerHTML = '';
+  QUESTIONS.forEach((q, qi) => {
+    const block = document.createElement('div');
+    block.className = 'pv-q-block';
+    block.style.animationDelay = (qi * 0.03) + 's';
+    const optHtml = q.opts.map((o, oi) =>
+      `<div class="pv-opt" data-qid="${q.id}" data-oi="${oi}" data-multi="${q.multi}" onclick="pvSelectOpt(this)">${o}</div>`
+    ).join('');
+    block.innerHTML = `<div class="pv-q-row">
+      <div class="pv-q-num">${q.num}</div>
+      <div style="flex:1">
+        <div class="pv-q-text">${q.text}</div>
+        <div class="pv-q-tag">${q.tag}${q.multi ? ' &middot; Select all that apply' : ''}</div>
+      </div>
+    </div>
+    <div class="pv-q-opts">${optHtml}</div>`;
+    container.appendChild(block);
+  });
+  updatePreview();
+}
+
+function pvSelectOpt(el) {
+  const sc = SCHEMES[currentScheme];
+  const qid = el.getAttribute('data-qid');
+  const multi = el.getAttribute('data-multi') === 'true';
+  if (multi) {
+    const isOn = el.dataset.selected === '1';
+    el.dataset.selected = isOn ? '0' : '1';
+    el.style.background = isOn ? '' : sc.primary;
+    el.style.borderColor = isOn ? '' : sc.primary;
+    el.style.color = isOn ? '' : '#fff';
+  } else {
+    document.querySelectorAll(`.pv-opt[data-qid="${qid}"]`).forEach(s => {
+      s.style.background = ''; s.style.borderColor = ''; s.style.color = '';
+      s.dataset.selected = '0';
+    });
+    el.style.background = sc.primary;
+    el.style.borderColor = sc.primary;
+    el.style.color = '#fff';
+    el.dataset.selected = '1';
   }
 }
 
