@@ -324,15 +324,126 @@
     .disclaimer strong { color: rgba(245,241,235,.35); font-weight: 500; }
 
     /* ── RESPONSIVE ── */
+
+    /* Tablet */
     @media (max-width: 900px) {
-      header { grid-template-columns: 1fr; }
-      .hero-card { display: none; }
-      .features-grid { grid-template-columns: 1fr; }
-      .footer-top { grid-template-columns: 1fr 1fr; }
+      header {
+        grid-template-columns: 1fr;
+        padding: 7vh 6vw 6vh;
+        gap: 2.5rem;
+      }
+      .hero-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        border-radius: 6px;
+        padding: 0;
+        overflow: hidden;
+      }
+      .hero-card-main {
+        padding: 2rem;
+      }
+      .hero-card-stats {
+        padding: 2rem;
+        border-left: 1px solid rgba(245,241,235,.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1.5rem;
+      }
+      .hero-card-divider { display: none; }
+      .hero-card-row {
+        flex-direction: column;
+        gap: 1.2rem;
+        align-items: flex-start;
+      }
+      .hero-card-stat { text-align: left; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
     }
-    @media (max-width: 560px) {
-      .footer-top { grid-template-columns: 1fr; }
-      .cta-band { text-align: center; justify-content: center; }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      nav { padding: 0 5vw; height: 58px; }
+      .nav-logo { font-size: 1.1rem; }
+      .nav-cta {
+        font-size: .75rem;
+        padding: .45rem 1rem;
+        letter-spacing: .04em;
+      }
+
+      header {
+        padding: 6vh 5vw 5vh;
+        gap: 2rem;
+      }
+      h1 { font-size: clamp(2rem, 8vw, 2.8rem); margin-bottom: 1rem; }
+      .hero-body { font-size: .95rem; margin-bottom: 2rem; }
+      .hero-eyebrow { margin-bottom: 1rem; }
+
+      .hero-actions {
+        flex-direction: column;
+        gap: .75rem;
+      }
+      .btn-primary, .btn-secondary {
+        width: 100%;
+        text-align: center;
+        padding: .9rem 1.5rem;
+      }
+
+      .hero-card {
+        display: block;
+        padding: 1.75rem 1.5rem;
+        border-radius: 6px;
+      }
+      .hero-card-main { padding: 0; }
+      .hero-card-stats { display: none; }
+      .hero-card-divider { display: block; }
+      .hero-card-row {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+      .hero-card-stat { text-align: center; }
+      .hero-card-num { font-size: 2.8rem; }
+
+      .features { padding: 5vh 5vw; }
+      .features-grid { grid-template-columns: 1fr; }
+      .feature { padding: 2rem 1.5rem; }
+      .section-label { margin-bottom: 2rem; }
+
+      .cta-band {
+        padding: 5vh 5vw;
+        text-align: center;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      }
+      .cta-band .btn-primary {
+        width: 100%;
+        max-width: 320px;
+        text-align: center;
+      }
+
+      footer { padding: 3rem 5vw 2rem; }
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding-bottom: 2rem;
+      }
+      .footer-tagline { max-width: 100%; }
+      .footer-bottom {
+        flex-direction: column;
+        gap: .75rem;
+      }
+      .disclaimer { font-size: .7rem; }
+    }
+
+    /* Small phones */
+    @media (max-width: 380px) {
+      .nav-logo { font-size: 1rem; }
+      h1 { font-size: 1.9rem; }
+      .hero-card-row { gap: 0; }
+      .hero-card-stat-num { font-size: 1.3rem; }
     }
 
     /* subtle entrance */
@@ -369,11 +480,27 @@
       </div>
 
       <div class="hero-card">
-        <div class="hero-card-label">Average Annual Recovery</div>
-        <div class="hero-card-num"><span>$</span>47K</div>
-        <div class="hero-card-sub">per client, in previously unclaimed credits identified by Nash</div>
-        <hr class="hero-card-divider" />
-        <div class="hero-card-row">
+        <div class="hero-card-main">
+          <div class="hero-card-label">Average Annual Recovery</div>
+          <div class="hero-card-num"><span>$</span>47K</div>
+          <div class="hero-card-sub">per client, in previously unclaimed credits identified by Nash</div>
+          <hr class="hero-card-divider" />
+          <div class="hero-card-row">
+            <div class="hero-card-stat">
+              <div class="hero-card-stat-num">98%</div>
+              <div class="hero-card-stat-lbl">Accuracy</div>
+            </div>
+            <div class="hero-card-stat">
+              <div class="hero-card-stat-num">3×</div>
+              <div class="hero-card-stat-lbl">Faster Filing</div>
+            </div>
+            <div class="hero-card-stat">
+              <div class="hero-card-stat-num">12K+</div>
+              <div class="hero-card-stat-lbl">Credits Filed</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-card-stats">
           <div class="hero-card-stat">
             <div class="hero-card-stat-num">98%</div>
             <div class="hero-card-stat-lbl">Accuracy</div>
