@@ -1,597 +1,333 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nash Accountants</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --ink:    #0d1117;
-      --paper:  #f5f1eb;
-      --cream:  #ede8df;
-      --gold:   #b8963e;
-      --gold-lt:#d4af6a;
-      --muted:  #6b6560;
-      --rule:   rgba(13,17,23,.12);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Outfit', sans-serif;
-      background: var(--paper);
-      color: var(--ink);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      overflow-x: hidden;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: var(--paper);
-      border-bottom: 1px solid var(--rule);
-      padding: 0 6vw;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 64px;
-    }
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 700;
-      font-size: 1.35rem;
-      letter-spacing: .04em;
-      color: var(--ink);
-      text-decoration: none;
-    }
-    .nav-logo span { color: var(--gold); }
-    .nav-cta {
-      background: var(--ink);
-      color: var(--paper);
-      font-size: .82rem;
-      font-weight: 500;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      padding: .55rem 1.4rem;
-      border: none; border-radius: 2px;
-      cursor: pointer;
-      transition: background .2s, color .2s;
-      text-decoration: none;
-    }
-    .nav-cta:hover { background: var(--gold); color: #fff; }
-
-    /* ── HERO ── */
-    header {
-      flex: 0 0 auto;
-      padding: 9vh 6vw 8vh;
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 4rem;
-      align-items: center;
-      border-bottom: 1px solid var(--rule);
-      position: relative;
-    }
-    header::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(184,150,62,.07) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: .5rem;
-      font-size: .75rem; font-weight: 500;
-      letter-spacing: .12em; text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-    }
-    .hero-eyebrow::before {
-      content: '';
-      display: block; width: 28px; height: 1px;
-      background: var(--gold);
-    }
-
-    h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.4rem, 4.5vw, 4rem);
-      font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: -.02em;
-      margin-bottom: 1.5rem;
-      color: var(--ink);
-    }
-    h1 em {
-      font-style: italic;
-      color: var(--gold);
-    }
-
-    .hero-body {
-      font-size: 1.05rem;
-      line-height: 1.7;
-      color: var(--muted);
-      max-width: 52ch;
-      margin-bottom: 2.5rem;
-    }
-
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-
-    .btn-primary {
-      background: var(--ink);
-      color: var(--paper);
-      font-size: .9rem; font-weight: 500;
-      padding: .85rem 2.2rem;
-      border: 1.5px solid var(--ink);
-      border-radius: 2px; cursor: pointer;
-      transition: all .2s;
-      text-decoration: none; display: inline-block;
-    }
-    .btn-primary:hover { background: var(--gold); border-color: var(--gold); }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--ink);
-      font-size: .9rem; font-weight: 500;
-      padding: .85rem 2.2rem;
-      border: 1.5px solid rgba(13,17,23,.25);
-      border-radius: 2px; cursor: pointer;
-      transition: all .2s;
-      text-decoration: none; display: inline-block;
-    }
-    .btn-secondary:hover { border-color: var(--ink); }
-
-    /* Card */
-    .hero-card {
-      background: var(--ink);
-      border-radius: 6px;
-      padding: 2.5rem 2rem;
-      color: var(--paper);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-card::after {
-      content: '';
-      position: absolute;
-      top: -40px; right: -40px;
-      width: 180px; height: 180px;
-      border-radius: 50%;
-      background: rgba(184,150,62,.15);
-    }
-    .hero-card-label {
-      font-size: .7rem; letter-spacing: .14em; text-transform: uppercase;
-      color: var(--gold-lt);
-      margin-bottom: .6rem;
-    }
-    .hero-card-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3.5rem; font-weight: 900;
-      line-height: 1;
-      margin-bottom: .4rem;
-    }
-    .hero-card-num span { color: var(--gold-lt); font-size: 2rem; }
-    .hero-card-sub {
-      font-size: .85rem; color: rgba(245,241,235,.55);
-      line-height: 1.5;
-    }
-    .hero-card-divider {
-      border: none; border-top: 1px solid rgba(245,241,235,.1);
-      margin: 1.5rem 0;
-    }
-    .hero-card-row {
-      display: flex; justify-content: space-between; align-items: flex-end;
-    }
-    .hero-card-stat { text-align: center; }
-    .hero-card-stat-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem; font-weight: 700;
-      color: var(--gold-lt);
-    }
-    .hero-card-stat-lbl {
-      font-size: .7rem; color: rgba(245,241,235,.5);
-      text-transform: uppercase; letter-spacing: .1em;
-      margin-top: .25rem;
-    }
-
-    /* ── FEATURES ── */
-    .features {
-      padding: 7vh 6vw;
-      border-bottom: 1px solid var(--rule);
-    }
-    .section-label {
-      font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 3rem;
-      display: flex; align-items: center; gap: .6rem;
-    }
-    .section-label::after {
-      content: ''; flex: 1; height: 1px; background: var(--rule);
-    }
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      background: var(--rule);
-      border: 1px solid var(--rule);
-    }
-    .feature {
-      background: var(--paper);
-      padding: 2.5rem 2rem;
-      transition: background .2s;
-    }
-    .feature:hover { background: var(--cream); }
-    .feature-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: .85rem; color: var(--gold);
-      margin-bottom: 1.2rem;
-      letter-spacing: .06em;
-    }
-    .feature h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem; font-weight: 700;
-      margin-bottom: .75rem;
-      line-height: 1.3;
-    }
-    .feature p {
-      font-size: .88rem; line-height: 1.65;
-      color: var(--muted);
-    }
-
-    /* ── CTA BAND ── */
-    .cta-band {
-      padding: 7vh 6vw;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 2rem; flex-wrap: wrap;
-      border-bottom: 1px solid var(--rule);
-      background: var(--cream);
-    }
-    .cta-band-text h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.6rem, 2.8vw, 2.4rem);
-      font-weight: 900; margin-bottom: .5rem;
-    }
-    .cta-band-text p { color: var(--muted); font-size: .95rem; }
-
-    /* ── MAIN GROWS ── */
-    main { flex: 1 0 auto; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--ink);
-      color: rgba(245,241,235,.6);
-      padding: 3.5rem 6vw 2rem;
-    }
-    .footer-top {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr 1fr;
-      gap: 3rem;
-      padding-bottom: 3rem;
-      border-bottom: 1px solid rgba(245,241,235,.1);
-      margin-bottom: 2rem;
-    }
-    .footer-brand-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem; font-weight: 900;
-      color: var(--paper);
-      margin-bottom: .75rem;
-      display: block;
-    }
-    .footer-brand-name span { color: var(--gold-lt); }
-    .footer-tagline {
-      font-size: .83rem; line-height: 1.6;
-      color: rgba(245,241,235,.45);
-      max-width: 28ch;
-    }
-    .footer-col h4 {
-      font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
-      color: rgba(245,241,235,.4);
-      margin-bottom: 1.1rem;
-    }
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: .6rem; }
-    .footer-col ul li a {
-      color: rgba(245,241,235,.6);
-      text-decoration: none;
-      font-size: .88rem;
-      transition: color .15s;
-    }
-    .footer-col ul li a:hover { color: var(--gold-lt); }
-    .footer-bottom {
-      display: flex; justify-content: space-between; align-items: flex-start;
-      gap: 2rem; flex-wrap: wrap;
-    }
-    .footer-copy {
-      font-size: .78rem;
-      color: rgba(245,241,235,.3);
-      line-height: 1.5;
-    }
-
-    /* ── DISCLAIMER ── */
-    .disclaimer {
-      margin-top: 2rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(245,241,235,.07);
-      font-size: .72rem;
-      line-height: 1.7;
-      color: rgba(245,241,235,.22);
-      max-width: 90ch;
-    }
-    .disclaimer strong { color: rgba(245,241,235,.35); font-weight: 500; }
-
-    /* ── RESPONSIVE ── */
-
-    /* Tablet */
-    @media (max-width: 900px) {
-      header {
-        grid-template-columns: 1fr;
-        padding: 7vh 6vw 6vh;
-        gap: 2.5rem;
-      }
-      .hero-card {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0;
-        border-radius: 6px;
-        padding: 0;
-        overflow: hidden;
-      }
-      .hero-card-main {
-        padding: 2rem;
-      }
-      .hero-card-stats {
-        padding: 2rem;
-        border-left: 1px solid rgba(245,241,235,.1);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 1.5rem;
-      }
-      .hero-card-divider { display: none; }
-      .hero-card-row {
-        flex-direction: column;
-        gap: 1.2rem;
-        align-items: flex-start;
-      }
-      .hero-card-stat { text-align: left; }
-      .features-grid { grid-template-columns: 1fr 1fr; }
-      .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
-    }
-
-    /* Mobile */
-    @media (max-width: 600px) {
-      nav { padding: 0 5vw; height: 58px; }
-      .nav-logo { font-size: 1.1rem; }
-      .nav-cta {
-        font-size: .75rem;
-        padding: .45rem 1rem;
-        letter-spacing: .04em;
-      }
-
-      header {
-        padding: 6vh 5vw 5vh;
-        gap: 2rem;
-      }
-      h1 { font-size: clamp(2rem, 8vw, 2.8rem); margin-bottom: 1rem; }
-      .hero-body { font-size: .95rem; margin-bottom: 2rem; }
-      .hero-eyebrow { margin-bottom: 1rem; }
-
-      .hero-actions {
-        flex-direction: column;
-        gap: .75rem;
-      }
-      .btn-primary, .btn-secondary {
-        width: 100%;
-        text-align: center;
-        padding: .9rem 1.5rem;
-      }
-
-      .hero-card {
-        display: block;
-        padding: 1.75rem 1.5rem;
-        border-radius: 6px;
-      }
-      .hero-card-main { padding: 0; }
-      .hero-card-stats { display: none; }
-      .hero-card-divider { display: block; }
-      .hero-card-row {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-end;
-      }
-      .hero-card-stat { text-align: center; }
-      .hero-card-num { font-size: 2.8rem; }
-
-      .features { padding: 5vh 5vw; }
-      .features-grid { grid-template-columns: 1fr; }
-      .feature { padding: 2rem 1.5rem; }
-      .section-label { margin-bottom: 2rem; }
-
-      .cta-band {
-        padding: 5vh 5vw;
-        text-align: center;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-      }
-      .cta-band .btn-primary {
-        width: 100%;
-        max-width: 320px;
-        text-align: center;
-      }
-
-      footer { padding: 3rem 5vw 2rem; }
-      .footer-top {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        padding-bottom: 2rem;
-      }
-      .footer-tagline { max-width: 100%; }
-      .footer-bottom {
-        flex-direction: column;
-        gap: .75rem;
-      }
-      .disclaimer { font-size: .7rem; }
-    }
-
-    /* Small phones */
-    @media (max-width: 380px) {
-      .nav-logo { font-size: 1rem; }
-      h1 { font-size: 1.9rem; }
-      .hero-card-row { gap: 0; }
-      .hero-card-stat-num { font-size: 1.3rem; }
-    }
-
-    /* subtle entrance */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(22px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .hero-eyebrow { animation: fadeUp .5s ease both; }
-    h1            { animation: fadeUp .55s .08s ease both; }
-    .hero-body    { animation: fadeUp .55s .16s ease both; }
-    .hero-actions { animation: fadeUp .55s .24s ease both; }
-    .hero-card    { animation: fadeUp .6s .32s ease both; }
-  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Nash Accountants - Tax Credit Recovery for Accounting Firms</title>
 </head>
-<body>
+<body bgcolor="#ffffff" text="#000000" link="#0000cc" vlink="#551a8b">
 
-  <!-- NAV -->
-  <nav>
-    <a class="nav-logo" href="#">Nash <span>Accountants</span></a>
-    <a class="nav-cta" href="#create-account">Create Account</a>
-  </nav>
+<table width="780" border="0" cellpadding="0" cellspacing="0" align="center">
+  <tr>
+    <td>
 
-  <main>
-    <!-- HERO -->
-    <header>
-      <div class="hero-copy">
-        <div class="hero-eyebrow">For Accounting Firms</div>
-        <h1>Tax credits your clients don't know they're <em>missing.</em></h1>
-        <p class="hero-body">Nash Accountants surfaces eligible tax credit opportunities across your entire client portfolio and automates the workflow end-to-end — all the way to filing.</p>
-        <div class="hero-actions">
-          <a class="btn-primary" href="#create-account" id="create-account">Create Account</a>
-          <a class="btn-secondary" href="#">See How It Works</a>
-        </div>
-      </div>
+      <!-- HEADER -->
+      <table width="100%" border="0" cellpadding="8" cellspacing="0" bgcolor="#003366">
+        <tr>
+          <td>
+            <font face="Arial" size="5" color="#ffffff"><b>Nash Accountants</b></font>
+          </td>
+          <td align="right">
+            <font face="Arial" size="2" color="#ffffff">
+              <a href="#signup" style="color:#ffff99;">Create Account</a>
+              &nbsp;|&nbsp;
+              <a href="#contact" style="color:#ffff99;">Contact Us</a>
+            </font>
+          </td>
+        </tr>
+      </table>
 
-      <div class="hero-card">
-        <div class="hero-card-main">
-          <div class="hero-card-label">Average Annual Recovery</div>
-          <div class="hero-card-num"><span>$</span>47K</div>
-          <div class="hero-card-sub">per client, in previously unclaimed credits identified by Nash</div>
-          <hr class="hero-card-divider" />
-          <div class="hero-card-row">
-            <div class="hero-card-stat">
-              <div class="hero-card-stat-num">98%</div>
-              <div class="hero-card-stat-lbl">Accuracy</div>
-            </div>
-            <div class="hero-card-stat">
-              <div class="hero-card-stat-num">3×</div>
-              <div class="hero-card-stat-lbl">Faster Filing</div>
-            </div>
-            <div class="hero-card-stat">
-              <div class="hero-card-stat-num">12K+</div>
-              <div class="hero-card-stat-lbl">Credits Filed</div>
-            </div>
-          </div>
-        </div>
-        <div class="hero-card-stats">
-          <div class="hero-card-stat">
-            <div class="hero-card-stat-num">98%</div>
-            <div class="hero-card-stat-lbl">Accuracy</div>
-          </div>
-          <div class="hero-card-stat">
-            <div class="hero-card-stat-num">3×</div>
-            <div class="hero-card-stat-lbl">Faster Filing</div>
-          </div>
-          <div class="hero-card-stat">
-            <div class="hero-card-stat-num">12K+</div>
-            <div class="hero-card-stat-lbl">Credits Filed</div>
-          </div>
-        </div>
-      </div>
-    </header>
+      <!-- NAV BAR -->
+      <table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#e8e8e8">
+        <tr>
+          <td>
+            <font face="Arial" size="2">
+              &nbsp;
+              <a href="#">Home</a> &nbsp;|&nbsp;
+              <a href="#">How It Works</a> &nbsp;|&nbsp;
+              <a href="#">Services</a> &nbsp;|&nbsp;
+              <a href="#">Pricing</a> &nbsp;|&nbsp;
+              <a href="#">About Us</a> &nbsp;|&nbsp;
+              <a href="#contact">Contact</a>
+            </font>
+          </td>
+        </tr>
+      </table>
 
-    <!-- FEATURES -->
-    <section class="features">
-      <div class="section-label">How Nash Works</div>
-      <div class="features-grid">
-        <div class="feature">
-          <div class="feature-num">01</div>
-          <h3>Portfolio-Wide Credit Scanning</h3>
-          <p>Nash automatically reviews every client in your book against hundreds of federal and state tax credit programs — from R&D to energy incentives — flagging opportunities you'd otherwise miss.</p>
-        </div>
-        <div class="feature">
-          <div class="feature-num">02</div>
-          <h3>End-to-End Workflow Automation</h3>
-          <p>From eligibility analysis to document collection to filing-ready forms, Nash handles the entire process. Your team reviews and approves; Nash does the heavy lifting.</p>
-        </div>
-        <div class="feature">
-          <div class="feature-num">03</div>
-          <h3>Audit-Ready Documentation</h3>
-          <p>Every credit claim is backed by a complete, organized evidence package — calculations, supporting documents, and a clear audit trail — so you and your clients can file with confidence.</p>
-        </div>
-      </div>
-    </section>
+      <br>
 
-    <!-- CTA BAND -->
-    <section class="cta-band">
-      <div class="cta-band-text">
-        <h2>Ready to recover what's owed?</h2>
-        <p>Join hundreds of firms already using Nash to grow client value.</p>
-      </div>
-      <a class="btn-primary" href="#create-account">Create Account →</a>
-    </section>
-  </main>
+      <!-- MAIN CONTENT -->
+      <table width="100%" border="0" cellpadding="6" cellspacing="0">
+        <tr>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-top">
-      <div>
-        <span class="footer-brand-name">Nash <span>Accountants</span></span>
-        <p class="footer-tagline">Automated tax credit discovery and filing for modern accounting firms.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Product</h4>
-        <ul>
-          <li><a href="#">How It Works</a></li>
-          <li><a href="#">Integrations</a></li>
-          <li><a href="#">Pricing</a></li>
-          <li><a href="#">Security</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Cookie Policy</a></li>
-        </ul>
-      </div>
-    </div>
+          <!-- LEFT COLUMN -->
+          <td width="520" valign="top">
 
-    <div class="footer-bottom">
-      <p class="footer-copy">© 2026 Nash Accountants, Inc. All rights reserved.</p>
-    </div>
+            <font face="Arial" size="2" color="#666666">For Accounting Firms</font>
+            <br><br>
 
-    <div class="disclaimer">
-      <strong>Disclaimer:</strong> Nash Accountants provides technology-assisted identification of potential tax credit opportunities for informational and workflow purposes only. The information presented on this platform does not constitute legal, tax, financial, or accounting advice. All tax credit claims identified by the Nash platform should be reviewed and verified by a qualified Certified Public Accountant (CPA) or licensed tax professional prior to filing. Nash Accountants makes no guarantee or warranty, express or implied, regarding the accuracy, completeness, or applicability of any identified credit to any specific taxpayer's circumstances. Eligibility for tax credits is determined by applicable federal, state, and local law, which is subject to change. Nash Accountants is not a law firm, accounting firm, or registered tax preparer. Use of this platform does not create a professional–client relationship. Users are solely responsible for their filings and compliance with all applicable tax obligations. Past recovery amounts cited are illustrative averages and are not a guarantee of future results.
-    </div>
-  </footer>
+            <font face="Arial" size="5"><b>Tax credits your clients don't know they're missing.</b></font>
+            <br><br>
+
+            <font face="Arial" size="2">
+              Nash Accountants surfaces eligible tax credit opportunities across your entire
+              client portfolio and automates the workflow end-to-end &mdash; all the way to filing.
+            </font>
+            <br><br>
+
+            <table border="0" cellpadding="0" cellspacing="4">
+              <tr>
+                <td>
+                  <a href="#signup">
+                    <font face="Arial" size="2"><b>&raquo; Create Account</b></font>
+                  </a>
+                </td>
+                <td width="20">&nbsp;</td>
+                <td>
+                  <a href="#">
+                    <font face="Arial" size="2">&raquo; See How It Works</font>
+                  </a>
+                </td>
+              </tr>
+            </table>
+
+            <br>
+            <hr size="1" color="#cccccc">
+            <br>
+
+            <!-- HOW IT WORKS -->
+            <font face="Arial" size="4"><b>How Nash Works</b></font>
+            <br><br>
+
+            <table width="100%" border="1" cellpadding="8" cellspacing="0" bordercolor="#cccccc">
+              <tr bgcolor="#f5f5f5">
+                <td width="30" valign="top"><font face="Arial" size="2" color="#003366"><b>01</b></font></td>
+                <td valign="top">
+                  <font face="Arial" size="2"><b>Portfolio-Wide Credit Scanning</b></font><br>
+                  <font face="Arial" size="2">
+                    Nash automatically reviews every client in your book against hundreds of federal
+                    and state tax credit programs &mdash; from R&amp;D to energy incentives &mdash;
+                    flagging opportunities you'd otherwise miss.
+                  </font>
+                </td>
+              </tr>
+              <tr>
+                <td width="30" valign="top"><font face="Arial" size="2" color="#003366"><b>02</b></font></td>
+                <td valign="top">
+                  <font face="Arial" size="2"><b>End-to-End Workflow Automation</b></font><br>
+                  <font face="Arial" size="2">
+                    From eligibility analysis to document collection to filing-ready forms, Nash handles
+                    the entire process. Your team reviews and approves; Nash does the heavy lifting.
+                  </font>
+                </td>
+              </tr>
+              <tr bgcolor="#f5f5f5">
+                <td width="30" valign="top"><font face="Arial" size="2" color="#003366"><b>03</b></font></td>
+                <td valign="top">
+                  <font face="Arial" size="2"><b>Audit-Ready Documentation</b></font><br>
+                  <font face="Arial" size="2">
+                    Every credit claim is backed by a complete, organized evidence package &mdash;
+                    calculations, supporting documents, and a clear audit trail &mdash; so you and
+                    your clients can file with confidence.
+                  </font>
+                </td>
+              </tr>
+            </table>
+
+          </td>
+
+          <!-- SPACER -->
+          <td width="20">&nbsp;</td>
+
+          <!-- RIGHT COLUMN -->
+          <td width="220" valign="top">
+
+            <!-- STAT BOX -->
+            <table width="100%" border="1" cellpadding="10" cellspacing="0" bordercolor="#003366" bgcolor="#f0f4f8">
+              <tr bgcolor="#003366">
+                <td colspan="2">
+                  <font face="Arial" size="1" color="#ccddee">AVG. ANNUAL RECOVERY / CLIENT</font>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" align="center">
+                  <font face="Arial" size="6" color="#003366"><b>$47K</b></font><br>
+                  <font face="Arial" size="1" color="#666666">in previously unclaimed credits<br>identified by Nash</font>
+                </td>
+              </tr>
+              <tr bgcolor="#e0e8f0">
+                <td align="center">
+                  <font face="Arial" size="3" color="#003366"><b>98%</b></font><br>
+                  <font face="Arial" size="1" color="#666666">Accuracy</font>
+                </td>
+                <td align="center">
+                  <font face="Arial" size="3" color="#003366"><b>3x</b></font><br>
+                  <font face="Arial" size="1" color="#666666">Faster Filing</font>
+                </td>
+              </tr>
+              <tr bgcolor="#e0e8f0">
+                <td colspan="2" align="center">
+                  <font face="Arial" size="3" color="#003366"><b>12,000+</b></font><br>
+                  <font face="Arial" size="1" color="#666666">Credits Filed</font>
+                </td>
+              </tr>
+            </table>
+
+            <br>
+
+            <!-- QUICK FACTS -->
+            <table width="100%" border="1" cellpadding="8" cellspacing="0" bordercolor="#cccccc">
+              <tr bgcolor="#003366">
+                <td><font face="Arial" size="2" color="#ffffff"><b>By The Numbers</b></font></td>
+              </tr>
+              <tr>
+                <td>
+                  <font face="Arial" size="2">
+                    <b>$100M+</b> recovered for clients<br>
+                    <font size="1" color="#666666">since 2021</font>
+                  </font>
+                </td>
+              </tr>
+              <tr bgcolor="#f5f5f5">
+                <td>
+                  <font face="Arial" size="2">
+                    <b>400+</b> accounting firms<br>
+                    <font size="1" color="#666666">across 38 states</font>
+                  </font>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <font face="Arial" size="2">
+                    <b>12,000+</b> credits filed<br>
+                    <font size="1" color="#666666">and counting</font>
+                  </font>
+                </td>
+              </tr>
+              <tr bgcolor="#f5f5f5">
+                <td>
+                  <font face="Arial" size="2">
+                    <b>98%</b> accuracy rate<br>
+                    <font size="1" color="#666666">verified by CPAs</font>
+                  </font>
+                </td>
+              </tr>
+            </table>
+
+            <br>
+
+            <!-- SIGNUP BOX -->
+            <table width="100%" border="1" cellpadding="8" cellspacing="0" bordercolor="#003366" bgcolor="#fffbe6">
+              <tr bgcolor="#cc6600">
+                <td><font face="Arial" size="2" color="#ffffff"><b>Get Started Today</b></font></td>
+              </tr>
+              <tr>
+                <td>
+                  <font face="Arial" size="2">
+                    Join hundreds of firms recovering unclaimed credits for their clients.
+                  </font>
+                  <br><br>
+                  <a href="#signup"><font face="Arial" size="2"><b>&raquo; Create Free Account</b></font></a>
+                </td>
+              </tr>
+            </table>
+
+          </td>
+        </tr>
+      </table>
+
+      <br>
+      <hr size="1" color="#cccccc">
+      <br>
+
+      <!-- SIGNUP SECTION -->
+      <a name="signup"></a>
+      <font face="Arial" size="4"><b>Ready to recover what's owed?</b></font>
+      <br><br>
+      <font face="Arial" size="2">
+        Join hundreds of firms already using Nash to surface unclaimed credits and grow client value.
+        Create your account below or call us at <b>1-800-NASH-TAX</b>.
+      </font>
+      <br><br>
+
+      <table border="0" cellpadding="4" cellspacing="0">
+        <tr>
+          <td><font face="Arial" size="2">Firm Name:</font></td>
+          <td><input type="text" size="30" name="firm"></td>
+        </tr>
+        <tr>
+          <td><font face="Arial" size="2">Your Email:</font></td>
+          <td><input type="text" size="30" name="email"></td>
+        </tr>
+        <tr>
+          <td><font face="Arial" size="2">Phone:</font></td>
+          <td><input type="text" size="30" name="phone"></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td><input type="submit" value="Create Account"></td>
+        </tr>
+      </table>
+
+      <br>
+      <hr size="1" color="#cccccc">
+      <br>
+
+      <!-- FOOTER -->
+      <a name="contact"></a>
+      <table width="100%" border="0" cellpadding="6" cellspacing="0" bgcolor="#003366">
+        <tr>
+          <td valign="top">
+            <font face="Arial" size="2" color="#ffffff"><b>Nash Accountants</b></font><br>
+            <font face="Arial" size="1" color="#aabbcc">
+              Automated tax credit discovery and filing<br>
+              for modern accounting firms.
+            </font>
+          </td>
+          <td valign="top">
+            <font face="Arial" size="1" color="#aabbcc">
+              <b><font color="#ffffff">Product</font></b><br>
+              <a href="#" style="color:#aabbcc;">How It Works</a><br>
+              <a href="#" style="color:#aabbcc;">Integrations</a><br>
+              <a href="#" style="color:#aabbcc;">Pricing</a><br>
+              <a href="#" style="color:#aabbcc;">Security</a>
+            </font>
+          </td>
+          <td valign="top">
+            <font face="Arial" size="1" color="#aabbcc">
+              <b><font color="#ffffff">Company</font></b><br>
+              <a href="#" style="color:#aabbcc;">About</a><br>
+              <a href="#" style="color:#aabbcc;">Blog</a><br>
+              <a href="#" style="color:#aabbcc;">Careers</a><br>
+              <a href="#" style="color:#aabbcc;">Contact</a>
+            </font>
+          </td>
+          <td valign="top">
+            <font face="Arial" size="1" color="#aabbcc">
+              <b><font color="#ffffff">Legal</font></b><br>
+              <a href="#" style="color:#aabbcc;">Privacy Policy</a><br>
+              <a href="#" style="color:#aabbcc;">Terms of Service</a><br>
+              <a href="#" style="color:#aabbcc;">Cookie Policy</a>
+            </font>
+          </td>
+        </tr>
+      </table>
+
+      <br>
+      <font face="Arial" size="1" color="#999999">
+        &copy; 2026 Nash Accountants, Inc. All rights reserved. &nbsp;|&nbsp;
+        <a href="#">Privacy Policy</a> &nbsp;|&nbsp;
+        <a href="#">Terms of Service</a>
+      </font>
+      <br><br>
+
+      <font face="Arial" size="1" color="#aaaaaa">
+        <b>Disclaimer:</b> Nash Accountants provides technology-assisted identification of potential tax credit opportunities
+        for informational and workflow purposes only. The information presented on this platform does not constitute legal,
+        tax, financial, or accounting advice. All tax credit claims identified by the Nash platform should be reviewed and
+        verified by a qualified Certified Public Accountant (CPA) or licensed tax professional prior to filing.
+        Nash Accountants makes no guarantee or warranty, express or implied, regarding the accuracy, completeness,
+        or applicability of any identified credit to any specific taxpayer's circumstances. Eligibility for tax credits
+        is determined by applicable federal, state, and local law, which is subject to change. Nash Accountants is not
+        a law firm, accounting firm, or registered tax preparer. Use of this platform does not create a
+        professional-client relationship. Users are solely responsible for their filings and compliance with all
+        applicable tax obligations. Past recovery amounts cited are illustrative averages and are not a guarantee
+        of future results.
+      </font>
+      <br><br>
+
+    </td>
+  </tr>
+</table>
 
 </body>
 </html>
